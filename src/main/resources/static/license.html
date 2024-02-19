@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mol-in DB Search : In-House</title>
+  <link href="assets/bootstrap_short.css" rel="stylesheet">
+</head>
+<body>
+  <!-- top menu -->
+  <header class="navbar navbar-expand-md bd-navbar shadow">
+    <nav class="container-xxl" aria-label="Main navigation">
+      <ul class="nav nav-pills justify-content-center m-1">
+        <li class="nav-item">
+          <a class="nav-link" href="company.html">업체 관리</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="server.html">서버 관리</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="license.html">라이선스 관리</a>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-sm btn-outline-light">로그아웃</button>
+    </nav>
+  </header>
+  <!-- //top menu -->
+
+  <!-- contents -->
+  <div class="container-xxl mt-5">
+
+    <h1 class="h3">시스템 라이선스 관리</h1>
+    <div class="float-end mb-2">
+      <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#Modal_ladd">라이선스 생성</button>
+    </div>
+    <table class="table table-bordered table-hover align-middle">
+      <colgroup>
+        <col width="14%">
+        <col width="10%">
+        <col width="10%">
+        <col width="10%">
+        <col width="24%">
+        <col width="">
+        <col width="7%">
+        <col width="5%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">라이선스 ID(다운로드)</th>
+          <th scope="col">라이선스 종류</th>
+          <th scope="col">적용 서버명</th>
+          <th scope="col">사용 업체명</th>
+          <th scope="col">라이선스 기간</th>
+          <th scope="col">기타 사항</th>
+          <th scope="col">가용 여부</th>
+          <th scope="col">삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#">01</a></td>
+          <td>web</td>
+          <td><a href="#">A.Co-Web-01</a></td>
+          <td><a href="#">A.Co</a></td>
+          <td>2021-01-03 16:44 ~ 2022-01-03 16:44</td>
+          <td>A.Co의 web 서버 라이선스</td>
+          <td><span class="text-danger">Expired</span></td>
+          <td><button type="button" class="btn btn-outline-secondary btn-sm">삭제</button></td>
+        </tr>
+        <tr>
+          <td><a href="#">01</a></td>
+          <td>web</td>
+          <td><a href="#">A.Co-Web-01</a></td>
+          <td><a href="#">A.Co</a></td>
+          <td>2021-01-03 16:44 ~ 2022-01-03 16:44</td>
+          <td>A.Co의 web 서버 라이선스</td>
+          <td><span class="text-primary">Available</span></td>
+          <td><button type="button" class="btn btn-outline-secondary btn-sm">삭제</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row mt-4" aria-label="Page navigation example">
+      <div class="col-9">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" href="#">First</a></li>
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <li class="page-item"><a class="page-link" href="#">Last</a></li>
+        </ul>
+      </div>
+
+      <div class="col-3">
+        <form>
+          <input class="form-control ipt_search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-search" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="M21 21l-5.2-5.2"></path></svg></button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- //contents -->
+
+  <!-- modal layer : 라이선스 생성 -->
+  <div class="modal fade" id="Modal_ladd" tabindex="-1" aria-labelledby="ModalLabel_ladd" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel_ladd">라이선스 생성</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 row">
+            <label for="ladd_company" class="col-sm-4 col-form-label text-end">사용 업체</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="ladd_company" value="B.co" readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="ladd_server" class="col-sm-4 col-form-label text-end">서버 선택</label>
+            <div class="col-sm-8">
+              <select class="form-select" id="ladd_server">
+                <option value="1" selected>R&D</option>
+                <option value="2"></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="ladd_license" class="col-sm-4 col-form-label text-end">라이선스 종류</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="ladd_license" value="R&D" readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="ladd_etc" class="col-sm-4 col-form-label text-end">기타사항</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" id="ladd_etc" rows="3"></textarea>
+            </div>
+          </div>
+          <hr>
+          <div class="mb-3 row">
+            <strong class="col-sm-4 col-form-label text-end">하드웨어 Serial/ID</strong>
+            <div class="col-sm-12">
+              <div class="mb-3 row">
+                <label for="ladd_serial" class="col-sm-4 col-form-label text-end">product_serial</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="ladd_serial" value="ec237f97-4231-6b58-d85c-b9cfb6" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="ladd_uuid" class="col-sm-4 col-form-label text-end">product_uuid</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="ladd_uuid" value="ec237f97-4231-6b58-d85c-b9cfb6" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="ladd_cpuid" class="col-sm-4 col-form-label text-end">cpu_id</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="ladd_cpuid" value="ec237f97-4231-6b58-d85c-b9cfb6" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="ladd_instance" class="col-sm-4 col-form-label text-end">instance id</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="ladd_instance" value="ec237f97-4231-6b58-d85c-b9cfb6" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="mb-3 row">
+            <strong class="col-sm-4 col-form-label text-end">기간 설정</strong>
+            <div class="col-sm-12">
+              <div class="mb-3 row">
+                <label for="ladd_start" class="col-sm-4 col-form-label text-end">시작일</label>
+                <div class="col-sm-8">
+                  <input type="datetime-local" id="ladd_start" class="form-control">
+                </div>
+                <label for="ladd_end" class="col-sm-4 col-form-label text-end">종료일</label>
+                <div class="col-sm-8">
+                  <input type="datetime-local" id="ladd_end" class="form-control">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="ladd_time" class="col-sm-4 col-form-label text-end">Time Zone</label>
+                <div class="col-sm-8">
+                  <select class="form-select" id="ladd_time">
+                    <option value="1" selected>(GMT +09:00) Seoul</option>
+                    <option value="2"></option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="ladd_utc" class="col-sm-4 col-form-label text-end">UTC 기준</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="ladd_utc" value="2022-02-24 01:08:30" readonly>
+                  <input type="text" class="form-control" id="" value="2022-03-24 03:08:30" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">라이선스 생성</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal layer -->
+
+  <script src="assets/jquery-3.4.1.slim.min.js"></script>
+  <script src="assets/bootstrap.min.js"></script>
+
+</body>
+</html>

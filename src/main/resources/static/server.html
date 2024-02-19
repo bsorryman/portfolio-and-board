@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mol-in DB Search : In-House</title>
+  <link href="assets/bootstrap_short.css" rel="stylesheet">
+</head>
+<body>
+  <!-- top menu -->
+  <header class="navbar navbar-expand-md bd-navbar shadow">
+    <nav class="container-xxl" aria-label="Main navigation">
+      <ul class="nav nav-pills justify-content-center m-1">
+        <li class="nav-item">
+          <a class="nav-link" href="company.html">업체 관리</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="server.html">서버 관리</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="license.html">라이선스 관리</a>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-sm btn-outline-light">로그아웃</button>
+    </nav>
+  </header>
+  <!-- //top menu -->
+
+  <!-- contents -->
+  <div class="container-xxl mt-5">
+
+    <h1 class="h3">시스템 적용 서버 관리</h1>
+    <div class="float-end mb-2">
+      <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#Modal_Sadd">서버추가</button>
+    </div>
+    <table class="table table-bordered table-hover align-middle">
+      <colgroup>
+        <col width="5%">
+        <col width="7%">
+        <col width="7%">
+        <col width="7%">
+        <col width="10%">
+        <col width="5%">
+        <col width="5%">
+        <col width="8%">
+        <col width="">
+        <col width="8%">
+        <col width="7%">
+        <col width="6%">
+        <col width="8%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">서버 ID</th>
+          <th scope="col">업체명</th>
+          <th scope="col">서버명</th>
+          <th scope="col">서버종류</th>
+          <th scope="col">CPU</th>
+          <th scope="col">Memory</th>
+          <th scope="col">Storage</th>
+          <th scope="col">Product serial</th>
+          <th scope="col">Product uuid</th>
+          <th scope="col">CPU id</th>
+          <th scope="col">Instance id</th>
+          <th scope="col">라이선스</th>
+          <th scope="col">기타사항</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td><a href="#">a.co</a></td>
+          <td><a href="#" role="button" data-toggle="modal" data-target="#Modal_Sedit">a.co Web 01</a></td>
+          <td>web</td>
+          <td>Intel(R) Core(TM) i7_</td>
+          <td>4GB</td>
+          <td>1TB</td>
+          <td>System Serial Number</td>
+          <td>a6061e00-d7e2-11dd-87c1-ac9e174cca8f</td>
+          <td>C3 06 03 00 FF FB EB BF</td>
+          <td>none</td>
+          <td><a href="#">Available</a></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row mt-4" aria-label="Page navigation example">
+      <div class="col-9">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" href="#">First</a></li>
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <li class="page-item"><a class="page-link" href="#">Last</a></li>
+        </ul>
+      </div>
+
+      <div class="col-3">
+        <form>
+          <input class="form-control ipt_search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-search" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="M21 21l-5.2-5.2"></path></svg></button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- //contents -->
+
+  <!-- modal layer : 서버추가 -->
+  <div class="modal fade" id="Modal_Sadd" tabindex="-1" aria-labelledby="ModalLabel_Sadd" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel_Sadd">서버 정보 추가</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 row">
+            <label for="Sadd_name" class="col-sm-4 col-form-label text-end">업체명</label>
+            <div class="col-sm-8">
+              <select class="form-select" id="Sadd_name">
+                <option value="1" selected>A.Co</option>
+                <option value="2">B.Co</option>
+                <option value="3">C.Co</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sadd_server" class="col-sm-4 col-form-label text-end">서버종류</label>
+            <div class="col-sm-8">
+              <select class="form-select" id="Sadd_server">
+                <option value="1" selected>R&D</option>
+                <option value="2"></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sadd_servername" class="col-sm-4 col-form-label text-end">서버명</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sadd_servername" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sadd_cpu" class="col-sm-4 col-form-label text-end">CPU</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sadd_cpu" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sadd_memory" class="col-sm-4 col-form-label text-end">Memory</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sadd_memory" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sadd_storage" class="col-sm-4 col-form-label text-end">Storage</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sadd_storage" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sadd_etc" class="col-sm-4 col-form-label text-end">기타사항</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" id="Sadd_etc" rows="3"></textarea>
+            </div>
+          </div>
+          <hr>
+          <div class="mb-3 row">
+            <strong class="col-sm-4 col-form-label text-end">하드웨어 Serial/ID</strong>
+            <div class="col-sm-12">
+              <div class="mb-3 row">
+                <label for="Sadd_serial" class="col-sm-4 col-form-label text-end">product_serial</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sadd_serial" value="" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="Sadd_uuid" class="col-sm-4 col-form-label text-end">product_uuid</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sadd_uuid" value="" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="Sadd_cpuid" class="col-sm-4 col-form-label text-end">cpu_id</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sadd_cpuid" value="" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="Sadd_instance" class="col-sm-4 col-form-label text-end">instance id</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sadd_instance" value="" readonly>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <input class="form-control ipt_search" type="file" id="formFile">
+                <button type="sumit" class="btn btn-outline-primary">업로드</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">서버추가</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal layer -->
+
+  <!-- modal layer : 서버수정 -->
+  <div class="modal fade" id="Modal_Sedit" tabindex="-1" aria-labelledby="ModalLabel_Sedit" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel_Sedit">서버 정보 수정</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 row">
+            <label for="Sedit_name" class="col-sm-4 col-form-label text-end">업체명</label>
+            <div class="col-sm-8">
+              <select class="form-select" id="Sedit_name" disabled>
+                <option value="1" selected>A.Co</option>
+                <option value="2">B.Co</option>
+                <option value="3">C.Co</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sedit_server" class="col-sm-4 col-form-label text-end">서버종류</label>
+            <div class="col-sm-8">
+              <select class="form-select" id="Sedit_server" disabled>
+                <option value="1" selected>R&D</option>
+                <option value="2"></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sedit_servername" class="col-sm-4 col-form-label text-end">서버명</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sedit_servername" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sedit_cpu" class="col-sm-4 col-form-label text-end">CPU</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sedit_cpu" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sedit_memory" class="col-sm-4 col-form-label text-end">Memory</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sedit_memory" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sedit_storage" class="col-sm-4 col-form-label text-end">Storage</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="Sedit_storage" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Sedit_etc" class="col-sm-4 col-form-label text-end">기타사항</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" id="Sedit_etc" rows="3"></textarea>
+            </div>
+          </div>
+          <hr>
+          <div class="mb-3 row">
+            <strong class="col-sm-4 col-form-label text-end">하드웨어 Serial/ID</strong>
+            <div class="col-sm-12">
+              <div class="mb-3 row">
+                <label for="Sedit_serial" class="col-sm-4 col-form-label text-end">product_serial</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sedit_serial" value="" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="Sedit_uuid" class="col-sm-4 col-form-label text-end">product_uuid</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sedit_uuid" value="" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="Sedit_cpuid" class="col-sm-4 col-form-label text-end">cpu_id</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sedit_cpuid" value="" readonly>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="Sedit_instance" class="col-sm-4 col-form-label text-end">instance id</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="Sedit_instance" value="" readonly>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <input class="form-control ipt_search" type="file" id="formFile2">
+                <button type="sumit" class="btn btn-outline-primary">업로드</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">서버수정</button>
+          <button type="button" class="btn btn-secondary">서버삭제</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal layer -->
+
+  <script src="assets/jquery-3.4.1.slim.min.js"></script>
+  <script src="assets/bootstrap.min.js"></script>
+
+</body>
+</html>
