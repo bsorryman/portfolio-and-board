@@ -1,9 +1,9 @@
-package com.myboard.api.free.domain;
+package com.myboard.api.jspboard.domain;
 
 import lombok.Data;
 
 @Data
-public class FreePost {
+public class JspBoardPost {
 	
 	private int idx;
 	private String title; 

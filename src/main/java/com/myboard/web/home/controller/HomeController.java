@@ -11,7 +11,7 @@ public class HomeController {
 	@GetMapping
 	public String getHome() {
 		
-		return "redirect:free/list";
+		return "redirect:jsp-board/list";
 	}
 	
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.myboard.api.free.repository.FreeListMapper">
+<mapper namespace="com.myboard.api.jspboard.repository.JspBoardListMapper">
 	
-	<resultMap id="freePost" type="com.myboard.api.free.domain.FreePost">
+	<resultMap id="jspBoardPost" type="com.myboard.api.jspboard.domain.JspBoardPost">
 		<result column="idx" property="idx" />
 		<result column="title" property="title" />
 		<result column="writer" property="writer" />
@@ -13,9 +13,9 @@
 		<result column="hits" property="hits" />
 	</resultMap>	
 	
-	<select id="selectTotalFreePost" resultType="int">
+	<select id="selectTotalJspBoardPost" resultType="int">
 		SELECT COUNT(*) 
-		FROM tb_free_board
+		FROM tb_jsp_board
 		WHERE 1 = 1
 		<if test="field=='name'">
 		AND title LIKE CONCAT('%', #{keyword}, '%')
@@ -25,11 +25,11 @@
 		</if>
 	</select>
 	
-	<!-- Select Free Post list  -->
-	<select id="selectFreePostList" resultMap="freePost">
-	    <bind name="offset" value="@com.myboard.api.free.domain.FreePost@seekOffset(page, size)"/>
+	<!-- Select JspBoard Post list  -->
+	<select id="selectJspBoardPostList" resultMap="jspBoardPost">
+	    <bind name="offset" value="@com.myboard.api.jspboard.domain.JspBoardPost@seekOffset(page, size)"/>
 	    SELECT *
-		FROM tb_free_board
+		FROM tb_jsp_board
 		WHERE 1 = 1
 		<if test="field=='name'">
 		AND title LIKE CONCAT('%', #{keyword}, '%')
@@ -41,38 +41,38 @@
 		LIMIT #{offset}, #{size}		
 	</select>	
 	
-	<!-- Insert Free Post -->
-	<insert id="insertFreePost" parameterType="com.myboard.api.free.domain.FreePost">
-		INSERT INTO tb_free_board(title, writer, password, contents)
+	<!-- Insert JspBoard Post -->
+	<insert id="insertJspBoardPost" parameterType="com.myboard.api.jspboard.domain.JspBoardPost">
+		INSERT INTO tb_jsp_board(title, writer, password, contents)
 		VALUES(#{title}, #{writer}, #{password}, #{contents})
 	</insert>
 	
-	<!-- Select Free Post (one) -->
-	<select id="selectFreePost" resultMap="freePost">
+	<!-- Select JspBoard Post (one) -->
+	<select id="selectJspBoardPost" resultMap="jspBoardPost">
 		SELECT *
-		FROM tb_free_board
+		FROM tb_jsp_board
 		WHERE idx = #{idx}
 	</select>
 	
-	<!-- Delete Free Post -->
-	<delete id="deleteFreePost">
+	<!-- Delete JspBoard Post -->
+	<delete id="deleteJspBoardPost">
 		DELETE
-		FROM tb_free_board
+		FROM tb_jsp_board
 		WHERE idx = #{idx}
 		AND password = #{password}
 	</delete>
 	
-	<!-- Update Free Post -->
-	<update id="updateFreePost" parameterType="com.myboard.api.free.domain.FreePost">
-		UPDATE tb_free_board
+	<!-- Update JspBoard Post -->
+	<update id="updateJspBoardPost" parameterType="com.myboard.api.jspboard.domain.JspBoardPost">
+		UPDATE tb_jsp_board
 		SET title = #{title}, contents = #{contents}
 		WHERE idx = #{idx}	
 		AND password = #{password}
 	</update>
 	
-	<!-- Add Hits of Free Post -->
-	<update id="updateHitsOfFreePost">
-		UPDATE tb_free_board
+	<!-- Add Hits of JspBoard Post -->
+	<update id="updateHitsOfJspBoardPost">
+		UPDATE tb_jsp_board
 		SET hits = IFNULL(hits, 0) + 1
 		WHERE idx = #{idx}	
 	</update>

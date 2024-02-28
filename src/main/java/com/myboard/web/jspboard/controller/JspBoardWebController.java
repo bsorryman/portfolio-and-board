@@ -1,4 +1,4 @@
-package com.myboard.web.free.controller;
+package com.myboard.web.jspboard.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/free")
-public class FreeWebController {
+@RequestMapping("/jsp-board")
+public class JspBoardWebController {
 	
 	@GetMapping("/list")
 	public String getListPage(@RequestParam(defaultValue = "1") int page,
@@ -23,13 +23,13 @@ public class FreeWebController {
 		model.addAttribute("bszie", bsize);
 		model.addAttribute("filed", field);
 		model.addAttribute("keyword", keyword);
-		return "/free/list";
+		return "/jsp-board/list";
 	}
 	
 	@GetMapping("/write")
 	public String getWriteForm() {
 		
-		return "/free/write-form";
+		return "/jsp-board/write-form";
 	}
 	
 	@GetMapping("/edit-form")
@@ -37,7 +37,7 @@ public class FreeWebController {
 			Model model) {
 		
 		model.addAttribute("idx", idx);
-		return "/free/edit-form";
+		return "/jsp-board/edit-form";
 	}
 	
 	@GetMapping
@@ -45,7 +45,7 @@ public class FreeWebController {
 			Model model) {
 		
 		model.addAttribute("idx", idx);
-		return "/free/post-detail";
+		return "/jsp-board/post-detail";
 	}
 	
 }

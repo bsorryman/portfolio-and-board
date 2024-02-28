@@ -22,7 +22,7 @@
   <!-- contents -->
   <div id="page-content-wrapper">
 
-    <h1 class="h3">자유게시판</h1>
+    <h1 class="h3">JSP & API 게시판</h1>
     <br /><br />
     <div class="float-end mb-2">
       <button type="button" class="btn btn-sm btn-outline-primary" onclick="javascript:location.href='/free/write'">

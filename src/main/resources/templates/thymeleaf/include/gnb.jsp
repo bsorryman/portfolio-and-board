@@ -50,7 +50,7 @@
   <header class="navbar bd-navbar">
       <ul class="sidebar-nav nav nav-pills m-1">
         <li class="nav-item">
-          <a id="jsp-board-menu" class="nav-link" href="/jsp-board/list">JSP & API 게시판</a>
+          <a id="free-menu" class="nav-link" href="/free/list">JSP & API 게시판</a>
         </li>     
         <li class="nav-item">
           <a id="" class="nav-link" href="/free2/list">자유 게시판2</a>
@@ -69,8 +69,8 @@
 	var curPath = window.location.pathname;
 	curPath = curPath.substr(1);
 	
-	if (curPath.indexOf('jsp-board')!=-1) {
-		$('#jsp-board-menu').attr('class', 'nav-link active');
+	if (curPath.indexOf('free')!=-1) {
+		$('#free-menu').attr('class', 'nav-link active');
 	}
 </script>
   

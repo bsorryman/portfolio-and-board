@@ -1,4 +1,4 @@
-package com.myboard.api.free.controller;
+package com.myboard.api.jspboard.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myboard.api.free.domain.FreePost;
-import com.myboard.api.free.service.FreeService;
+import com.myboard.api.jspboard.domain.JspBoardPost;
+import com.myboard.api.jspboard.service.JspBoardService;
 import com.myboard.api.util.Pager;
 
 @RestController
-@RequestMapping("/api/v1.0/free")
-public class FreeController {
+@RequestMapping("/api/v1.0/jsp-board")
+public class JspBoardController {
 
 	@Autowired
-	FreeService freeService;
+	JspBoardService jspBoardService;
 	
 	@GetMapping("/list")
-	public Map<String, Object> getFreePostList(
+	public Map<String, Object> getJspBoardPostList(
 			@RequestParam(defaultValue = "1", required = false) int page,
 			@RequestParam(defaultValue = "10", required = false) int size,
 			@RequestParam(defaultValue = "5", required = false) int bsize,
@@ -34,12 +34,12 @@ public class FreeController {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 
-		List<FreePost> freePostList = freeService.getFreePostList(page, size, bsize, field, keyword);
-		int totalPost = freeService.getTotalFreePost(page, field, keyword);
+		List<JspBoardPost> jspBoardPostList = jspBoardService.getJspBoardPostList(page, size, bsize, field, keyword);
+		int totalPost = jspBoardService.getTotalJspBoardPost(page, field, keyword);
 		
 		Pager pager = new Pager(page, size, bsize, totalPost);
 
-		resultMap.put("freePostList", freePostList);
+		resultMap.put("jspBoardPostList", jspBoardPostList);
 		resultMap.put("totalPost", totalPost);
 		resultMap.put("pager", pager);
 		
@@ -47,33 +47,33 @@ public class FreeController {
 	}
 	
 	@GetMapping
-	public FreePost getFreePostDetail(@RequestParam int idx) {
-		FreePost freePost = freeService.getFreePostDetail(idx);
-		return freePost;
+	public JspBoardPost getJspBoardPostDetail(@RequestParam int idx) {
+		JspBoardPost jspBoardPost = jspBoardService.getJspBoardPostDetail(idx);
+		return jspBoardPost;
 	}
 	
 	@PostMapping
-	public boolean writeFreePost(FreePost freePost) {
+	public boolean writeJspBoardPost(JspBoardPost jspBoardPost) {
 		boolean result = false;
 		
-		result = freeService.writeFreePost(freePost);
+		result = jspBoardService.writeJspBoardPost(jspBoardPost);
 
 		return result;
 	}
 	
 	@PutMapping
-	public boolean editFreePost(FreePost freePost) {
+	public boolean editJspBoardPost(JspBoardPost jspBoardPost) {
 		boolean result = false;
-		result = freeService.editFreePost(freePost);
+		result = jspBoardService.editJspBoardPost(jspBoardPost);
 		
 		return result;
 	}
 	
 	@DeleteMapping
-	public boolean delFreePost(int idx, String password) {
+	public boolean delJspBoardPost(int idx, String password) {
 		boolean result = false;
 		
-		result = freeService.delFreePost(idx, password);
+		result = jspBoardService.delJspBoardPost(idx, password);
 		
 		return result;
 	}
