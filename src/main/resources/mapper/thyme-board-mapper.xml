@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.myboard.board.repository.JspBoardListMapper">
+<mapper namespace="com.myboard.board.repository.ThymeBoardListMapper">
 	
-	<resultMap id="jspBoardPost" type="com.myboard.board.domain.JspBoardPost">
+	<resultMap id="thymeBoardPost" type="com.myboard.board.domain.ThymeBoardPost">
 		<result column="idx" property="idx" />
 		<result column="title" property="title" />
 		<result column="writer" property="writer" />
@@ -13,9 +13,9 @@
 		<result column="hits" property="hits" />
 	</resultMap>	
 	
-	<select id="selectTotalJspBoardPost" resultType="int">
+	<select id="selectTotalThymeBoardPost" resultType="int">
 		SELECT COUNT(*) 
-		FROM tb_jsp_board
+		FROM tb_thyme_board
 		WHERE 1 = 1
 		<if test="field=='name'">
 		AND title LIKE CONCAT('%', #{keyword}, '%')
@@ -25,11 +25,11 @@
 		</if>
 	</select>
 	
-	<!-- Select JspBoard Post list  -->
-	<select id="selectJspBoardPostList" resultMap="jspBoardPost">
-	    <bind name="offset" value="@com.myboard.board.domain.JspBoardPost@seekOffset(page, size)"/>
+	<!-- Select ThymeBoard Post list  -->
+	<select id="selectThymeBoardPostList" resultMap="thymeBoardPost">
+	    <bind name="offset" value="@com.myboard.board.domain.ThymeBoardPost@seekOffset(page, size)"/>
 	    SELECT *
-		FROM tb_jsp_board
+		FROM tb_thyme_board
 		WHERE 1 = 1
 		<if test="field=='name'">
 		AND title LIKE CONCAT('%', #{keyword}, '%')
@@ -41,38 +41,38 @@
 		LIMIT #{offset}, #{size}		
 	</select>	
 	
-	<!-- Insert JspBoard Post -->
-	<insert id="insertJspBoardPost" parameterType="com.myboard.board.domain.JspBoardPost">
-		INSERT INTO tb_jsp_board(title, writer, password, contents)
+	<!-- Insert ThymeBoard Post -->
+	<insert id="insertThymeBoardPost" parameterType="com.myboard.board.domain.ThymeBoardPost">
+		INSERT INTO tb_thyme_board(title, writer, password, contents)
 		VALUES(#{title}, #{writer}, #{password}, #{contents})
 	</insert>
 	
-	<!-- Select JspBoard Post (one) -->
-	<select id="selectJspBoardPost" resultMap="jspBoardPost">
+	<!-- Select ThymeBoard Post (one) -->
+	<select id="selectThymeBoardPost" resultMap="thymeBoardPost">
 		SELECT *
-		FROM tb_jsp_board
+		FROM tb_thyme_board
 		WHERE idx = #{idx}
 	</select>
 	
-	<!-- Delete JspBoard Post -->
-	<delete id="deleteJspBoardPost">
+	<!-- Delete ThymeBoard Post -->
+	<delete id="deleteThymeBoardPost">
 		DELETE
-		FROM tb_jsp_board
+		FROM tb_thyme_board
 		WHERE idx = #{idx}
 		AND password = #{password}
 	</delete>
 	
-	<!-- Update JspBoard Post -->
-	<update id="updateJspBoardPost" parameterType="com.myboard.board.domain.JspBoardPost">
-		UPDATE tb_jsp_board
+	<!-- Update ThymeBoard Post -->
+	<update id="updateThymeBoardPost" parameterType="com.myboard.board.domain.ThymeBoardPost">
+		UPDATE tb_thyme_board
 		SET title = #{title}, contents = #{contents}
 		WHERE idx = #{idx}	
 		AND password = #{password}
 	</update>
 	
-	<!-- Add Hits of JspBoard Post -->
-	<update id="updateHitsOfJspBoardPost">
-		UPDATE tb_jsp_board
+	<!-- Add Hits of ThymeBoard Post -->
+	<update id="updateHitsOfThymeBoardPost">
+		UPDATE tb_thyme_board
 		SET hits = IFNULL(hits, 0) + 1
 		WHERE idx = #{idx}	
 	</update>
