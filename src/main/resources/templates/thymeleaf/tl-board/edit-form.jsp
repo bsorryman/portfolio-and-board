@@ -1,17 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>My Board - Free Board</title>
-  <link href="../assets/bootstrap_short.css" rel="stylesheet">
+  <link href="../assets/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
 <div id="page-wrapper">
   <!-- side menu -->
-  <th:block th:include="/thymeleaf/include/gnb.html :: sideMenu(curBoard='thyme-board')"></th:block>
+  <jsp:include page="../include/gnb.jsp" />
   <!-- //side menu -->
 
   <!-- contents -->
@@ -64,9 +69,31 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
   <script>
 	$(function(){
-
-	});
+		getFreePostDetail(${idx});
+ 	});
   	
+ 	function getFreePostDetail(idx) {
+		$.ajax({
+			url: '/api/v1.0/free',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				idx: idx
+			},
+			success: function(result) {
+				displayEditForm(result);
+			},
+			error: function(request, status, error) {
+				alert('게시물을 불러오는데 실패했습니다.');
+			}
+		}); 		
+ 	}
+ 	
+ 	function displayEditForm(freePost) {
+ 		$('#title').val(freePost.title);
+ 		$('#contents').val(freePost.contents);
+ 	}
+ 	
   	function editPost() {
 		var params = {
 				idx: ${idx},
@@ -84,6 +111,23 @@
 			return false;
 		}		
 		
+		$.ajax({
+			type:"PUT",
+			url: "/api/v1.0/free",
+			data: params,
+			success: function(result) {
+				if (result) {
+					alert("완료되었습니다.")
+					location.href="/free?idx=${idx}";
+				} else {
+					alert("글 수정에 실패하였습니다.");
+				}
+				
+			},
+			error: function (request, status, error) {
+				alert("에러가 발생했습니다.");
+			}
+		});
   	}  	
   </script>
 </body>

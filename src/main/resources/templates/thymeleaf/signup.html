@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 화면 샘플 - Bootstrap</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--   <link href="/assets/bootstrap.css" rel="stylesheet"> -->
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: #495057;
+    }
+
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+	.btn-primary {
+	  color: #fff;
+	  background-color: #495057;
+	  border-color: #495057;
+	}
+	.btn-primary:hover {
+	  color: #ced4da;
+	  background-color: #495057;
+	  border-color: #495057;
+	}    
+	.btn-primary, .btn-primary:focus {
+	  color: #fff;
+	  background-color: #495057;
+	  border-color: #495057;
+	  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 255) !important;
+	}
+    .btn-primary:active {
+      color: #ced4da !important;
+      background-color: #495057 !important;
+      border-color: #495057 !important;
+    }
+  </style>
+</head>
+
+<body>
+<script src="../assets/jquery.min.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+<input type="hidden" id="clientId" th:value="${@environment.getProperty('google.client.id')}" />
+<script>
+/*
+    var googleUser = {};
+    var clientId = $('#clientId').val();
+    var startApp = function() {
+        
+        gapi.load('auth2', function(){
+            auth2 = gapi.auth2.init({
+                client_id: clientId,
+                cookiepolicy: 'single_host_origin',
+            });
+            attachSignin(document.getElementById('customBtn'));
+        });
+    };
+    
+    function attachSignin(element) {
+        auth2.attachClickHandler(element, {},
+        function(googleUser) {
+            google.login(googleUser.getBasicProfile().getId(), googleUser.getBasicProfile().getName(), googleUser.getBasicProfile().getEmail());
+        }, function(error) {
+        
+        });
+    }
+*/
+</script>
+<form id = "snsSignUpFrm">
+    <input type = "hidden" id = "sns_id" name = "sns_id" />
+    <input type = "hidden" id = "sns_pwd" name = "sns_pwd" />
+    <input type = "hidden" id = "sns_type" name = "sns_type" />
+</form>
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3">회원가입</h4>
+        <form class="validation-form" action="/signup" method="post" novalidate>
+          <div class="login_sns">
+            <!-- google signup -->
+            <!-- 
+            <div id="gSignInWrapper" class="mb-3">
+              <div id="customBtn" class="customGPlusSignIn sns_login">
+	            <button type="button" class="form-control btn btn-primary">
+	              Google 회원가입
+	            </button>
+              </div>
+            </div>           
+            <script>startApp();</script>
+            -->
+            <!-- //google signup -->
+          </div>
+		  <div class="mb-3">
+		    <div id="g_id_onload"
+		      th:data-client_id="${@environment.getProperty('google.client.id')}"
+		      data-callback="handleCredentialResponse">
+		    </div>
+		  <div class="g_id_signin" data-type="standard"></div>          
+          </div>
+          <div class="row">
+	        <div class="col-md-8 mb-3">
+	          <label for="memberId">ID</label>
+	          <input type="text" class="form-control" id="memberId" name="memberId" required>
+	          <div class="invalid-feedback">
+	            ID를 입력해주세요.
+	          </div>
+	        </div>   
+            <div class="col-md-4 mb-3">
+              <label for="memberId">ID Check</label>
+              <button type="button" class="form-control btn btn-primary" id="memberIdCheck" required >
+                                중복확인
+              </button>
+              <div class="invalid-feedback">
+                ID를 입력해주세요.
+              </div>
+            </div>   	        
+          </div>
+     
+          <div class="mb-3">
+            <label for="memberPwd">Password</label>
+            <input type="password" class="form-control" id="memberPwd" name="memberPwd" required>
+            <div class="invalid-feedback">
+                            패스워드를 입력해주세요.
+            </div>
+          </div>          
+          <div class="mb-3">
+            <label for="memberPwdCheck">Password 확인</label>
+            <input type="password" class="form-control" id="memberPwdCheck" required>
+            <div class="invalid-feedback">
+                            패스워드를 한번 더 입력해주세요.
+            </div>
+          </div>            
+<!--           <div class="row"> -->
+          <div class="mb-3">
+            <label for="memberName">이름</label>
+            <input type="text" class="form-control" id="memberName" name="memberName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+                            이름을 입력해주세요.
+            </div>
+          </div>
+<!--             <div class="col-md-6 mb-3"> -->
+<!--               <label for="nickname">별명</label> -->
+<!--               <input type="text" class="form-control" id="nickname" placeholder="" value="" required> -->
+<!--               <div class="invalid-feedback"> -->
+<!--                 별명을 입력해주세요. -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+
+          <div class="mb-3">
+            <label for="memberEmail">이메일</label>
+            <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" required>
+            <div class="invalid-feedback">
+              이메일을 입력해주세요.
+            </div>
+          </div>
+        <!-- 
+          <div class="mb-3">
+            <label for="address">주소</label>
+            <input type="text" class="form-control" id="address" placeholder="서울특별시 강남구" required>
+            <div class="invalid-feedback">
+              주소를 입력해주세요.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
+            <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 mb-3">
+              <label for="root">가입 경로</label>
+              <select class="custom-select d-block w-100" id="root">
+                <option value=""></option>
+                <option>검색</option>
+                <option>카페</option>
+              </select>
+              <div class="invalid-feedback">
+                가입 경로를 선택해주세요.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="code">추천인 코드</label>
+              <input type="text" class="form-control" id="code" placeholder="" required>
+              <div class="invalid-feedback">
+                추천인 코드를 입력해주세요.
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="aggrement" required>
+            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+          </div>
+          <div class="mb-4"></div>
+          -->
+          <input type="hidden" name="gSocialYn" value="n" />
+          <button class="btn btn-primary btn-lg btn-block" type="submit">회원 가입</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      const forms = document.getElementsByClassName('validation-form');
+
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          alert("회원가입이 완료되었습니다.");
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  </script>
+</body>
+
+</html>

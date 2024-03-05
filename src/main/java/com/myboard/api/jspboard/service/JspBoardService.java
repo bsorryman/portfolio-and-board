@@ -1,12 +1,12 @@
-package com.myboard.board.service;
+package com.myboard.api.jspboard.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myboard.board.domain.JspBoardPost;
-import com.myboard.board.repository.JspBoardListMapper;
+import com.myboard.api.jspboard.domain.JspBoardPost;
+import com.myboard.api.jspboard.repository.JspBoardListMapper;
 
 @Service
 public class JspBoardService {

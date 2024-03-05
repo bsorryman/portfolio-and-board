@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>My Board - Jsp Board</title>
-  <link href="../assets/bootstrap_short.css" rel="stylesheet">
+  <link href="../assets/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
@@ -201,9 +201,9 @@
 	  //page parameter default set
 	  var target = "list";
 	  var home = "page=1";
-	  var prev = "page="+(pager.bsPage-1);
-	  var next = "page="+(pager.bePage+1);
-	  var last = "page="+(pager.totalPage)
+	  var prev = "page="+(pager.bspage-1);
+	  var next = "page="+(pager.bepage+1);
+	  var last = "page="+(pager.pages)
 // 	  var sizePath = "size="+pager.size+"&bsize="+pager.bsize;
 	  
 	  //make pagination section
@@ -214,25 +214,25 @@
 		  pagination += '<li class="active page-item"><a class="page-link" href="#">1</a></li>';
 	  
 	  } else if (pager.rows > 0) {
-		  if (pager.bsPage > pager.bsize) {
+		  if (pager.bspage > pager.bsize) {
 			  pagination += '<li class=""><a class="page-link" href="'+target+'?'+home+'">First</a></li>'+
                   '<li class="page-item"><a class="page-link" href="'+target+'?'+prev+'">&laquo;</a></li>'
 		  }
 		  
 		  //page number
-		  for (var i = pager.bsPage; i <= pager.bePage; i++ ) {
+		  for (var i = pager.bspage; i <= pager.bepage; i++ ) {
 			  var page = 'page='+i;
 			  //active page
 			  if (i == pager.page) {
 				  pagination += '<li class="page-item active"><a class="page-link" href="#">'+i+'</a></li>';
 			  } else {
-				  if (i <= pager.totalPage) {
+				  if (i <= pager.pages) {
 					  pagination += '<li class="page-item"><a class="page-link" href="'+target+'?'+page+'">'+i+'</a></li>';
 				  }
 			  }
 		  }
 		 	
-		  if (pager.bePage < pager.totalPage) {
+		  if (pager.bepage < pager.pages) {
 			  pagination += '<li class="page-item"><a class="page-link" href="'+target+'?'+next+'">&raquo;</a></li>'+
               '<li class="page-item"><a class="page-link" href="'+target+'?'+last+'">Last</a></li>'
 		  }

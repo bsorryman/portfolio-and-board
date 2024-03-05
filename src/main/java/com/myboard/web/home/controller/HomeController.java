@@ -1,14 +1,13 @@
-package com.myboard.home.controller;
+package com.myboard.web.home.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
 
-	@GetMapping
+	@GetMapping("/")
 	public String getHome() {
 		
 		return "redirect:jsp-board/list";

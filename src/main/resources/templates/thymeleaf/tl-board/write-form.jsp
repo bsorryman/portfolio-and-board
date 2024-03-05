@@ -1,17 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>My Board - Free Board</title>
-  <link href="../assets/bootstrap_short.css" rel="stylesheet">
+  <link href="../assets/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
 <div id="page-wrapper">
   <!-- side menu -->
-  <th:block th:include="/thymeleaf/include/gnb.html :: sideMenu(curBoard='thyme-board')"></th:block>
+  <jsp:include page="../include/gnb.jsp" />
   <!-- //side menu -->
 
   <!-- contents -->
@@ -20,7 +25,7 @@
     <h1 class="h3">자유게시판</h1>
     <h3>글쓰기</h3>
     <br />
-	<form id="freePostForm" method="post" action="/thyme-board">
+	<form id="freePostForm" method="post">
 		<div class="form-group" style="width:100%">
 			<input type="text" name="writer" id="writer" class="form-control mb-2"
 				style="display:inline; width:20%;" placeholder="작성자" required
@@ -37,7 +42,7 @@
 				placeholder="내용을 입력해주세요" required
 			></textarea>
 		</div><br />
-		<button type="submit" onclick="writePost()" class="btn btn-secondary mb-3">등록</button>
+		<button type="button" onclick="writePost()" class="btn btn-secondary mb-3">등록</button>
 	</form>
   </div>
   <!-- //contents -->
@@ -48,10 +53,10 @@
   <script>
   	function writePost() {
 		var params = {
-			title: $('#title').val(),
-			writer: $('#writer').val(),
-			password: $('#password').val(),
-			contents: $('#contents').val(),
+				title: $('#title').val(),
+				writer: $('#writer').val(),
+				password: $('#password').val(),
+				contents: $('#contents').val(),
 		}
 		
 		if (params.writer == "") {
@@ -71,9 +76,6 @@
 			return false;
 		}		
 		
-		alert("완료되었습니다.")
-		
-		/*
 		$.ajax({
 			type:"POST",
 			url: "/api/v1.0/free",
@@ -91,7 +93,6 @@
 				alert("에러가 발생했습니다.");
 			}
 		});
-		*/
   	}  	
   </script>
 </body>

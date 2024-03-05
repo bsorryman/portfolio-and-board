@@ -9,8 +9,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My Board - Jsp Board</title>
-  <link href="../assets/bootstrap.css" rel="stylesheet">
+  <title>My Board - Free Board</title>
+  <link href="../assets/bootstrap_short.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick="deleteJspBoardPost()">확인</button>
+          <button type="button" class="btn btn-primary" onclick="deleteFreePost()">확인</button>
         </div>
       </div>
     </div>
@@ -58,20 +58,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
 <script>
 	$(function(){
-		getJspBoardPostDetail(${idx});
+		getFreePostDetail(${idx});
 	});
 
-	function getJspBoardPostDetail(idx) {
+	function getFreePostDetail(idx) {
 		
 		$.ajax({
-			url: '/api/v1.0/jsp-board',
+			url: '/api/v1.0/free',
 			type: 'GET',
 			dataType: 'json',
 			data: {
 				idx: idx
 			},
 			success: function(result) {
-				displayJspBoardPostDetail(result);
+				displayFreePostDetail(result);
 			},
 			error: function(request, status, error) {
 				alert('게시물을 불러오는데 실패했습니다.');
@@ -79,21 +79,21 @@
 		});
 	}
 	
-	function displayJspBoardPostDetail(jspBoardPost) {
-		var createdAt = jspBoardPost.createdAt;
-		var contents = jspBoardPost.contents;
+	function displayFreePostDetail(freePost) {
+		var createdAt = freePost.createdAt;
+		var contents = freePost.contents;
 		
-		var detailHtml = '<h2>'+jspBoardPost.title+'</h2>'+
+		var detailHtml = '<h2>'+freePost.title+'</h2>'+
 			'<div class="mb-3">'+
 				'<div class="mb-3">'+
-					'<label class="form-label">'+jspBoardPost.writer+'</label><br />'+
-					'<label class="form-label" style="font-size: small;">'+jspBoardPost.createdAt+'</label><br />'+
-					'<label class="form-label" style="font-size: small;">Hits: '+jspBoardPost.hits+'</label>'+
+					'<label class="form-label">'+freePost.writer+'</label><br />'+
+					'<label class="form-label" style="font-size: small;">'+freePost.createdAt+'</label><br />'+
+					'<label class="form-label" style="font-size: small;">Hits: '+freePost.hits+'</label>'+
 				'</div>'+
 			'</div>'+
 			'<hr size="5px;">'+
 			'<div class="mb-3" style="white-space: pre;">'+
-			jspBoardPost.contents+
+			freePost.contents+
 			'</div>'+
 			'<hr size="5px">'+
 			'<div class="float-end mb-2" style="margin-left:5px;">'+
@@ -102,7 +102,7 @@
       		'</button>'+
     		'</div>'+
 			'<div class="float-end mb-2">'+
-      			'<button type="button" class="btn btn-sm btn-outline-primary" onclick="location.href=\'/jsp-board/edit-form?idx=${idx}\'">'+
+      			'<button type="button" class="btn btn-sm btn-outline-primary" onclick="location.href=\'/free/edit-form?idx=${idx}\'">'+
 	      		'수정'+
 	      		'</button>'+
     		'</div>';    		
@@ -111,12 +111,12 @@
 
 	}
 	
-	function deleteJspBoardPost() {
+	function deleteFreePost() {
 		var idx = ${idx};
 		var password = $('#delPassword').val();
 		
 		$.ajax({
-			url: '/api/v1.0/jsp-board',
+			url: '/api/v1.0/free',
 			type: 'DELETE',
 			dataType: 'json',
 			data: {
@@ -126,7 +126,7 @@
 			success: function(result) {
 				if (result) {
 					alert("삭제가 완료되었습니다.");
-					location.href="/jsp-board/list";
+					location.href="/free/list";
 				} else {
 					alert("비밀번호가 틀립니다.");
 				}

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.myboard.board.repository.JspBoardListMapper">
+<mapper namespace="com.myboard.api.jspboard.repository.JspBoardListMapper">
 	
-	<resultMap id="jspBoardPost" type="com.myboard.board.domain.JspBoardPost">
+	<resultMap id="jspBoardPost" type="com.myboard.api.jspboard.domain.JspBoardPost">
 		<result column="idx" property="idx" />
 		<result column="title" property="title" />
 		<result column="writer" property="writer" />
@@ -27,7 +27,7 @@
 	
 	<!-- Select JspBoard Post list  -->
 	<select id="selectJspBoardPostList" resultMap="jspBoardPost">
-	    <bind name="offset" value="@com.myboard.board.domain.JspBoardPost@seekOffset(page, size)"/>
+	    <bind name="offset" value="@com.myboard.api.jspboard.domain.JspBoardPost@seekOffset(page, size)"/>
 	    SELECT *
 		FROM tb_jsp_board
 		WHERE 1 = 1
@@ -42,7 +42,7 @@
 	</select>	
 	
 	<!-- Insert JspBoard Post -->
-	<insert id="insertJspBoardPost" parameterType="com.myboard.board.domain.JspBoardPost">
+	<insert id="insertJspBoardPost" parameterType="com.myboard.api.jspboard.domain.JspBoardPost">
 		INSERT INTO tb_jsp_board(title, writer, password, contents)
 		VALUES(#{title}, #{writer}, #{password}, #{contents})
 	</insert>
@@ -63,7 +63,7 @@
 	</delete>
 	
 	<!-- Update JspBoard Post -->
-	<update id="updateJspBoardPost" parameterType="com.myboard.board.domain.JspBoardPost">
+	<update id="updateJspBoardPost" parameterType="com.myboard.api.jspboard.domain.JspBoardPost">
 		UPDATE tb_jsp_board
 		SET title = #{title}, contents = #{contents}
 		WHERE idx = #{idx}	
