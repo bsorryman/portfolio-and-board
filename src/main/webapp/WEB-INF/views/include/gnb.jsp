@@ -68,10 +68,10 @@
           <a id="jsp-board-menu" class="nav-link" href="/jsp-board/list">JSP & API 게시판</a>
         </li>     
         <li class="nav-item">
-          <a id="" class="nav-link" href="/free2/list">자유 게시판2</a>
+          <a id="" class="nav-link" href="/thyme-board/list">Thymeleaf 게시판</a>
         </li>                  
         <li class="nav-item">
-          <a id="" class="nav-link" href="/free3/list">자유 게시판3</a>
+          <a id="" class="nav-link" href="/free3/list">미정</a>
         </li>        
       </ul>
   </div>

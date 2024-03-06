@@ -1,4 +1,4 @@
-package com.myboard.api.jspboard.domain;
+package com.myboard.board.domain;
 
 import lombok.Data;
 
