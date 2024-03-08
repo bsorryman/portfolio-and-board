@@ -1,18 +1,17 @@
 package com.myboard.member.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties.Jwt;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.myboard.board.util.Message;
 import com.myboard.member.domain.Member;
 import com.myboard.member.service.MemberService;
-import com.sun.jna.platform.win32.Wincon.INPUT_RECORD.Event;
 
 @Controller
 @RequestMapping("/signup")
@@ -26,57 +25,88 @@ public class MemberController {
     @GetMapping("/popup")
     public String getSignupPage() {
         
-        return "thymeleaf/signup-popup";
+        return "thymeleaf/member/signup-popup";
     }
     
     @GetMapping("/redirect")
-    public String getSignupRedirectPage() {
+    public String getSignupRedirectPage(String credential) {
         
-        return "thymeleaf/signup-redirect";
+        return "thymeleaf/member/signup-redirect";
     }
     
     @PostMapping
-    public String registerMember(Member member) {
+    public String registerMember(Member member, Model model) {
         boolean result = false;
+        
+        // 알림 팝업 후 화면 전환이 필요
+        Message message = new Message();
         
         try {
             result = memberService.registerMember(member);
             if (result) {
-                return "redirect:/thyme-board/list";
+                message.setMessage("회원가입이 완료되었습니다.");
+                message.setHref("/thyme-board/list");
+                
             } else {
-                return "redirect:/thyme-board/error";
+                message.setMessage("회원가입이 실패했습니다.");
+                message.setHref("/thyme-board/list");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/thyme-board/error";
+            
+            message.setMessage("알 수 없는 에러가 발생했습니다.");
+            message.setHref("/thyme-board/list");
+            
         }
+        
+        model.addAttribute("message", message);
+        
+        return "thymeleaf/common/message";
+
     }
     
-    @PostMapping("/google-login")
-    @ResponseBody
-    public String registerGoogleMember(HttpServletRequest request) {
+    @PostMapping("/google")
+    public String registerGoogleMember(String credential, Model model) {
+        Map<String, Object> payloadMap = new HashMap<String, Object>();
         
-        boolean result = false;
+        // 알림 팝업 후 화면 전환이 필요
+        Message message = new Message();
         
-        System.out.println(request.getHeader("alg"));
-        /*
+        if (credential != null) {
+            payloadMap = memberService.decodePayloadInJwt(credential);
+            
+        } else {
+            message.setMessage("잘못된 접근입니다.");
+            message.setHref("/thyme-board/list");   
+        }
+        
+        String googleEmail = (String)payloadMap.get("email");
+        String googleSub = (String)payloadMap.get("sub");
+        String googleName = (String)payloadMap.get("name");
+        
+        Member member = new Member();
+        member.setMemberId(googleEmail);
+        member.setMemberPwd(googleSub);
+        member.setMemberEmail(googleEmail);
+        member.setMemberName(googleName);
+        member.setGSocialYn("y");
+        
         try {
-            result = memberService.registerMember(member);
-            if (result) {
-                return "redirect:/thyme-board/list";
-            } else {
-                return "redirect:/thyme-board/error";
-            }
+            memberService.registerMember(member);
+            
+            message.setMessage("구글 소셜 회원가입이 완료되었습니다.");
+            message.setHref("/thyme-board/list");   
+            
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/thyme-board/error";
+            
+            message.setMessage("알 수 없는 에러가 발생했습니다.");
+            message.setHref("/thyme-board/list");               
         } 
-        */    
         
-        return "<script>"
-                + "alert('구글 회원가입이 완료되었습니다.')"
-                + "window.location.herf='/thyme-board/list'"
-                + "</script>";
+        model.addAttribute("message", message);
+
+        return "thymeleaf/common/message";
     }
     
 }

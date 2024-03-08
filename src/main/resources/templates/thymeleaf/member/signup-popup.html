@@ -94,42 +94,44 @@
         $('#memberName').val(responsePayload.name);
         $('#memberEmail').val(responsePayload.email);
         $('#gSocialYn').val('y');
-        //$('#signUpForm').submit();
-      }
-
+        $('#signUpForm').submit();
+    }
+    
     window.onload = function () {
-        /*
-        google.accounts.id.initialize({
+        var googleAccountId = google.accounts.id;
+
+        googleAccountId.initialize({
             client_id: clientId,
-            ux_mode: 'redirect',
-            login_uri: 'http://localhost:8080/signup',
             callback: handleCredentialResponse,
         });
-        /*
-        google.accounts.id.renderButton(
-            document.getElementById("buttonDiv"),
+
+        googleAccountId.renderButton(
+            document.getElementById("googleRendererDiv"),
             { 
                 theme: "outline", 
-                size: "large",
-                width: '400px' //max width is 400px
+                size: "medium", //버튼 위에 login 정보 가리기
+                width: '400px' //max width = 400px           
             }  // customization attributes
         );
         //google.accounts.id.prompt(); // also display the One Tap dialog
-        */
     }
 </script>
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원가입</h4>
+        <div class="mb-3 d-flex justify-content-center">
+          <div id="googleRendererDiv"></div>
+        </div>
+        <!-- custom button -->
+        <!-- 
         <div class="mb-3">
-          <div id="g_id_onload"
-            th:data-client_id="${@environment.getProperty('google.client.id')}"
-            data-login_uri="/signup/google-login"
-            data-ux_mode="redirect">
-          </div>
-          <div class="g_id_signin" data-type="standard"></div>          
-        </div>        
+          <button id="googleLogin" type="button" class="form-control btn btn-primary">
+            Google 회원가입
+          </button>
+        </div>
+        -->           
+        <!-- //custom button -->
         <form id="signUpForm" class="validation-form" action="/signup" method="post" novalidate>
           <div class="row">
 	        <div class="col-md-8 mb-3">
