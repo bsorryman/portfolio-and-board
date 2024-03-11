@@ -207,7 +207,7 @@
 // 	  var sizePath = "size="+pager.size+"&bsize="+pager.bsize;
 	  
 	  //make pagination section
-	  var pagination = '<div class="col-8">'
+	  var pagination = '<div class="col-11">'
 	  +'<ul class="pagination justify-content-center">';
 	  
 	  if (pager.rows==0) {

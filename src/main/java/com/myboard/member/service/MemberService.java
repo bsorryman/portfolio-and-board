@@ -25,6 +25,15 @@ public class MemberService {
         return result;
     }
     
+    public boolean logInMember(Member member) {
+        boolean result = false;
+        int loginMember = memberMapper.selectMember(member);
+        System.out.println("login: " + loginMember);
+        result = loginMember==1 ? true : false; 
+        
+        return result;
+    }
+    
     public Map<String, Object> decodePayloadInJwt(String token) {
         String splitedToken[] = token.split("\\.");
         String header = splitedToken[0];

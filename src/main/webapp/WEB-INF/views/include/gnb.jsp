@@ -5,7 +5,6 @@
   
   #page-wrapper {
     padding-left: 250px;
-    background-color: #495057;
   }
   
   #sidebar-wrapper {
@@ -24,7 +23,6 @@
     width: 100%;
     padding: 25px;
     background-color: #fff; 
-    border-radius: 30px 0px 0px 0px;    
   }
   
   .sidebar-nav {
@@ -51,11 +49,12 @@
 </style>
 <header>
 <div class="navbar navbar-expand-md bd-navbar" style="height: 70px; background-color:#495057">
-  <nav class="container-fluid">
-    <ul class="nav nav-pills justify-content-center m-1">
+  <nav class="container-fluid justify-content-end">
+    <ul class="nav nav-pills m-1">
+      <button id="signUpButtonRedirect" type="button" class="btn btn-primary" style="font-weight: bold; margin-right: 7px;">회원가입</button>
+      <button id="logoutButton" type="button" class="btn btn-primary" onclick="logout();"style="font-weight: bold; margin-right: 7px; display: none;">로그아웃</button>
+      <button id="loginButton" type="button" class="btn btn-primary" onclick="javascript:location.href='/login';"style="font-weight: bold; margin-right: 7px;">로그인</button>    
     </ul>
-    <button id="logoutButton" type="button" class="btn btn-primary" onclick="logout();"style="font-weight: bold; margin-right: 7px;">로그아웃</button>
-    <button id="loginButton" type="button" class="btn btn-primary" onclick="javascript:location.href='/login';"style="font-weight: bold; margin-right: 7px; display: none;">로그인</button>
   </nav>
 </div>
 <div id="sidebar-wrapper">

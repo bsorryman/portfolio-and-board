@@ -13,9 +13,17 @@
         <result column="created_at" property="createdAt" />
     </resultMap>    
     
-        <!-- Insert ThymeBoard Post -->
+    <!-- Insert ThymeBoard Post -->
     <insert id="insertMember" parameterType="com.myboard.member.domain.Member">
         INSERT INTO tb_member(member_id, member_pwd, member_name, member_email, g_social_yn)
         VALUES(#{memberId}, PASSWORD(#{memberPwd}), #{memberName}, #{memberEmail}, #{gSocialYn})
     </insert>
+
+    <select id="selectMember" parameterType="com.myboard.member.domain.Member" 
+    resultType="int">
+        SELECT COUNT(*)
+        FROM tb_member
+        WHERE member_id = #{memberId}
+            AND member_pwd = PASSWORD(#{memberPwd})
+    </select>    
 </mapper>

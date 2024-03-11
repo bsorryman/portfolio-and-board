@@ -15,10 +15,10 @@ import com.myboard.member.service.MemberService;
 
 @Controller
 @RequestMapping("/signup")
-public class MemberController {
+public class MemberSignUpController {
     private final MemberService memberService;
     
-    public MemberController(MemberService memberService) {
+    public MemberSignUpController(MemberService memberService) {
         this.memberService = memberService;
     }
     
@@ -28,7 +28,7 @@ public class MemberController {
         return "thymeleaf/member/signup-popup";
     }
     
-    @GetMapping("/redirect")
+    @GetMapping
     public String getSignupRedirectPage(String credential) {
         
         return "thymeleaf/member/signup-redirect";

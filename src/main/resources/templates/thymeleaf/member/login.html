@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 화면 샘플 - Bootstrap</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--   <link href="/assets/bootstrap.css" rel="stylesheet"> -->
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: #495057;
+    }
+
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+	.btn-primary {
+	  color: #fff;
+	  background-color: #495057;
+	  border-color: #495057;
+	}
+	.btn-primary:hover {
+	  color: #ced4da;
+	  background-color: #495057;
+	  border-color: #495057;
+	}    
+	.btn-primary, .btn-primary:focus {
+	  color: #fff;
+	  background-color: #495057;
+	  border-color: #495057;
+	  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 255) !important;
+	}
+    .btn-primary:active {
+      color: #ced4da !important;
+      background-color: #495057 !important;
+      border-color: #495057 !important;
+    }
+  </style>
+</head>
+
+<body>
+<script src="../assets/jquery.min.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<!-- <script src="https://apis.google.com/js/api:client.js"></script> -->
+<input type="hidden" id="clientId" th:value="${@environment.getProperty('google.client.id')}" />
+<script>
+    var clientId = $('#clientId').val();
+    
+    window.onload = function () {
+        google.accounts.id.initialize({
+            client_id: clientId,
+            ux_mode: 'redirect',
+            login_uri: 'http://localhost:8080/login/google',
+        });
+        
+        google.accounts.id.renderButton(
+            document.getElementById("googleRendererDiv"),
+            { 
+                theme: "outline", 
+                size: "medium",
+                width: '400px'
+                
+            }  // customization attributes
+        );
+        //google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+</script>
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3">회원가입</h4>
+        <div class="mb-3 d-flex justify-content-center" >
+          <div id="googleRendererDiv"> </div>
+        </div>        
+        <form id="logInForm" class="validation-form" action="/login" method="post" novalidate>
+	      <div class="mb-3">
+	        <label for="memberId">ID</label>
+	        <input type="text" class="form-control" id="memberId" name="memberId" required>
+	        <div class="invalid-feedback">
+	          ID를 입력해주세요.
+	        </div>
+	      </div>   
+     
+          <div class="mb-3">
+            <label for="memberPwd">Password</label>
+            <input type="password" class="form-control" id="memberPwd" name="memberPwd" required>
+            <div class="invalid-feedback">
+                            패스워드를 입력해주세요.
+            </div>
+          </div>
+          <input type="hidden" id="gSocialYn" name="gSocialYn" value="n" />
+          <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      const forms = document.getElementsByClassName('validation-form');
+
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+    
+  </script>
+</body>
+
+</html>
