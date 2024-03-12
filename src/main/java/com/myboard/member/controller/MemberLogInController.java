@@ -3,6 +3,9 @@ package com.myboard.member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +32,7 @@ public class MemberLogInController {
     }
     
     @PostMapping
-    public String logIn(Member member, Model model) {
+    public String logIn(Member member, Model model, HttpServletResponse response) {
         boolean result = false;
         
         // 알림 팝업 후 화면 전환이 필요
@@ -37,6 +40,8 @@ public class MemberLogInController {
         
         try {
             result = memberService.logInMember(member);
+            Cookie cookie = new Cookie("memberId", member.getMemberId());
+            response.addCookie(cookie);
             if (result) {
                 message.setMessage("로그인이 완료되었습니다.");
                 message.setHref("/thyme-board/list");
@@ -60,7 +65,7 @@ public class MemberLogInController {
     }
     
     @PostMapping("/google")
-    public String registerGoogleMember(String credential, Model model) {
+    public String registerGoogleMember(String credential, Model model, HttpServletResponse response) {
         Map<String, Object> payloadMap = new HashMap<String, Object>();
         
         // 알림 팝업 후 화면 전환이 필요
@@ -82,12 +87,23 @@ public class MemberLogInController {
         member.setMemberPwd(googleSub);
         member.setGSocialYn("y");
         
+        boolean result = false;
+
         try {
-            memberService.logInMember(member);
-            
-            message.setMessage("구글 소셜 로그인이 완료되었습니다.");
-            message.setHref("/thyme-board/list");   
-            
+            result = memberService.logInMember(member);
+            Cookie cookie = new Cookie("member_id", member.getMemberId());
+            cookie.setDomain("localhost");
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            System.out.println(cookie.getValue());
+            if (result) {
+                message.setMessage("로그인이 완료되었습니다.");
+                message.setHref("/thyme-board/list");
+                
+            } else {
+                message.setMessage("로그인이 실패했습니다.");
+                message.setHref("/thyme-board/list");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             

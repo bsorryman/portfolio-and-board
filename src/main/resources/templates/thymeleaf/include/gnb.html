@@ -6,6 +6,8 @@
 <script src="../assets/jquery.min.js"></script>
 <script src="../assets/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script src="/assets/jquery.cookie.js"></script>
+
 <style>
   /* 사이드바 래퍼 스타일 */
   
@@ -54,6 +56,25 @@
   }
 </style>
 <header>
+<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">안내</h5>
+      </div>
+      <div class="modal-body">
+        <h4>쿠키 사용 동의 안내</h4>
+        <p>쿠키 사용에 동의하시면 동의 버튼을 눌러주세요.</p>
+      </div>
+      <div class="modal-footer">
+<!--         <div style="margin-right: 280;"> -->
+<!--           <input type="checkbox"> 오늘 그만보기 -->
+<!--         </div> -->
+        <button id="acceptCookie" type="button" class="btn btn-secondary" data-bs-dismiss="modal">동의</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="navbar navbar-expand-md bd-navbar" style="height: 70px; background-color:#495057">
   <nav class="container-fluid justify-content-end">
     <ul class="nav nav-pills m-1">
@@ -88,6 +109,15 @@
 
 <script>
 	$(function(){
+	    if ($.cookie('accept_cookie') != 'true') {
+	        $("#exampleModal").modal("show");
+	    }
+	    
+	    $('#acceptCookie').on("click", function(){
+	        acceptCookie();
+	        $("#exampleModal").modal("hide");
+	    });
+
 	    $('#signUpButtonPopup').on("click", function(){
 	        window.location.href = "/signup/popup";
 	    });
@@ -100,5 +130,10 @@
 	var curBoard = $('#curBoard').val();
 	
 	$('#'+curBoard).attr('class', 'nav-link active');
+	
+	//쿠키 팝업 동의 - 쿠키 생성
+	function acceptCookie() {
+	    $.cookie('accept_cookie', 'true', { expires: 3650, path: '/' });
+	}	
 </script>
   
