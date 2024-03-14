@@ -80,8 +80,8 @@
     <ul class="nav nav-pills m-1">
 <!--       <button id="signUpButtonPopup" type="button" class="btn btn-primary" style="font-weight: bold; margin-right: 7px;">회원가입-Popup</button> -->
       <button id="signUpButtonRedirect" type="button" class="btn btn-primary" style="font-weight: bold; margin-right: 7px;">회원가입</button>
-      <button id="logoutButton" type="button" class="btn btn-primary" onclick="logout();" style="font-weight: bold; margin-right: 7px; display: none;">로그아웃</button>
-      <button id="loginButton" type="button" class="btn btn-primary" onclick="javascript:location.href='/login';" style="font-weight: bold; margin-right: 7px;">로그인</button>    
+      <button id="logoutButton" type="button" class="btn btn-primary" style="font-weight: bold; margin-right: 7px;">로그아웃</button>
+      <button id="loginButton" type="button" class="btn btn-primary" style="font-weight: bold; margin-right: 7px;">로그인</button>    
     </ul>
   </nav>
 </div>
@@ -109,22 +109,40 @@
 
 <script>
 	$(function(){
-	    if ($.cookie('accept_cookie') != 'true') {
-	        $("#exampleModal").modal("show");
+	    // 로그인/로그아웃 버튼 표시 분기
+	    if ($.cookie('userInfo')!=null) {
+	        $('#logoutButton').show();
+	        $('#loginButton').hide();
+	    } else {
+	        $('#logoutButton').hide();
+	        $('#loginButton').show();
 	    }
 	    
+	    // 쿠키 정책 동의
 	    $('#acceptCookie').on("click", function(){
 	        acceptCookie();
 	        $("#exampleModal").modal("hide");
 	    });
-
-	    $('#signUpButtonPopup').on("click", function(){
-	        window.location.href = "/signup/popup";
-	    });
 	    
+        if ($.cookie('accept_cookie') != 'true') {
+            $("#exampleModal").modal("show");
+        }
+        
+	    // 회원가입 Redirect
         $('#signUpButtonRedirect').on("click", function(){
             window.location.href = "/signup";
         });    
+        
+        // 로그인 Redirect
+        $('#loginButton').on("click", function(){
+            window.location.href = "/login";
+        });
+        
+        // 로그아웃 Redirect
+        $('#logoutButton').on("click", function(){
+            window.location.href = "/logout";
+        })
+        
 	})
 	//frament parameter value
 	var curBoard = $('#curBoard').val();

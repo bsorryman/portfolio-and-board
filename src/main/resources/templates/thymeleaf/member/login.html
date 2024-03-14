@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입 화면 샘플 - Bootstrap</title>
+  <title>로그인</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -86,12 +86,13 @@
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
-        <h4 class="mb-3">회원가입</h4>
+        <h4 class="mb-3">로그인</h4>
         <div class="mb-3 d-flex justify-content-center" >
           <div id="googleRendererDiv"> </div>
         </div>        
-        <form id="logInForm" class="validation-form" action="/login" method="post" novalidate>
-	      <div class="mb-3">
+        <!-- security formLogin을 사용하므로 action 속성은 필요없다. -->
+        <form id="logInForm" class="validation-form" method="post" novalidate>
+	      <div class="col-md-8 mb-3 justify-content-center">
 	        <label for="memberId">ID</label>
 	        <input type="text" class="form-control" id="memberId" name="memberId" required>
 	        <div class="invalid-feedback">
@@ -109,10 +110,31 @@
           <input type="hidden" id="gSocialYn" name="gSocialYn" value="n" />
           <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
         </form>
+        <button id="signUp"class="btn btn-primary btn-lg btn-block" type="button">회원가입</button>
       </div>
     </div>
   </div>
   <script>
+    $(function(){
+        var queryString = window.location.search;
+        var params = new URLSearchParams(queryString);
+        var error = params.get('error');
+        var logout = params.get('logout');
+        
+        if (error=='true') {
+            alert('로그인에 실패했습니다.');
+        }
+        
+        if (logout=='true') {
+            alert('로그아웃 하였습니다.');
+        }        
+
+        $('#signUp').on("click", function(){
+            window.location.href = "/signup"
+        })
+    })
+  
+  
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
 

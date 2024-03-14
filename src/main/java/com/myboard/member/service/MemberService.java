@@ -18,6 +18,12 @@ public class MemberService {
         this.memberMapper = memberMapper;
     }
     
+    /**
+     * 회원가입 시 받은 Member 정보를 DB에 insert하는 함수
+     * 
+     * @param member
+     * @return
+     */
     public boolean registerMember(Member member) {
         boolean result = false;
         result = memberMapper.insertMember(member);
@@ -25,15 +31,11 @@ public class MemberService {
         return result;
     }
     
-    public boolean logInMember(Member member) {
-        boolean result = false;
-        int loginMember = memberMapper.selectMember(member);
-        System.out.println("login: " + loginMember);
-        result = loginMember==1 ? true : false; 
-        
-        return result;
-    }
-    
+    /**
+     * JWT를 파싱하고 payload 부분만 디코딩하여 반환하는 함수.
+     * @param token
+     * @return
+     */
     public Map<String, Object> decodePayloadInJwt(String token) {
         String splitedToken[] = token.split("\\.");
         String header = splitedToken[0];

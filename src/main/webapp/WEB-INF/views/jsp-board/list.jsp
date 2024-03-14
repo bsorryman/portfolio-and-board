@@ -165,6 +165,7 @@
 			  displayJspBoardBoard(result);
 		  },
 		  error: function(request, status, error) {
+		      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			  alert('목록을 불러오는데 실패했습니다.');
 		  }
 	  })
@@ -197,7 +198,6 @@
   }
   
   function displayJspBoardPage(pager) {
-	  console.log(pager);
 	  //page parameter default set
 	  var target = "list";
 	  var home = "page=1";

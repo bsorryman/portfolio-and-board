@@ -145,7 +145,6 @@
 	  $('.viewDetail').each(function(index, element) {
 		  var viewId = $(this).attr('id');
 		  var id = viewId.substring(4);
-		  console.log(id);
 		  
 		  $('#view'+id).on("click", function(){
 			window.location.href="/thyme-board?idx="+id;  

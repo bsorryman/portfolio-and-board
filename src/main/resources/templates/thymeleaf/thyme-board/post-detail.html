@@ -70,15 +70,12 @@
   </div>
   
 <input type="hidden" id="postIdx" th:value="${thymeBoardPost.idx}" />
-<script src="../assets/jquery.min.js"></script>
-<script src="../assets/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
 <script>
 	$(function(){
 		//getFreePostDetail(${idx});
 		
 		var idx = $('#postIdx').val();
-		console.log(idx);
+
 		$('#deletePost').on("click", function(){
 			
 		});

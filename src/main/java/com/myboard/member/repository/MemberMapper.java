@@ -8,5 +8,6 @@ import com.myboard.member.domain.Member;
 public interface MemberMapper {
     
     boolean insertMember(Member member);
-    int selectMember(Member member);
+    Member selectBymemberId(String memberId);
+
 }

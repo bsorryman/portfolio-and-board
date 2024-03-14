@@ -9,6 +9,7 @@ public class Member {
     private String memberPwd;
     private String memberName;
     private String memberEmail;
+    private String memberRole;
     private String gSocialYn;
     private String createdAt;
 }
