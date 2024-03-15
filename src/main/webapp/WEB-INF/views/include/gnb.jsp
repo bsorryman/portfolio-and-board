@@ -94,9 +94,6 @@
         <li class="nav-item">
           <a id="" class="nav-link" href="/thyme-board/list">Thymeleaf 게시판</a>
         </li>                  
-        <li class="nav-item">
-          <a id="" class="nav-link" href="/free3/list">미정</a>
-        </li>        
       </ul>
   </div>
 </div>
