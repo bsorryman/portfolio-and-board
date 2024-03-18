@@ -10,15 +10,21 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    private final CustomFilter customFilter; 
+    
+    public SecurityConfig(CustomFilter customFilter) {
+        this.customFilter = customFilter;
+    }
+    
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-        .addFilterBefore(new CustomFilter(), UsernamePasswordAuthenticationFilter.class)
+        .addFilterBefore(customFilter, BasicAuthenticationFilter.class)
         .authorizeRequests() // 접근 관련
             .antMatchers("/assets/**", "/signup/**", 
                     "/login/**", "/jsp-board/**",
