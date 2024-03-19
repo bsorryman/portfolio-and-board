@@ -29,7 +29,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         String username = auth.getName(); 
         AesUtil aesUtil = new AesUtil();
         String encryptedUsername = aesUtil.encrypt(username);
-        System.out.println("핸들러-암호화된 쿠키: " + encryptedUsername);
+        // System.out.println("핸들러-암호화된 쿠키: " + encryptedUsername);
         
         // 쿠키 설정
         Cookie cookie = new Cookie("userInfo", encryptedUsername);

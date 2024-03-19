@@ -93,21 +93,20 @@
         <!-- security formLogin을 사용하므로 action 속성은 필요없다. -->
         <form id="logInForm" class="validation-form" method="post" novalidate>
 	      <div class="col-md-8 mb-3 justify-content-center">
-	        <label for="memberId">ID</label>
-	        <input type="text" class="form-control" id="memberId" name="memberId" required>
+	        <label for="username">ID</label>
+	        <input type="text" class="form-control" id="username" name="username" required>
 	        <div class="invalid-feedback">
 	          ID를 입력해주세요.
 	        </div>
 	      </div>   
      
           <div class="mb-3">
-            <label for="memberPwd">Password</label>
-            <input type="password" class="form-control" id="memberPwd" name="memberPwd" required>
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
             <div class="invalid-feedback">
                             패스워드를 입력해주세요.
             </div>
           </div>
-          <input type="hidden" id="gSocialYn" name="gSocialYn" value="n" />
           <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
         </form>
         <button id="signUp"class="btn btn-primary btn-lg btn-block" type="button">회원가입</button>

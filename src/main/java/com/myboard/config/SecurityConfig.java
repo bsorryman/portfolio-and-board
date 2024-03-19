@@ -24,7 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-        .addFilterBefore(customFilter, BasicAuthenticationFilter.class)
+        .addFilterBefore(customFilter, BasicAuthenticationFilter.class) // 인증 전 필터
         .authorizeRequests() // 접근 관련
             .antMatchers("/assets/**", "/signup/**", 
                     "/login/**", "/jsp-board/**",
@@ -33,8 +33,8 @@ public class SecurityConfig {
             .and()
         .formLogin() // 로그인 관련
             .loginPage("/login") // 로그인 URL
-            .usernameParameter("memberId")
-            .passwordParameter("memberPwd")
+            .usernameParameter("username")
+            .passwordParameter("password")
             .successHandler(new CustomLoginSuccessHandler()) // 로그인 성공시 핸들러
             .permitAll() //로그인 페이지에 대한 모든 접근 허용
             .failureUrl("/login?error=true") 

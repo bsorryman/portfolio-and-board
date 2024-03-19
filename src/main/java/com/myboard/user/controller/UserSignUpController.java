@@ -1,9 +1,8 @@
-package com.myboard.member.controller;
+package com.myboard.user.controller;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,18 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.myboard.board.util.Message;
-import com.myboard.member.domain.Member;
-import com.myboard.member.service.MemberService;
+import com.myboard.user.dto.UserDTO;
+import com.myboard.user.service.UserService;
 
 @Controller
 @RequestMapping("/signup")
-public class MemberSignUpController {
-    private final MemberService memberService;
+public class UserSignUpController {
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     
-    public MemberSignUpController(MemberService memberService, 
+    public UserSignUpController(UserService userService, 
             PasswordEncoder passwordEncoder) {
-        this.memberService = memberService;
+        this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
     
@@ -39,22 +38,22 @@ public class MemberSignUpController {
     /**
      * 회원가입 처리 컨트롤러.
      * 비밀번호는 암호화하여 처리한다.
-     * @param member
+     * @param userDTO
      * @param model
      * @return
      */
     @PostMapping
-    public String registerMember(Member member, Model model) {
+    public String registerUser(UserDTO userDTO, Model model) {
         boolean result = false;
         
         // 알림 팝업 후 화면 전환에 필요
         Message message = new Message();
-        String encodedPassword = passwordEncoder.encode(member.getMemberPwd()); //암호화
-        member.setMemberPwd(encodedPassword); //암호화된 비밀번호로 재설정
+        String encodedPassword = passwordEncoder.encode(userDTO.getPassword()); //암호화
+        userDTO.setPassword(encodedPassword); //암호화된 비밀번호로 재설정
         
         // 회원가입 처리
         try {
-            result = memberService.registerMember(member);
+            result = userService.registerUser(userDTO);
             if (result) {
                 message.setMessage("회원가입이 완료되었습니다.");
                 message.setHref("/thyme-board/list");
@@ -86,7 +85,7 @@ public class MemberSignUpController {
      * @return
      */
     @PostMapping("/google")
-    public String registerGoogleMember(String credential, Model model) {
+    public String registerGoogleUser(String credential, Model model) {
         Map<String, Object> payloadMap = new HashMap<String, Object>();
         
         // 알림 팝업 후 화면 전환이 필요
@@ -94,7 +93,7 @@ public class MemberSignUpController {
 
         if (credential != null) {
             // payload 복호화
-            payloadMap = memberService.decodePayloadInJwt(credential);
+            payloadMap = userService.decodePayloadInJwt(credential);
             
         } else {
             message.setMessage("잘못된 접근입니다.");
@@ -107,18 +106,18 @@ public class MemberSignUpController {
         String googleName = (String)payloadMap.get("name");
         String encodedGoogleSub = passwordEncoder.encode(googleSub); //암호화
 
-        // Member 객체에 매핑
-        Member member = new Member();
-        member.setMemberId(googleEmail);
-        member.setMemberPwd(encodedGoogleSub);
-        member.setMemberName(googleName);
-        member.setMemberEmail(googleEmail);
-        member.setMemberRole("user");
-        member.setGSocialYn("y");
+        // User 객체에 매핑
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(googleEmail);
+        userDTO.setPassword(encodedGoogleSub);
+        userDTO.setNickname(googleName);
+        userDTO.setEmail(googleEmail);
+        userDTO.setRole("user");
+        userDTO.setSns("google");
         
         // 회원가입 처리
         try {
-            memberService.registerMember(member);
+            userService.registerUser(userDTO);
             
             message.setMessage("구글 소셜 회원가입이 완료되었습니다.");
             message.setHref("/thyme-board/list");   

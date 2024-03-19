@@ -94,15 +94,15 @@
         <form id="signUpForm" class="validation-form" action="/signup" method="post" novalidate>
           <div class="row">
 	        <div class="col-md-8 mb-3">
-	          <label for="memberId">ID</label>
-	          <input type="text" class="form-control" id="memberId" name="memberId" required>
+	          <label for="username">ID</label>
+	          <input type="text" class="form-control" id="username" name="username" required>
 	          <div class="invalid-feedback">
 	            ID를 입력해주세요.
 	          </div>
 	        </div>   
             <div class="col-md-4 mb-3">
-              <label for="memberId">ID Check</label>
-              <button type="button" class="form-control btn btn-primary" id="memberIdCheck" required >
+              <label for="usernameCheck">ID Check</label>
+              <button type="button" class="form-control btn btn-primary" id="usernameCheck" required >
                                 중복확인
               </button>
               <div class="invalid-feedback">
@@ -112,23 +112,23 @@
           </div>
      
           <div class="mb-3">
-            <label for="memberPwd">Password</label>
-            <input type="password" class="form-control" id="memberPwd" name="memberPwd" required>
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
             <div class="invalid-feedback">
                             패스워드를 입력해주세요.
             </div>
           </div>          
           <div class="mb-3">
-            <label for="memberPwdCheck">Password 확인</label>
-            <input type="password" class="form-control" id="memberPwdCheck" required>
+            <label for="passwordCheck">Password 확인</label>
+            <input type="password" class="form-control" id="passwordCheck" required>
             <div class="invalid-feedback">
                             패스워드를 한번 더 입력해주세요.
             </div>
           </div>            
 <!--           <div class="row"> -->
           <div class="mb-3">
-            <label for="memberName">이름</label>
-            <input type="text" class="form-control" id="memberName" name="memberName" placeholder="" value="" required>
+            <label for="nickname">이름</label>
+            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="" value="" required>
             <div class="invalid-feedback">
                             이름을 입력해주세요.
             </div>
@@ -143,8 +143,8 @@
 <!--           </div> -->
 
           <div class="mb-3">
-            <label for="memberEmail">이메일</label>
-            <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="you@example.com" required>
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
             <div class="invalid-feedback">
               이메일을 입력해주세요.
             </div>
@@ -190,8 +190,7 @@
           </div>
           <div class="mb-4"></div>
           -->
-          <input type="hidden" id="memberRole" name="memberRole" value="user" />
-          <input type="hidden" id="gSocialYn" name="gSocialYn" value="n" />
+          <input type="hidden" id="role" name="role" value="user" />
           <button class="btn btn-primary btn-lg btn-block" type="submit">회원 가입</button>
         </form>
       </div>

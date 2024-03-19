@@ -101,6 +101,18 @@
 <!-- <button th:if="${#authorization != null and #authorization.expression('!isAuthenticated()')}" id="aButton">B Button</button> -->
       </ul>
   </div>
+  <div class="fixed-bottom navbar bd-navbar" style="bottom: 20px; color:white;">
+    <ul class="sidebar-nav nav nav-pills m-1">
+      <li class="nav-item">
+        <a class="nav-link active" style="width: 270px; ">
+          <th:block th:if="${#authorization.expression('isAuthenticated()')}">
+            Hi. <span th:text="${#authentication.principal.nickname}"></span><br>
+          </th:block>
+        </a>
+<!--     <img src="your-image-path.jpg" alt="Your Image" style="width: 100px; height: auto;"> -->
+      </li>
+    </ul>
+  </div>  
 </div>
 </header>
 <!-- fragment parameter value-->

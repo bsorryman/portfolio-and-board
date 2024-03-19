@@ -1,4 +1,4 @@
-package com.myboard.member.controller;
+package com.myboard.user.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,40 +8,36 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.myboard.board.util.Message;
-import com.myboard.member.domain.Member;
-import com.myboard.member.service.MemberService;
-import com.myboard.member.service.UserDetailsServiceImpl;
+import com.myboard.board.util.AesUtil;
+import com.myboard.user.dto.UserDTO;
+import com.myboard.user.service.UserService;
 
 @Controller
 @RequestMapping("/login")
-public class MemberLogInController {
+public class UserLogInController {
     
-    private final MemberService memberService;
+    private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
-    private final UserDetailsServiceImpl userDetailsService;
+    private final UserDetailsService userDetailsService;
     
-    public MemberLogInController(
-            MemberService memberService,
+    public UserLogInController(
+            UserService userService,
             AuthenticationManager authenticationManager,
             PasswordEncoder passwordEncoder,
-            UserDetailsServiceImpl userDetailsService ) {
+            UserDetailsService userDetailsService ) {
         
-        this.memberService = memberService;
+        this.userService = userService;
         this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
@@ -59,7 +55,7 @@ public class MemberLogInController {
     /**
      * 구글 소셜 로그인은 Security에 설정된 formLogin이 아닌 수동으로 로그인을 처리한다.
      * (id, password가 form 파라미터로 전달되지 않기 때문)
-     * 구글 로그인 성공 시 전달되는 credential(jwt)를 디코딩하여 수동으로 member에 매핑하고
+     * 구글 로그인 성공 시 전달되는 credential(jwt)를 디코딩하여 수동으로 User에 매핑하고
      * 수동으로 인증 토큰을 생성하여 검증한다. 
      * @param credential
      * @return
@@ -70,7 +66,7 @@ public class MemberLogInController {
             // google 계정 credential(jwt 토큰) 디코딩
             Map<String, Object> payloadMap = new HashMap<String, Object>();
 
-            payloadMap = memberService.decodePayloadInJwt(credential);
+            payloadMap = userService.decodePayloadInJwt(credential);
                 
             String googleEmail = (String)payloadMap.get("email");
             String googleSub = (String)payloadMap.get("sub");
@@ -78,16 +74,16 @@ public class MemberLogInController {
             // sub(password로 사용할 필드) 암호화
             String encodedGoogleSub = passwordEncoder.encode(googleSub);
 
-            // member 객체 매핑
-            Member member = new Member();
+            // User 객체 매핑
+            UserDTO userDTO = new UserDTO();
 
-            member.setMemberId(googleEmail);
-            member.setMemberPwd(encodedGoogleSub);
-            member.setGSocialYn("y");     
+            userDTO.setUsername(googleEmail);
+            userDTO.setPassword(encodedGoogleSub);
+            userDTO.setSns("google");     
             
             // userName(google eamil)로 UserDetails 가져오기
             UserDetails userDetails = userDetailsService.loadUserByUsername(googleEmail);
-            
+
             // 인증 토큰 생성
             UsernamePasswordAuthenticationToken token = 
                     new UsernamePasswordAuthenticationToken(userDetails, encodedGoogleSub, userDetails.getAuthorities());
@@ -99,8 +95,11 @@ public class MemberLogInController {
             // 인증 성공 및 실패 
             if (result) {
                 SecurityContextHolder.getContext().setAuthentication(token);
+                AesUtil aesUtil = new AesUtil();
+                String encryptedUsername = aesUtil.encrypt(googleEmail);
+                
                 // 쿠키 설정
-                Cookie cookie = new Cookie("userInfo", googleEmail); 
+                Cookie cookie = new Cookie("userInfo", encryptedUsername); 
                 cookie.setMaxAge(3600); 
                 cookie.setDomain("localhost");
                 cookie.setPath("/");
