@@ -21,7 +21,8 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <a href="/board/member/list" class="logo"><h2>회원게시판</h2></a>
+          <h2>회원게시판</h2>
+          <!-- 
           <ul class="icons">
             <li><a href="#" class="icon brands fa-twitter"><span
                 class="label">Twitter</span></a></li>
@@ -34,29 +35,24 @@
             <li><a href="#" class="icon brands fa-medium-m"><span
                 class="label">Medium</span></a></li>
           </ul>
+           -->
         </header>
 
         <!-- Content -->
         <section style="padding: 3em 0 3em 0;">
           <!-- Content -->
-          <p id="outline">회원만 사용할 수 있는 게시판입니다. </p>
+          <p id="outline">회원만 사용할 수 있는 게시판입니다. 회원이 아닐 시 접근이 제한됩니다.</p>
 
           <hr />
 
           <!-- Elements -->
-          <div class="col-12">
-            <div class="align-right">
-              <button class="button" id="write">글쓰기</button>
-            </div>
-          </div>
-          <br>
           <div class="table-wrapper">
             <table id="memberBoardTable">
               <colgroup>
                 <col width="7%"><!-- NO. -->
                 <col ><!-- 작성자 -->
                 <col width="10%"><!-- 제목  -->
-                <col width="15%"><!-- 날짜 -->
+                <col width="20%"><!-- 날짜 -->
                 <col width="6%"><!-- 조회수 -->
               </colgroup>
               <thead>
@@ -72,43 +68,46 @@
               <tbody>
                 <tr th:each="memberBoard: ${memberBoardList}">
                   <td>[[${memberBoard.idx}]]</td>
-                  <td class="title">[[${memberBoard.title}]]</td>
+                  <td class="title" th:id="|detail${memberBoard.idx}|">[[${memberBoard.title}]]</td>
                   <td>[[${memberBoard.writer}]]</td>
                   <td>[[${memberBoard.createdAt}]]</td>
                   <td>[[${memberBoard.hits}]]</td>
                 </tr>
               </tbody>
             </table>
-            <div>
-            <ul th:object="${pager}" class="pagination">
-              <li>
-                <a href="javascript:void(0)" class="button" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{/board/member/list?page=1#outline}">
-                  First
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="button small" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{prevPage}#outline|}">
-                 <<
-                </a>
-              </li>
-              <th:block th:each="pageNum : *{#numbers.sequence(bsPage,bePage)}">
+            <div class="row">
+              <ul th:object="${pager}" class="pagination" style="margin-left: 1.5em;">
                 <li>
-                  <a href="javascript:void(0)" class="page" th:classappend="*{page} == ${pageNum} ? 'active' : ''" th:href="@{|/board/member/list?page=${pageNum}#outline|}">
-                    [[${pageNum}]]
+                  <a href="javascript:void(0)" class="button" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{/board/member/list?page=1#outline}">
+                    First
                   </a>
                 </li>
-              </th:block>
-              <li>
-                <a href="javascript:void(0)" class="button small" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{nextPage}#outline|}">
-                  >>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="button" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{totalPage}#outline|}">
-                  Last
-                </a>
-              </li>
-            </ul>
+                <li>
+                  <a href="javascript:void(0)" class="button small" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{prevPage}#outline|}">
+                   <<
+                  </a>
+                </li>
+                <th:block th:each="pageNum : *{#numbers.sequence(bsPage,bePage)}">
+                  <li>
+                    <a href="javascript:void(0)" class="page" th:classappend="*{page} == ${pageNum} ? 'active' : ''" th:href="@{|/board/member/list?page=${pageNum}#outline|}">
+                      [[${pageNum}]]
+                    </a>
+                  </li>
+                </th:block>
+                <li>
+                  <a href="javascript:void(0)" class="button small" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{nextPage}#outline|}">
+                    >>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" class="button" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{totalPage}#outline|}">
+                    Last
+                  </a>
+                </li>
+              </ul>
+              <div class="off-5">
+                  <button class="button" id="write">글쓰기</button>
+              </div>              
             </div>
           </div>
 
@@ -119,9 +118,8 @@
     <!-- Sidebar -->
     <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
     <!-- //Sidebar -->
-    </div>
-
   </div>
+
 
   <!-- Scripts -->
   <script src="/assets/js/jquery.min.js"></script>
@@ -129,6 +127,13 @@
   <script src="/assets/js/breakpoints.min.js"></script>
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
-
+  <script>
+  $(function(){
+	  $(".title").on("click", function(){
+		  let id = $(this).attr("id").substring(6);  
+		  window.location.href = "/board/member/detail?idx=" + id;
+	  })
+  })  
+  </script>
 </body>
 </html>

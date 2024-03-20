@@ -28,6 +28,7 @@ public class SecurityConfig {
         .authorizeRequests() // 접근 관련
             .antMatchers("/assets/**", "/images/**",  // resources
                     "/login/**", "/signup/**",  // member
+                    "/", // main 
                     "/jsp-board/**", "/api/**", // 구버전 게시판  
                     "/index", "/board/free/**" // 신버전 게시판
                     )

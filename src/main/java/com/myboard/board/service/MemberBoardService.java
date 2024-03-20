@@ -27,5 +27,12 @@ public class MemberBoardService {
         
         return totalPost;
     }
+    
+    public MemberBoardPost getMemberBoardDetail(int idx) {
+    	MemberBoardPost memberBoardPost = memberBoardMapper.selectMemberBoardDetail(idx);
+    	memberBoardMapper.updateHits(idx);
+    	
+    	return memberBoardPost;
+    }    
 
 }

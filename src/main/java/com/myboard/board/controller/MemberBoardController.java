@@ -24,7 +24,7 @@ public class MemberBoardController {
     
     @GetMapping("/list")
     public String getMemberBoard(@RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "7") int size,
             @RequestParam(defaultValue = "5") int bsize,
             @RequestParam(defaultValue = "") String field,
             @RequestParam(defaultValue = "") String keyword,
@@ -46,4 +46,14 @@ public class MemberBoardController {
         return "thymeleaf/board/member/member-list";
     }
     
+    @GetMapping("/detail")
+    public String getFreeBoardDetail(@RequestParam(required = true) int idx,
+    		Model model) {
+    	
+    	MemberBoardPost memberBoardDetail = memberBoardService.getMemberBoardDetail(idx);
+    	
+    	model.addAttribute("memberBoardDetail", memberBoardDetail);
+    	
+    	return "thymeleaf/board/member/member-detail";
+    }    
 }

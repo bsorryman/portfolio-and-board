@@ -24,7 +24,7 @@ public class FreeBoardController {
     
     @GetMapping("/list")
     public String getFreeBoard(@RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "7") int size,
             @RequestParam(defaultValue = "5") int bsize,
             @RequestParam(defaultValue = "") String field,
             @RequestParam(defaultValue = "") String keyword,
@@ -44,6 +44,17 @@ public class FreeBoardController {
         model.addAttribute("keyword", keyword);
         
         return "thymeleaf/board/free/free-list";
+    }
+    
+    @GetMapping("/detail")
+    public String getFreeBoardDetail(@RequestParam(required = true) int idx,
+    		Model model) {
+    	
+    	FreeBoardPost freeBoardDetail = freeBoardService.getFreeBoardDetail(idx);
+    	
+    	model.addAttribute("freeBoardDetail", freeBoardDetail);
+    	
+    	return "thymeleaf/board/free/free-detail";
     }
     
 }

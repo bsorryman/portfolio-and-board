@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.myboard.board.domain.MemberBoardPost;
-import com.myboard.board.domain.ThymeBoardPost;
 
 @Mapper
 public interface MemberBoardMapper {
@@ -20,7 +19,7 @@ public interface MemberBoardMapper {
 
     int insertMemberBoard(MemberBoardPost memberBoardPost);
 
-    ThymeBoardPost selectMemberBoardDetail(int idx);
+    MemberBoardPost selectMemberBoardDetail(int idx);
 
     int deleteMemberBoard(@Param("idx") int idx, @Param("password") String password);
 

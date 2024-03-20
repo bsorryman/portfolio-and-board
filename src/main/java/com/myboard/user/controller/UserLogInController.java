@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +15,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
+import org.springframework.security.web.WebAttributes;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +33,9 @@ import com.myboard.user.service.UserService;
 @Controller
 @RequestMapping("/login")
 public class UserLogInController {
-    
+    private final RequestCache requestCache = new HttpSessionRequestCache();
+    private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+	
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
@@ -48,7 +57,12 @@ public class UserLogInController {
      * 로그인 페이지
      */
     @GetMapping
-    public String getLogInPage() {
+    public String getLogInPage(HttpServletRequest request) {
+        
+        String uri = request.getHeader("Referer");
+        if (uri != null && !uri.contains("/login")) {
+            request.getSession().setAttribute("prevPage", uri);
+        }
         
         return "thymeleaf/member/login";
     }
@@ -62,7 +76,9 @@ public class UserLogInController {
      * @return
      */
     @PostMapping("/google")
-    public String getLogInPage(String credential, HttpServletResponse response) {
+    public String getLogInPage(HttpServletRequest request, HttpServletResponse response,
+    		String credential) {
+    	
         try {
             // google 계정 credential(jwt 토큰) 디코딩
             Map<String, Object> payloadMap = new HashMap<String, Object>();
@@ -108,7 +124,41 @@ public class UserLogInController {
                 
                 response.addCookie(cookie); 
                 
-                return "redirect:/thyme-board/list";
+                // 에러 세션 제거
+                HttpSession session = request.getSession(false);
+                if (session != null) {
+                    session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+                }
+                
+                SavedRequest savedRequest = requestCache.getRequest(request, response);
+
+                /**
+                 * prevPage 값이 있다면 사용자가 직접 URL 입력을 통해 접근한 경우이므로
+                 * 세션의 해당 속성을 삭제한다.
+                 */
+                String prevPage = (String) request.getSession().getAttribute("prevPage");
+                if (prevPage != null) {
+                    request.getSession().removeAttribute("prevPage");
+                }
+
+                String uri = "/";
+
+                /**
+                 * savedRequest가 있다면 접근 권한이 없는 URL에 접근하여 login 페이지로 들어온 것이므로
+                 * 접근하려 했던 URL을 저장해 놓는다.
+                 */
+                if (savedRequest != null) {
+                    uri = savedRequest.getRedirectUrl();
+                } else if (prevPage != null && !prevPage.equals("")) {
+                    // 회원가입에서 넘어온 경우 메인페이지로 보낸다.
+                    if (prevPage.contains("/signup")) {
+                        uri = "/";
+                    } else {
+                        uri = prevPage;
+                    }
+                }
+                
+                return "redirect:" + uri;
             } else {
                 /*
                  * 구글에서 이미 로그인된 구글 계정으로 소셜 로그인을 시도하는 것이므로

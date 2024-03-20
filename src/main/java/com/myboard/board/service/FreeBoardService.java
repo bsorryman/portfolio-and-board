@@ -27,5 +27,12 @@ public class FreeBoardService {
         
         return totalPost;
     }
+    
+    public FreeBoardPost getFreeBoardDetail(int idx) {
+    	FreeBoardPost freeBoardDetail = freeBoardMapper.selectFreeBoardDetail(idx);
+    	freeBoardMapper.updateHits(idx);
+    	
+    	return freeBoardDetail;
+    }
 
 }

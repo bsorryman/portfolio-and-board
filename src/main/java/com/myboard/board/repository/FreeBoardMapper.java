@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.myboard.board.domain.FreeBoardPost;
-import com.myboard.board.domain.ThymeBoardPost;
 
 @Mapper
 public interface FreeBoardMapper {
@@ -20,7 +19,7 @@ public interface FreeBoardMapper {
 
     int insertFreeBoard(FreeBoardPost freeBoardPost);
 
-    ThymeBoardPost selectFreeBoardDetail(int idx);
+    FreeBoardPost selectFreeBoardDetail(int idx);
 
     int deleteFreeBoard(@Param("idx") int idx, @Param("password") String password);
 
