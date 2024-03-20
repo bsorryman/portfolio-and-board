@@ -38,7 +38,7 @@ public class AesUtil {
 
             byte[] encrypted = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8)); // ID 암호화(인코딩 설정)
             result = Base64.getEncoder().encodeToString(encrypted) + iv; // 암호화 인코딩 후 저장
-            
+
             return result;
         }
 
@@ -59,8 +59,8 @@ public class AesUtil {
             SecretKeySpec keySpec = new SecretKeySpec(AESKey.getBytes(), "AES");
             
             // 파싱
-            String iv = encryptedText.substring(24,40);
-            encryptedText = encryptedText.substring(0,24);
+            String iv = encryptedText.substring(encryptedText.length()-16, encryptedText.length());
+            encryptedText = encryptedText.substring(0, encryptedText.length()-16);
             
             /**
              * iv(초기화 벡터)로 spec 생성

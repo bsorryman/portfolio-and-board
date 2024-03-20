@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -95,14 +96,16 @@ public class UserLogInController {
             // 인증 성공 및 실패 
             if (result) {
                 SecurityContextHolder.getContext().setAuthentication(token);
+                
+                // 쿠키 설정
                 AesUtil aesUtil = new AesUtil();
                 String encryptedUsername = aesUtil.encrypt(googleEmail);
                 
-                // 쿠키 설정
                 Cookie cookie = new Cookie("userInfo", encryptedUsername); 
-                cookie.setMaxAge(3600); 
+                cookie.setMaxAge(60 * 60 * 24 * 365); 
                 cookie.setDomain("localhost");
                 cookie.setPath("/");
+                
                 response.addCookie(cookie); 
                 
                 return "redirect:/thyme-board/list";

@@ -1,7 +1,6 @@
 package com.myboard.config;
 
 import java.io.IOException;
-import java.net.HttpCookie;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -34,13 +33,13 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         // 쿠키 설정
         Cookie cookie = new Cookie("userInfo", encryptedUsername);
         
-        cookie.setMaxAge(3600); 
+        cookie.setMaxAge(60 * 60 * 24 * 365); 
         cookie.setDomain("localhost");
         cookie.setPath("/");
         response.addCookie(cookie);
         
         // 성공 후 redirect urlt
-        setDefaultTargetUrl("/thyme-board/list");
+        setDefaultTargetUrl("/");
         super.onAuthenticationSuccess(request, response, authentication);
     }
     

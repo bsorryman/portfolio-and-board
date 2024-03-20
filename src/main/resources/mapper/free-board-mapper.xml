@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myboard.board.repository.FreeBoardMapper">
+	
+	<resultMap id="freeBoardPost" type="com.myboard.board.domain.FreeBoardPost">
+		<result column="idx" property="idx" />
+		<result column="title" property="title" />
+		<result column="writer" property="writer" />
+		<result column="password" property="password" />
+		<result column="contents" property="contents" />
+		<result column="created_at" property="createdAt" />
+		<result column="hits" property="hits" />
+	</resultMap>	
+	
+	<select id="selectTotalFreeBoard" resultType="int">
+		SELECT COUNT(*) 
+		FROM tb_board_free
+		WHERE 1 = 1
+		<if test="field=='name'">
+		AND title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="field=='contents'">
+		AND contents LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</select>
+	
+	<!-- Select ThymeBoard Post list  -->
+	<select id="selectFreeBoardList" resultMap="freeBoardPost">
+	    <bind name="offset" value="@com.myboard.board.domain.FreeBoardPost@seekOffset(page, size)"/>
+	    SELECT *
+		FROM tb_board_free
+		WHERE 1 = 1
+		<if test="field=='name'">
+		AND title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="field=='contents'">
+		AND contents LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		ORDER BY idx DESC
+		LIMIT #{offset}, #{size}		
+	</select>	
+	
+	<!-- Insert ThymeBoard Post -->
+	<insert id="insertFreeBoard" parameterType="com.myboard.board.domain.FreeBoardPost">
+		INSERT INTO tb_board_free(title, writer, password, contents)
+		VALUES(#{title}, #{writer}, #{password}, #{contents})
+	</insert>
+	
+	<!-- Select ThymeBoard Post (one) -->
+	<select id="selectFreeBoardDetail" resultMap="freeBoardPost">
+		SELECT *
+		FROM tb_board_free
+		WHERE idx = #{idx}
+	</select>
+	
+	<!-- Delete ThymeBoard Post -->
+	<delete id="deleteFreeBoard">
+		DELETE
+		FROM tb_board_free
+		WHERE idx = #{idx}
+		AND password = #{password}
+	</delete>
+	
+	<!-- Update ThymeBoard Post -->
+	<update id="updateFreeBoard" parameterType="com.myboard.board.domain.FreeBoardPost">
+		UPDATE tb_board_free
+		SET title = #{title}, contents = #{contents}
+		WHERE idx = #{idx}	
+		AND password = #{password}
+	</update>
+	
+	<!-- Add Hits of ThymeBoard Post -->
+	<update id="updateHits">
+		UPDATE tb_board_free
+		SET hits = IFNULL(hits, 0) + 1
+		WHERE idx = #{idx}	
+	</update>
+</mapper>

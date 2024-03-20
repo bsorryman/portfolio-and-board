@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Elements - Editorial by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <a href="/board/free/list" class="logo"><h2>자유게시판</h2></a>
+          <ul class="icons">
+            <li><a href="#" class="icon brands fa-twitter"><span
+                class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands fa-facebook-f"><span
+                class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands fa-snapchat-ghost"><span
+                class="label">Snapchat</span></a></li>
+            <li><a href="#" class="icon brands fa-instagram"><span
+                class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon brands fa-medium-m"><span
+                class="label">Medium</span></a></li>
+          </ul>
+        </header>
+
+        <!-- Content -->
+        <section style="padding: 3em 0 3em 0;">
+          <!-- Content -->
+          <p id="outline">회원가입이 필요 없는 게시판입니다. 물론 회원 가입을 하면 더 편하게 사용할 수 있습니다.</p>
+
+          <hr />
+
+          <!-- Elements -->
+          <div class="col-12">
+            <div class="align-right">
+              <button class="button" id="write">글쓰기</button>
+            </div>
+          </div>
+          <br>
+          <div class="table-wrapper">
+            <table id="freeBoardTable">
+              <colgroup>
+                <col width="7%"><!-- NO. -->
+                <col ><!-- 작성자 -->
+                <col width="10%"><!-- 제목  -->
+                <col width="15%"><!-- 날짜 -->
+                <col width="6%"><!-- 조회수 -->
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>NO.</th>
+                  <th>제목</th>
+                  <th>작성자</th>
+                  <th>작성일</th>
+                  <th>조회수</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="freeBoard: ${freeBoardList}">
+                  <td>[[${freeBoard.idx}]]</td>
+                  <td class="title">[[${freeBoard.title}]]</td>
+                  <td>[[${freeBoard.writer}]]</td>
+                  <td>[[${freeBoard.createdAt}]]</td>
+                  <td>[[${freeBoard.hits}]]</td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+            <ul th:object="${pager}" class="pagination">
+              <li>
+                <a href="javascript:void(0)" class="button" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{/board/free/list?page=1#outline}">
+                  First
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="button small" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{|/board/free/list?page=*{prevPage}#outline|}">
+                 <<
+                </a>
+              </li>
+              <th:block th:each="pageNum : *{#numbers.sequence(bsPage,bePage)}">
+                <li>
+                  <a href="javascript:void(0)" class="page" th:classappend="*{page} == ${pageNum} ? 'active' : ''" th:href="@{|/board/free/list?page=${pageNum}#outline|}">
+                    [[${pageNum}]]
+                  </a>
+                </li>
+              </th:block>
+              <li>
+                <a href="javascript:void(0)" class="button small" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/free/list?page=*{nextPage}#outline|}">
+                  >>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="button" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/free/list?page=*{totalPage}#outline|}">
+                  Last
+                </a>
+              </li>
+            </ul>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

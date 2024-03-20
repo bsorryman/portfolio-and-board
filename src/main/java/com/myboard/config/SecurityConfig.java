@@ -26,9 +26,12 @@ public class SecurityConfig {
         http
         .addFilterBefore(customFilter, BasicAuthenticationFilter.class) // 인증 전 필터
         .authorizeRequests() // 접근 관련
-            .antMatchers("/assets/**", "/signup/**", 
-                    "/login/**", "/jsp-board/**",
-                    "/api/**").permitAll() // 접근 허용 URL
+            .antMatchers("/assets/**", "/images/**",  // resources
+                    "/login/**", "/signup/**",  // member
+                    "/jsp-board/**", "/api/**", // 구버전 게시판  
+                    "/index", "/board/free/**" // 신버전 게시판
+                    )
+                .permitAll() // 접근 허용 URL
             .anyRequest().authenticated() // 나머지 접근은 인증 필요 
             .and()
         .formLogin() // 로그인 관련
