@@ -76,4 +76,11 @@
 		SET hits = IFNULL(hits, 0) + 1
 		WHERE idx = #{idx}	
 	</update>
+	
+	<select id="checkPassword" resultType="int">
+		SELECT COUNT(*)
+		FROM tb_board_free
+		WHERE idx = #{idx}
+			AND password = #{password}
+	</select>
 </mapper>

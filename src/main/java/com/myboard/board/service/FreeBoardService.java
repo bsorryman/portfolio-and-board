@@ -46,4 +46,26 @@ public class FreeBoardService {
         return result;
     }
 
+	public boolean editFreeBaord(FreeBoardPost freeBoardPost) {
+        boolean result = false;
+        int resultInt= freeBoardMapper.updateFreeBoard(freeBoardPost); 
+        
+        if (resultInt == 1) {
+            result = true;
+        }
+        
+        return result;
+	}
+	
+	public boolean checkPassword(int idx, String password) {
+		boolean result = false;
+		int resultInt = freeBoardMapper.checkPassword(idx, password);
+        
+		if (resultInt == 1) {
+            result = true;
+        }
+		
+		return result;
+	}
+
 }

@@ -29,4 +29,6 @@ public interface FreeBoardMapper {
     int selectFreeBoardByPassword(@Param("idx") int idx, @Param("password") String password);
 
     void updateHits(@Param("idx") int idx);
+    
+    int checkPassword(int idx, String password);
 }

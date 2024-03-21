@@ -51,7 +51,6 @@ public class AesUtil {
 
     public String decrypt(String encryptedText) {
         String result = "";
-        System.out.println("encryptedText(userInfo): " + encryptedText);
         
         try {
             Cipher cipher = Cipher.getInstance(algorithms);

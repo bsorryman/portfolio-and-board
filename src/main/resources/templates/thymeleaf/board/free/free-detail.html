@@ -39,7 +39,7 @@
         </header>
 
         <!-- Content -->
-        <section th:object="${freeBoardPost}"style="padding: 3em 0 3em 0;">
+        <section th:object="${freeBoardPost}" style="padding: 3em 0 3em 0;">
           <!-- Content -->
           <h3>[[*{title}]]</h3>
           <hr />
@@ -52,10 +52,10 @@
             <pre>[[*{contents}]]</pre>
           </div>
           <!-- Elements -->
-          <br>
-          <div class="table-wrapper">
-          </div>
-
+          <ul class="actions">
+            <li><input type="button" value="수정" class="primary" id="editBtn" /></li>
+            <li><input type="button" value="삭제" class="primary" id="deleteBtn"/></li>
+          </ul>
         </section>
 
       </div>
@@ -73,6 +73,10 @@
   <script src="/assets/js/breakpoints.min.js"></script>
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
-
+  <script>
+  $('#editBtn').on("click", function(){
+	  window.location.href="/board/free/password-check?type=edit&idx="+ [[${freeBoardPost.idx}]];
+  })
+  </script>
 </body>
 </html>
