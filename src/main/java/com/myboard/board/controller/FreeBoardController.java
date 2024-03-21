@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myboard.board.domain.FreeBoardPost;
 import com.myboard.board.service.FreeBoardService;
+import com.myboard.board.util.AesUtil;
 import com.myboard.board.util.Message;
 import com.myboard.board.util.Pager;
 
@@ -20,8 +21,10 @@ import com.myboard.board.util.Pager;
 public class FreeBoardController {
     
     private final FreeBoardService freeBoardService;
+    private final AesUtil aesUtil = new AesUtil();
     
     public FreeBoardController(FreeBoardService freeBoardService) {
+    	
         this.freeBoardService = freeBoardService;
     }
     
@@ -68,7 +71,13 @@ public class FreeBoardController {
     
     @PostMapping("/write")
     public String writeFreeBoard(FreeBoardPost freeBoardPost, Model model) {
-        boolean result = freeBoardService.writeFreeBoard(freeBoardPost);
+    	// 비밀번호 암호화
+    	String plainPwd = freeBoardPost.getPassword();
+        String encodePwd = aesUtil.encrypt(plainPwd);
+        
+    	freeBoardPost.setPassword(encodePwd);
+    	
+    	boolean result = freeBoardService.writeFreeBoard(freeBoardPost);
         
         Message message = new Message();
 
@@ -87,7 +96,6 @@ public class FreeBoardController {
     public String getFreeBoardEditForm(@RequestParam(required = true) int idx,
     		@RequestParam(required = true) String password,
     		Model model) {
-
     	FreeBoardPost freeBoardPost = freeBoardService.getFreeBoardPost(idx);
     	
     	// 접근 방지

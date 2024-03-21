@@ -26,7 +26,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
         userInfoCookie.setPath("/");
         response.addCookie(userInfoCookie); 
         
-        response.sendRedirect("/login?logout=true"); // 로그아웃 성공 시 이동할 페이지 설정
+        response.sendRedirect("/"); // 로그아웃 성공 시 이동할 페이지 설정
     }
 
 }

@@ -6,11 +6,13 @@ import org.springframework.stereotype.Service;
 
 import com.myboard.board.domain.FreeBoardPost;
 import com.myboard.board.repository.FreeBoardMapper;
+import com.myboard.board.util.AesUtil;
 
 @Service
 public class FreeBoardService {
     private final FreeBoardMapper freeBoardMapper;
-    
+    private final AesUtil aesUtil = new AesUtil();
+
     public FreeBoardService(FreeBoardMapper freeBoardMapper ) {
         this.freeBoardMapper = freeBoardMapper;
     }
@@ -59,9 +61,13 @@ public class FreeBoardService {
 	
 	public boolean checkPassword(int idx, String password) {
 		boolean result = false;
-		int resultInt = freeBoardMapper.checkPassword(idx, password);
+		
+    	FreeBoardPost realPost = freeBoardMapper.selectFreeBoardPost(idx);
+    	String realPassword = aesUtil.decrypt(realPost.getPassword());
+    	
+		//int resultInt = freeBoardMapper.checkPassword(idx, password);
         
-		if (resultInt == 1) {
+		if (password.equals(realPassword)) {
             result = true;
         }
 		

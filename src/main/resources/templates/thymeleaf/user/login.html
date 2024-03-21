@@ -26,7 +26,7 @@
 
         <!-- Content -->
         <section style="padding: 3em 0 3em 0;">
-          <form method="post" action="/board/free/write" style="width:40%">
+          <form method="post" style="width:40%">
             <div class="row gtr-uniform">
               <div class="col-12">
                 <input type="text" name="username" id="username"
@@ -38,14 +38,20 @@
               </div>               
               <div class="col-12">
                 <ul class="actions">
-                  <li><input type="submit" value="로그인"
-                    class="primary" /></li>
                   <li>
-                    <div id="googleRendererDiv" >
-                    </div>                    
+                    <input type="submit" value="로그인" class="primary" />
+                  </li>
+                  <li>
+                    <input type="button" class="primary" value="회원가입" id="signUp">
                   </li>
                 </ul>
               </div>
+              
+              <div class="col-12">
+                <div id="googleRendererDiv" >
+                </div>                  
+              </div>
+              
             </div>
           </form>        
         </section>
@@ -55,7 +61,6 @@
     <!-- Sidebar -->
     <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
     <!-- //Sidebar -->
-    </div>
 
   </div>
 
@@ -84,9 +89,7 @@
               type: "standard",
               theme: "outline", 
               size: "large",
-              width: '100px',
-              heught:'30px'
-              
+              width: '199px'
           }  // customization attributes
       );
       //google.accounts.id.prompt(); // also display the One Tap dialog
@@ -101,10 +104,6 @@
       if (error=='true') {
           alert('로그인에 실패했습니다.');
       }
-      
-      if (logout=='true') {
-          alert('로그아웃 하였습니다.');
-      }        
 
       $('#signUp').on("click", function(){
           window.location.href = "/signup"

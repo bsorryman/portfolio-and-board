@@ -65,10 +65,10 @@ public class UserLogInController {
             request.getSession().setAttribute("prevPage", uri);
         }
         
-        return "thymeleaf/member/login";
+        return "thymeleaf/user/login";
     }
     
-    @GetMapping("/new")
+    @GetMapping("/old")
     public String getNewLogInPage(HttpServletRequest request) {
         
         String uri = request.getHeader("Referer");
@@ -76,7 +76,7 @@ public class UserLogInController {
             request.getSession().setAttribute("prevPage", uri);
         }
         
-        return "thymeleaf/user/login";
+        return "thymeleaf/member/login";
     }    
     
     /**
@@ -102,7 +102,7 @@ public class UserLogInController {
             
             // sub(password로 사용할 필드) 암호화
             String encodedGoogleSub = passwordEncoder.encode(googleSub);
-
+            System.out.println("encode: " + encodedGoogleSub);
             // User 객체 매핑
             UserDTO userDTO = new UserDTO();
 
