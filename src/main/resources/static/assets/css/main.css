@@ -1513,7 +1513,7 @@ button,
   color: #f56a6a !important;
   cursor: pointer;
   display: inline-block;
-  font-family: "Noto Sans KR";
+  font-family: monospace;
   font-size: 0.8em;
   font-weight: 700;
   height: 3.5em;

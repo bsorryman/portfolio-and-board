@@ -1,5 +1,6 @@
 package com.myboard.user.controller;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,6 +68,17 @@ public class UserLogInController {
         return "thymeleaf/member/login";
     }
     
+    @GetMapping("/new")
+    public String getNewLogInPage(HttpServletRequest request) {
+        
+        String uri = request.getHeader("Referer");
+        if (uri != null && !uri.contains("/login")) {
+            request.getSession().setAttribute("prevPage", uri);
+        }
+        
+        return "thymeleaf/user/login";
+    }    
+    
     /**
      * 구글 소셜 로그인은 Security에 설정된 formLogin이 아닌 수동으로 로그인을 처리한다.
      * (id, password가 form 파라미터로 전달되지 않기 때문)
@@ -117,7 +129,8 @@ public class UserLogInController {
                 AesUtil aesUtil = new AesUtil();
                 String encryptedUsername = aesUtil.encrypt(googleEmail);
                 
-                Cookie cookie = new Cookie("userInfo", encryptedUsername); 
+//                Cookie cookie = new Cookie("userInfo", URLEncoder.encode(encryptedUsername, "UTF-8"));
+                Cookie cookie = new Cookie("userInfo", encryptedUsername);
                 cookie.setMaxAge(60 * 60 * 24 * 365); 
                 cookie.setDomain("localhost");
                 cookie.setPath("/");

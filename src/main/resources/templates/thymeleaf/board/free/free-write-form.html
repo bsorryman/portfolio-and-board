@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Elements - Editorial by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper" style="width: 90%">
+    <!-- Main -->
+    <div id="main" >
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <h2>자유게시판</h2>
+        </header>
+
+        <!-- Content -->
+        <section style="padding: 3em 0 3em 0;">
+          <h3>글쓰기</h3>
+          <hr>
+          <form method="post" action="/board/free/write">
+            <div class="row gtr-uniform">
+              <div class="col-12">
+                <input type="text" name="title" id="title"
+                  value="" placeholder="글 제목" required/>              
+              </div>            
+              <div class="col-6 col-12-xsmall">
+                <input type="text" name="writer" id="writer"
+                  value="" placeholder="글쓴이" required/>
+              </div>
+              <div class="col-6 col-12-xsmall">
+                <input type="password" name="password" id="password"
+                  value="" placeholder="비밀번호" required />
+              </div>
+              
+              <div class="col-12">
+                <textarea name="contents" id="contents" placeholder="글을 작성하세요." style="height:300px; resize:none;" required>
+                </textarea>
+              </div>
+              
+              <div class="col-12">
+                <ul class="actions">
+                  <li><input type="submit" value="완료"
+                    class="primary" /></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+
+        </section>
+
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

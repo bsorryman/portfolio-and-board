@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Elements - Editorial by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper" style="width: 90%">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <h2>로그인</h2>
+        </header>
+
+        <!-- Content -->
+        <section style="padding: 3em 0 3em 0;">
+          <form method="post" action="/board/free/write" style="width:40%">
+            <div class="row gtr-uniform">
+              <div class="col-12">
+                <input type="text" name="username" id="username"
+                  value="" placeholder="ID" required/>              
+              </div>            
+              <div class="col-12">
+                <input type="password" name="password" id="password"
+                  value="" placeholder="비밀번호" required/>              
+              </div>               
+              <div class="col-12">
+                <ul class="actions">
+                  <li><input type="submit" value="로그인"
+                    class="primary" /></li>
+                  <li>
+                    <div id="googleRendererDiv" >
+                    </div>                    
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>        
+        </section>
+
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <input type="hidden" id="clientId" th:value="${@environment.getProperty('google.client.id')}" />
+  
+  <script>
+  var clientId = $('#clientId').val();
+  
+  window.onload = function () {
+      google.accounts.id.initialize({
+          client_id: clientId,
+          ux_mode: 'redirect',
+          login_uri: 'http://localhost:8080/login/google',
+      });
+      
+      google.accounts.id.renderButton(
+          document.getElementById("googleRendererDiv"),
+          { 
+              type: "standard",
+              theme: "outline", 
+              size: "large",
+              width: '100px',
+              heught:'30px'
+              
+          }  // customization attributes
+      );
+      //google.accounts.id.prompt(); // also display the One Tap dialog
+  }
+  
+  $(function(){
+      var queryString = window.location.search;
+      var params = new URLSearchParams(queryString);
+      var error = params.get('error');
+      var logout = params.get('logout');
+      
+      if (error=='true') {
+          alert('로그인에 실패했습니다.');
+      }
+      
+      if (logout=='true') {
+          alert('로그아웃 하였습니다.');
+      }        
+
+      $('#signUp').on("click", function(){
+          window.location.href = "/signup"
+      })
+  })
+  </script>
+
+</body>
+</html>

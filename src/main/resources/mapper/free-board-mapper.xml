@@ -48,7 +48,7 @@
 	</insert>
 	
 	<!-- Select ThymeBoard Post (one) -->
-	<select id="selectFreeBoardDetail" resultMap="freeBoardPost">
+	<select id="selectFreeBoardPost" resultMap="freeBoardPost">
 		SELECT *
 		FROM tb_board_free
 		WHERE idx = #{idx}

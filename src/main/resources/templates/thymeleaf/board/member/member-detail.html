@@ -15,7 +15,7 @@
 <body class="is-preload">
 
   <!-- Wrapper -->
-  <div id="wrapper">
+  <div id="wrapper" style="width: 90%">
     <!-- Main -->
     <div id="main">
       <div class="inner">
@@ -44,12 +44,11 @@
           <h3>[[*{title}]]</h3>
           <hr />
           <div class="row">
-            <span><b>[[*{writer}]]</b></span>
-            <span>[[*{createdAt}]]</span>          
+            <span><b>작성자:&nbsp;</b>[[*{writer}]]&nbsp;&nbsp;|&nbsp;<b>작성일:</b> &nbsp;[[*{createdAt}]]</span>
           </div>
-          <span>조회수: [[*{hits}]]</span>
+          <span><b>조회수:</b> [[*{hits}]]</span>
           <hr />
-          <div class="box">
+          <div class="box" style="min-height: 300px;">
             <pre>[[*{contents}]]</pre>
           </div>
           <!-- Elements -->

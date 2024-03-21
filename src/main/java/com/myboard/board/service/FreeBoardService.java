@@ -28,11 +28,22 @@ public class FreeBoardService {
         return totalPost;
     }
     
-    public FreeBoardPost getFreeBoardDetail(int idx) {
-    	FreeBoardPost freeBoardDetail = freeBoardMapper.selectFreeBoardDetail(idx);
+    public FreeBoardPost getFreeBoardPost(int idx) {
+    	FreeBoardPost freeBoardPost = freeBoardMapper.selectFreeBoardPost(idx);
     	freeBoardMapper.updateHits(idx);
     	
-    	return freeBoardDetail;
+    	return freeBoardPost;
+    }
+
+    public boolean writeFreeBoard(FreeBoardPost freeBoardPost) {
+        boolean result = false;
+        int resultInt= freeBoardMapper.insertFreeBoard(freeBoardPost); 
+        
+        if (resultInt == 1) {
+            result = true;
+        }
+        
+        return result;
     }
 
 }

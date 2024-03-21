@@ -33,10 +33,10 @@
             <h2>Menu</h2>
           </header>
           <ul>
-            <li><a href="/index">Home</a></li>
+            <li class="menuLi" id="homeMenu" style="visibility: hidden;"><a href="/index">Home</a></li>
             <li><a href="/board/free/list">자유게시판</a></li>
             <li><a href="/board/member/list">회원게시판</a></li>
-            <li><span class="opener">프로젝트</span>
+            <li class="menuLi" id="projectMenu" style="visibility: hidden;"><span class="opener">프로젝트</span>
               <ul>
                 <li><a href="#">RecipeBag</a></li>
                 <li><a href="#">MyBoard</a></li>
@@ -105,7 +105,7 @@
             </li>
           </ul>
         </section>
-
+        <span id="showMenu">SHOW</span>
         <!-- Footer -->
         <footer id="footer">
           <p class="copyright">
@@ -117,3 +117,23 @@
 
       </div>
     </div>
+    <script>
+    let showMenu = document.querySelector('#showMenu');
+    let hideMenu = document.querySelectorAll('#homeMenu, #projectMenu');
+
+    showMenu.addEventListener('click', function() {
+        
+        if (showMenu.textContent == 'SHOW') {
+            hideMenu.forEach(function(element){
+                element.style.visibility = "visible";
+            })            
+            showMenu.textContent = 'HIDE'; 
+        } else {
+            hideMenu.forEach(function(element){
+                element.style.visibility = "hidden";
+            })       
+            showMenu.textContent = 'SHOW'; 
+        }
+        
+    });
+    </script>

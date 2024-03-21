@@ -17,7 +17,7 @@ public class AesUtil {
     public static String algorithms = "AES/CBC/PKCS5Padding";
 
     // 키
-    private final static String AESKey = "abcdefghabcdefghabcdefghabcdefgh"; //32byte
+    private final static String AESKey = "abcdefghabcdefgh"; // 16byte
 
     public String encrypt(String plainText) {
         String result = ""; // 암호화 결과 값을 담을 변수
@@ -51,6 +51,7 @@ public class AesUtil {
 
     public String decrypt(String encryptedText) {
         String result = "";
+        System.out.println("encryptedText(userInfo): " + encryptedText);
         
         try {
             Cipher cipher = Cipher.getInstance(algorithms);

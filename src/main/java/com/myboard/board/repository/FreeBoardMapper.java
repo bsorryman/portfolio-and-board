@@ -19,7 +19,7 @@ public interface FreeBoardMapper {
 
     int insertFreeBoard(FreeBoardPost freeBoardPost);
 
-    FreeBoardPost selectFreeBoardDetail(int idx);
+    FreeBoardPost selectFreeBoardPost(int idx);
 
     int deleteFreeBoard(@Param("idx") int idx, @Param("password") String password);
 
