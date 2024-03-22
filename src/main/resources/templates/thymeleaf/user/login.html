@@ -50,12 +50,12 @@
               <div class="col-12">
                 <input type="button" class="primary" value="구글 로그인" id="customLogin">
               </div>
+              <!-- 
               <div class="col-12">
                 <div id="googleRendererDiv" >
                 </div>                  
               </div>
-<div id="google-signin-button"></div>
-              
+              -->
             </div>
           </form>        
         </section>
@@ -85,10 +85,11 @@
       google.accounts.id.initialize({
           client_id: clientId,
           ux_mode: 'redirect',
-          login_uri: 'http://localhost:8080/login/google',
+          login_uri: 'http://localhost:8080/google/login',
           nonce: 'thisisnonce'
       });
       
+      /*
       google.accounts.id.renderButton(
           document.getElementById("googleRendererDiv"),
           { 
@@ -98,6 +99,7 @@
               width: '199px'
           }  // customization attributes
       );
+      */
       //google.accounts.id.prompt(); // also display the One Tap dialog
   }
   

@@ -49,4 +49,15 @@ public class UserService {
         
         return payloadMap;
     }
+    
+    public boolean idCheck(String username) {
+    	boolean result = false;
+    	UserDTO user = userMapper.selectUserByUsername(username);
+    	
+    	if (user == null) {
+    		result = true;
+    	}
+    	
+    	return result;
+    }
 }

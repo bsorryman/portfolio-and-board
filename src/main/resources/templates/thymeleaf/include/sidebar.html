@@ -18,7 +18,7 @@
           <th:block th:if="${#authorization.expression('isAuthenticated()')}">
             <header class="major" style="display: flex;">
               <div style="border-bottom:solid 3px #f56a6a; margin-bottom: 2.75em;" >
-                <img th:src="${#authentication.principal.picture}" style="width:30px; height:30px;">
+                <img th:src="${#authentication.principal.picture!=null ? #authentication.principal.picture : '/images/default_profile.png' }" style="width:30px; height:30px;">
               </div>
               <h2>
                 <strong>[[${#authentication.principal.nickname}]]</strong> 

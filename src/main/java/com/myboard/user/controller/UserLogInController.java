@@ -1,6 +1,5 @@
 package com.myboard.user.controller;
 
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -172,11 +171,7 @@ public class UserLogInController {
                 
                 return "redirect:" + uri;
             } else {
-                /*
-                 * 구글에서 이미 로그인된 구글 계정으로 소셜 로그인을 시도하는 것이므로
-                 * result가 false(id는 맞지만 password는 틀린)일 경우는 사실상 없다.
-                 * 소셜 로그인의 실패는 모두 UsernameNotFountException에서 걸러진다.
-                 */
+            	
                 return "redirect:/login?error=true";
             }            
         } catch (UsernameNotFoundException e) {

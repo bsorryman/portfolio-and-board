@@ -21,37 +21,52 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>로그인</h2>
+          <h2>회원가입</h2>
         </header>
 
         <!-- Content -->
         <section style="padding: 3em 0 3em 0;">
-          <form method="post" style="width:40%">
+          <form method="post" style="width:40%" id="signUpForm">
+            <input type="hidden" name="role" id="role" value="user">
             <div class="row gtr-uniform">
-              <div class="col-12">
+              <div class="col-12" style="display: flex;">
                 <input type="text" name="username" id="username"
-                  value="" placeholder="ID" required/>              
+                  value="" placeholder="ID (영문 , 숫자 최대 10자)" required/>      
+                 <button type="button" class="button" id="idCheck">중복확인</button>        
               </div>            
               <div class="col-12">
                 <input type="password" name="password" id="password"
-                  value="" placeholder="비밀번호" required/>              
-              </div>               
+                  value="" placeholder="비밀번호 (영문 , 숫자 최대 10자)" required/>              
+              </div> 
+              <div class="col-12">
+                <input type="password" name="passwordCheck" id="passwordCheck"
+                  value="" placeholder="비밀번호 확인 " required/>              
+              </div>    
+              <div class="col-12" style="display: flex;">
+                <input type="text" name="nickname" id="nickname"
+                  value="" placeholder="닉네임 (한글 )" required/>      
+              </div>                
+              <div class="col-12" style="display: flex;">
+                <input type="email" name="email" id="email"
+                  value="" placeholder="E-mail" required/>      
+              </div>                   
               <div class="col-12">
                 <ul class="actions">
                   <li>
-                    <input type="submit" value="로그인" class="primary" />
+                    <input type="submit" value="회원가입" class="primary" />
                   </li>
                   <li>
-                    <input type="button" class="primary" value="회원가입" id="signUp">
+                    <input type="button" class="primary" value="구글 회원가입" id="googleSignup">
                   </li>
                 </ul>
+            
               </div>
-              
+              <!-- 
               <div class="col-12">
                 <div id="googleRendererDiv" >
                 </div>                  
               </div>
-              
+              -->
             </div>
           </form>        
         </section>
@@ -80,9 +95,10 @@
       google.accounts.id.initialize({
           client_id: clientId,
           ux_mode: 'redirect',
-          login_uri: 'http://localhost:8080/login/google',
+          login_uri: 'http://localhost:8080/google/signup',
       });
       
+      /*
       google.accounts.id.renderButton(
           document.getElementById("googleRendererDiv"),
           { 
@@ -92,8 +108,11 @@
               width: '199px'
           }  // customization attributes
       );
+      */
       //google.accounts.id.prompt(); // also display the One Tap dialog
   }
+  
+  var idCheck = false;
   
   $(function(){
       var queryString = window.location.search;
@@ -102,13 +121,86 @@
       var logout = params.get('logout');
       
       if (error=='true') {
-          alert('로그인에 실패했습니다.');
+          alert('회원가입에 실패했습니다.');
       }
 
-      $('#signUp').on("click", function(){
-          window.location.href = "/signup"
-      })
+      let url = 'https://accounts.google.com/gsi/select?' +
+      'client_id='+ clientId +
+      '&ux_mode=redirect'+
+      '&login_uri='+ 'http://localhost:8080/signup/google' +
+      '&ui_mode=card' +
+//       '&as=fdTZEXPq87FCWLjHP%2FR%2F2Q+'+
+      '&g_csrf_token=g_csrf_token' +
+      '&origin=http://localhost:8080';
+      
+      $('#googleSignup').on("click", function(){
+          window.location.href= url;
+      })      
   })
+  
+  $('#signUp').on("click", function(){
+      window.location.href = "/signup"
+  })
+   
+  $("#signUpForm").submit(function(event) {
+      var password = $("#password").val();
+      var passwordCheck = $('#passwordCheck').val();
+          
+      var pattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$-])[a-zA-Z0-9!@#$-]{8,12}$/;
+
+      if (!pattern.test(password)) {
+          alert("비밀번호는 영어, 숫자, 특수문자를 포함하여 8자에서 12자 사이여야 합니다.");
+          event.preventDefault();
+          return;
+      }
+        
+      if (password!=passwordCheck) {
+     	  alert("비밀번호가 일치하지 않습니다.");
+     	  event.preventDefault();
+     	  
+     	  return;
+      }
+          
+      if (!idCheck) {
+    	  alert("ID 중복환인을 해주세요.");
+          event.preventDefault();
+      	  return;
+      }
+  });    
+  
+  $('#idCheck').on('click', function(){
+	  var username = $('#username').val();
+      var pattern = /^[A-Za-z0-9]{6,10}$/;
+      
+      if (!pattern.test(username)) {
+          alert("ID는 영문/숫자 조합 6자 이상 이어야 합니다.");
+          return;
+      }
+      
+	  $.ajax({
+		  url: "/signup/id-check",
+		  method: "POST",
+		  dataType: 'json',
+		  data: {
+			  username: username
+		  },
+		  success: function(result) {
+			  if (result) {
+				  alert("사용할 수 있는 ID 입니다.")
+				  idCheck = true;
+				  $('#username').prop('readonly', true);
+			  } else {
+				  alert("이미 있는 ID 입니다.");
+				  idCheck = false;
+			  }
+		  },
+		  error: function(jqXHR, textStatus, errorThrown) {
+			  console.error("Error:", textStatus, errorThrown);
+			  
+		  }
+	  });	
+  });
+  
   </script>
 
 </body>

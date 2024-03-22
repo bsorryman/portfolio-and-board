@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myboard.board.util.Message;
 import com.myboard.user.dto.UserDTO;
@@ -32,7 +34,7 @@ public class UserSignUpController {
     @GetMapping
     public String getSignupPage() {
         
-        return "thymeleaf/member/signup";
+        return "thymeleaf/user/signup";
     }
     
     /**
@@ -56,17 +58,17 @@ public class UserSignUpController {
             result = userService.registerUser(userDTO);
             if (result) {
                 message.setMessage("회원가입이 완료되었습니다.");
-                message.setHref("/thyme-board/list");
+                message.setHref("/login");
                 
             } else {
                 message.setMessage("회원가입이 실패했습니다.");
-                message.setHref("/thyme-board/list");
+                message.setHref("/");
             }
         } catch (Exception e) {
             e.printStackTrace();
             
             message.setMessage("알 수 없는 에러가 발생했습니다.");
-            message.setHref("/thyme-board/list");
+            message.setHref("/");
             
         }
         
@@ -97,7 +99,7 @@ public class UserSignUpController {
             
         } else {
             message.setMessage("잘못된 접근입니다.");
-            message.setHref("/thyme-board/list");   
+            message.setHref("/");   
         }
         
         // payload의 사용자 정보
@@ -122,18 +124,28 @@ public class UserSignUpController {
             userService.registerUser(userDTO);
             
             message.setMessage("구글 소셜 회원가입이 완료되었습니다.");
-            message.setHref("/thyme-board/list");   
+            message.setHref("/login");   
             
         } catch (Exception e) {
             e.printStackTrace();
             
             message.setMessage("알 수 없는 에러가 발생했습니다.");
-            message.setHref("/thyme-board/list");               
+            message.setHref("/");               
         } 
         
         model.addAttribute("message", message);
 
         return "thymeleaf/common/message";
+    }
+    
+    @ResponseBody
+    @PostMapping("/id-check")
+    public boolean idCheck(@RequestParam(required = true) String username) {
+    	boolean result = false;
+    	
+    	result = userService.idCheck(username);
+    	
+    	return result;
     }
     
 }
