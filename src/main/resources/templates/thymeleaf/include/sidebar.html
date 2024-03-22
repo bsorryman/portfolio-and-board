@@ -12,11 +12,17 @@
               placeholder="Search" />
           </form>
         </section>
-        <!-- Member info -->
+        <!-- Member info -->             
+        
         <section>
           <th:block th:if="${#authorization.expression('isAuthenticated()')}">
-            <header class="major">
-              <h2>Hi. <strong>[[${#authentication.principal.nickname}]]</strong></h2>
+            <header class="major" style="display: flex;">
+              <div style="border-bottom:solid 3px #f56a6a; margin-bottom: 2.75em;" >
+                <img th:src="${#authentication.principal.picture}" style="width:30px; height:30px;">
+              </div>
+              <h2>
+                <strong>[[${#authentication.principal.nickname}]]</strong> 
+              </h2>
             </header>
             <a href="/logout">로그아웃</a>
           </th:block>

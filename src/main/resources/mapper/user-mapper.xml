@@ -9,6 +9,7 @@
         <result column="password" property="password" />
         <result column="nickname" property="nickname" />
         <result column="email" property="email" />
+        <result column="picture" property="picture" />
         <result column="role" property="role" />
         <result column="sns" property="sns" />        
         <result column="create_dt" property="createDt" />
@@ -17,8 +18,8 @@
     
     <!-- Insert ThymeBoard Post -->
     <insert id="insertUser" parameterType="com.myboard.user.dto.UserDTO">
-        INSERT INTO tb_user(username, password, nickname, email, role, sns)
-        VALUES(#{username}, #{password}, #{nickname}, #{email}, #{role}, #{sns})
+        INSERT INTO tb_user(username, password, nickname, email, picture, role, sns)
+        VALUES(#{username}, #{password}, #{nickname}, #{email}, #{picture}, #{role}, #{sns})
     </insert>
     
     <select id="selectUserByUsername" parameterType="com.myboard.user.dto.UserDTO" 

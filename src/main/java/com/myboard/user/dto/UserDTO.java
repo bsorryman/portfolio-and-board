@@ -20,6 +20,7 @@ public class UserDTO implements UserDetails{
     private int idx;
     private String nickname;
     private String email;
+    private String picture;
     private String role;
     private String sns;
     private String createDt;

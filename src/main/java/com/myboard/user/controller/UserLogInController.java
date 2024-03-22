@@ -102,7 +102,6 @@ public class UserLogInController {
             
             // sub(password로 사용할 필드) 암호화
             String encodedGoogleSub = passwordEncoder.encode(googleSub);
-            System.out.println("encode: " + encodedGoogleSub);
             // User 객체 매핑
             UserDTO userDTO = new UserDTO();
 

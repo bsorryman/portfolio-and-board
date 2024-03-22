@@ -105,6 +105,7 @@ public class UserSignUpController {
         String googleSub = (String)payloadMap.get("sub");
         String googleName = (String)payloadMap.get("name");
         String encodedGoogleSub = passwordEncoder.encode(googleSub); //암호화
+        String googlePicture = (String)payloadMap.get("picture");
 
         // User 객체에 매핑
         UserDTO userDTO = new UserDTO();
@@ -112,6 +113,7 @@ public class UserSignUpController {
         userDTO.setPassword(encodedGoogleSub);
         userDTO.setNickname(googleName);
         userDTO.setEmail(googleEmail);
+        userDTO.setPicture(googlePicture);
         userDTO.setRole("user");
         userDTO.setSns("google");
         
