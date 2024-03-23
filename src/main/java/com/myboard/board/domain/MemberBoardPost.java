@@ -6,8 +6,8 @@ import lombok.Data;
 public class MemberBoardPost {
     private int idx;
     private String title; 
-    private String writer;
-    private String password;
+    private String username;
+    private String nickname;
     private String contents;
     private String createdAt;
     private int hits;

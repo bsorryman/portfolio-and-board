@@ -1,4 +1,4 @@
-package com.myboard.board.domain;
+package com.myboard.notuse;
 
 import lombok.Data;
 

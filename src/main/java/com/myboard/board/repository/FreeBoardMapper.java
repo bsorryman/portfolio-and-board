@@ -21,7 +21,7 @@ public interface FreeBoardMapper {
 
     FreeBoardPost selectFreeBoardPost(int idx);
 
-    int deleteFreeBoard(@Param("idx") int idx, @Param("password") String password);
+    int deleteFreeBoard(FreeBoardPost freeBoardPost);
 
     int updateFreeBoard(FreeBoardPost freeBoardPost);
 

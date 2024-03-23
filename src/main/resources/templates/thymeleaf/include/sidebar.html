@@ -17,11 +17,9 @@
         <section>
           <th:block th:if="${#authorization.expression('isAuthenticated()')}">
             <header class="major" style="display: flex;">
-              <div style="border-bottom:solid 3px #f56a6a; margin-bottom: 2.75em;" >
+              <h2 style="display: flex;">
                 <img th:src="${#authentication.principal.picture!=null ? #authentication.principal.picture : '/images/default_profile.png' }" style="width:30px; height:30px;">
-              </div>
-              <h2>
-                <strong>[[${#authentication.principal.nickname}]]</strong> 
+                <strong>&nbsp; [[${#authentication.principal.nickname}]]</strong> 
               </h2>
             </header>
             <a href="/logout">로그아웃</a>

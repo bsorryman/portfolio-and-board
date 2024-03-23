@@ -63,7 +63,6 @@
     <!-- Sidebar -->
     <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
     <!-- //Sidebar -->
-    </div>
 
   </div>
 
@@ -77,6 +76,10 @@
   $('#editBtn').on("click", function(){
 	  window.location.href="/board/free/password-check?type=edit&idx="+ [[${freeBoardPost.idx}]];
   })
+  
+  $('#deleteBtn').on("click", function(){
+	  window.location.href="/board/free/password-check?type=del&idx="+ [[${freeBoardPost.idx}]];
+  })  
   </script>
 </body>
 </html>

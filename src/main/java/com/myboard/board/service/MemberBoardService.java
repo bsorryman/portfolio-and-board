@@ -34,5 +34,41 @@ public class MemberBoardService {
     	
     	return memberBoardPost;
     }    
+    
+    public boolean writeMemberBoard(MemberBoardPost memberBoardPost) {
+    	boolean result = false;
+        
+    	int resultInt = memberBoardMapper.insertMemberBoard(memberBoardPost);
+    	
+    	if (resultInt == 1) {
+    		result = true;
+    	}
+    	
+    	return result;
+    }
+    
+    public boolean deleteMemberBoard(MemberBoardPost memberBoardPost) {
+    	boolean result = false;
+        
+    	int resultInt = memberBoardMapper.deleteMemberBoard(memberBoardPost);
+    	
+    	if (resultInt == 1) {
+    		result = true;
+    	}
+    	
+    	return result;    	
+    }
+    
+    public boolean editMemberBaord(MemberBoardPost memberBoardPost) {
+    	boolean result = false;
+    	
+    	int resultInt = memberBoardMapper.updateMemberBoard(memberBoardPost);
+    	
+    	if (resultInt == 1) {
+    		result = true;
+    	}
+    	
+    	return result;    
+    }
 
 }

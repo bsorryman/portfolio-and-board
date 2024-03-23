@@ -21,7 +21,7 @@ public interface MemberBoardMapper {
 
     MemberBoardPost selectMemberBoardDetail(int idx);
 
-    int deleteMemberBoard(@Param("idx") int idx, @Param("password") String password);
+    int deleteMemberBoard(MemberBoardPost memberBoardPost);
 
     int updateMemberBoard(MemberBoardPost memberBoardPost);
 

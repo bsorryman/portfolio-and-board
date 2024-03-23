@@ -1,12 +1,10 @@
-package com.myboard.board.repository;
+package com.myboard.notuse;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
-import com.myboard.board.domain.JspBoardPost;
 
 @Mapper
 public interface JspBoardListMapper {

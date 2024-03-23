@@ -9,6 +9,7 @@ public class FreeBoardPost {
     private String writer;
     private String password;
     private String contents;
+    private char deleteYn;
     private String createdAt;
     private int hits;
     

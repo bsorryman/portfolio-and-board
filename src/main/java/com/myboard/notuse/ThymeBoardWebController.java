@@ -1,4 +1,4 @@
-package com.myboard.board.controller;
+package com.myboard.notuse;
 
 import java.util.List;
 
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.myboard.board.domain.ThymeBoardPost;
-import com.myboard.board.service.ThymeBoardService;
 import com.myboard.board.util.Pager;
 
 @Controller

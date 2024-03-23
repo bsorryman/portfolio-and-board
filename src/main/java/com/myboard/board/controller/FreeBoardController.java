@@ -104,6 +104,8 @@ public class FreeBoardController {
             Message message = new Message();
             message.setMessage("비밀번호가 틀렸습니다. 잘못된 접근입니다.");
             message.setHref("/board/free/list");
+
+            return "thymeleaf/common/message";
     	}
     	
     	model.addAttribute("freeBoardPost", freeBoardPost);
@@ -114,7 +116,7 @@ public class FreeBoardController {
     @PostMapping("/edit")
     public String editFreeBoard(FreeBoardPost freeBoardPost, Model model) {
     	boolean result = freeBoardService.editFreeBaord(freeBoardPost);
-    	
+    	System.out.println(freeBoardPost.toString());
         Message message = new Message();
 
         if (result) {
@@ -127,6 +129,36 @@ public class FreeBoardController {
         model.addAttribute("message", message);
         return "thymeleaf/common/message";
         
+    }
+    
+    @PostMapping("/delete")
+    public String deleteFreeBoard(@RequestParam(required = true) int idx,
+    		@RequestParam(required = true) String password,
+    		Model model) {
+    	FreeBoardPost freeBoardPost = freeBoardService.getFreeBoardPost(idx);
+        Message message = new Message();
+
+    	// 접근 방지
+    	boolean resultCheck = freeBoardService.checkPassword(idx, password);
+    	if (!resultCheck) {
+            message.setMessage("비밀번호가 틀렸습니다. 잘못된 접근입니다.");
+            message.setHref("/board/free/list");
+
+            return "thymeleaf/common/message";
+    	}
+    	
+    	boolean result = freeBoardService.deleteFreeBoard(freeBoardPost);
+    	
+        if (result) {
+            message.setMessage("글 삭제가 완료되었습니다.");
+        } else {
+            message.setMessage("에러가 발생했습니다.");
+        }
+        
+        message.setHref("/board/free/list");
+        model.addAttribute("message", message);
+        
+        return "thymeleaf/common/message";
     }
     
     @GetMapping("/password-check")

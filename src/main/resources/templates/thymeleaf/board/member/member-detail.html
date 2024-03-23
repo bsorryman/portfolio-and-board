@@ -22,29 +22,15 @@
         <!-- Header -->
         <header id="header">
           <h2>회원게시판</h2>
-          <!-- 
-          <ul class="icons">
-            <li><a href="#" class="icon brands fa-twitter"><span
-                class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon brands fa-facebook-f"><span
-                class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon brands fa-snapchat-ghost"><span
-                class="label">Snapchat</span></a></li>
-            <li><a href="#" class="icon brands fa-instagram"><span
-                class="label">Instagram</span></a></li>
-            <li><a href="#" class="icon brands fa-medium-m"><span
-                class="label">Medium</span></a></li>
-          </ul>
-           -->
         </header>
 
         <!-- Content -->
-        <section th:object="${memberBoardDetail}"style="padding: 3em 0 3em 0;">
+        <section th:object="${memberBoardPost}"style="padding: 3em 0 3em 0;">
           <!-- Content -->
           <h3>[[*{title}]]</h3>
           <hr />
           <div class="row">
-            <span><b>작성자:&nbsp;</b>[[*{writer}]]&nbsp;&nbsp;|&nbsp;<b>작성일:</b> &nbsp;[[*{createdAt}]]</span>
+            <span><b>작성자:&nbsp;</b>[[*{nickname}]]&nbsp;&nbsp;|&nbsp;<b>작성일:</b> &nbsp;[[*{createdAt}]]</span>
           </div>
           <span><b>조회수:</b> [[*{hits}]]</span>
           <hr />
@@ -52,10 +38,12 @@
             <pre>[[*{contents}]]</pre>
           </div>
           <!-- Elements -->
-          <br>
-          <div class="table-wrapper">
-          </div>
-
+          <th:block th:if="${#authentication.principal.username} == *{username}" >
+          <ul class="actions">
+            <li><input type="button" value="수정" class="primary" id="editBtn" /></li>
+            <li><input type="button" value="삭제" class="primary" id="deleteBtn"/></li>
+          </ul>
+          </th:block>
         </section>
 
       </div>
@@ -63,7 +51,6 @@
     <!-- Sidebar -->
     <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
     <!-- //Sidebar -->
-    </div>
 
   </div>
 
@@ -73,6 +60,56 @@
   <script src="/assets/js/breakpoints.min.js"></script>
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script>
+  $('#editBtn').on("click", function(){
+	  var form = $("<form>")
+  	  .attr("method", "POST")
+      .attr("action", "/board/member/edit-form"); 
 
+      var params = {
+          idx: [[${memberBoardPost.idx}]],
+          username: '[[${#authentication.principal.username}]]'
+      };
+    
+      $.each(params, function(key, value) {
+          $("<input>")
+              .attr("type", "hidden")
+              .attr("name", key)
+              .attr("value", value)
+              .appendTo(form);
+      });
+    
+      $(document.body).append(form);
+      form.submit();	 	  
+      })
+  
+  $('#deleteBtn').on("click", function(){
+	  if(confirm('정말로 삭제하시겠습니까?')) {
+		  deleteMemberBoard();
+	  }
+  })  	  
+  
+  function deleteMemberBoard() {
+	  var form = $("<form>")
+	  	  .attr("method", "POST")
+	      .attr("action", "/board/member/delete"); 
+
+	  var params = {
+	      idx: [[${memberBoardPost.idx}]],
+	      username: '[[${#authentication.principal.username}]]'
+	  };
+
+	  $.each(params, function(key, value) {
+	      $("<input>")
+	          .attr("type", "hidden")
+	          .attr("name", key)
+	          .attr("value", value)
+	          .appendTo(form);
+	  });
+
+	  $(document.body).append(form);
+	  form.submit();	  
+  }
+  </script>
 </body>
 </html>

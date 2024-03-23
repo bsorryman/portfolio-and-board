@@ -1,12 +1,9 @@
-package com.myboard.board.service;
+package com.myboard.notuse;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.myboard.board.domain.ThymeBoardPost;
-import com.myboard.board.repository.ThymeBoardListMapper;
 
 @Service
 public class ThymeBoardService {

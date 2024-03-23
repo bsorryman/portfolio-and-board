@@ -41,7 +41,7 @@
         <!-- Content -->
         <section style="padding: 3em 0 3em 0;">
           <!-- Content -->
-          <p id="outline">회원만 사용할 수 있는 게시판입니다. 회원이 아닐 시 접근이 제한됩니다.</p>
+          <p id="outline">회원 전용 게시판입니다. 회원이 아닐 시 접근이 제한됩니다.</p>
 
           <hr />
 
@@ -69,7 +69,7 @@
                 <tr th:each="memberBoard: ${memberBoardList}">
                   <td>[[${memberBoard.idx}]]</td>
                   <td class="title" th:id="|detail${memberBoard.idx}|">[[${memberBoard.title}]]</td>
-                  <td>[[${memberBoard.writer}]]</td>
+                  <td>[[${memberBoard.nickname}]]</td>
                   <td>[[${memberBoard.createdAt}]]</td>
                   <td>[[${memberBoard.hits}]]</td>
                 </tr>
@@ -128,12 +128,15 @@
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
   <script>
-  $(function(){
-	  $(".title").on("click", function(){
-		  let id = $(this).attr("id").substring(6);  
-		  window.location.href = "/board/member/detail?idx=" + id;
-	  })
+  $(".title").on("click", function(){
+	  let id = $(this).attr("id").substring(6);  
+	  window.location.href = "/board/member/detail?idx=" + id;
+  })
+
+  $('#write').on("click", function() {
+      window.location.href = "/board/member/write-form";
   })  
+	  
   </script>
 </body>
 </html>

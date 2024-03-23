@@ -9,6 +9,7 @@
 		<result column="writer" property="writer" />
 		<result column="password" property="password" />
 		<result column="contents" property="contents" />
+		<result column="delete_yn" property="deleteYn" />
 		<result column="created_at" property="createdAt" />
 		<result column="hits" property="hits" />
 	</resultMap>	
@@ -23,6 +24,7 @@
 		<if test="field=='contents'">
 		AND contents LIKE CONCAT('%', #{keyword}, '%')
 		</if>
+		AND delete_yn = 'n'
 	</select>
 	
 	<!-- Select ThymeBoard Post list  -->
@@ -37,6 +39,7 @@
 		<if test="field=='contents'">
 		AND contents LIKE CONCAT('%', #{keyword}, '%')
 		</if>
+		AND delete_yn = 'n'
 		ORDER BY idx DESC
 		LIMIT #{offset}, #{size}		
 	</select>	
@@ -52,15 +55,16 @@
 		SELECT *
 		FROM tb_board_free
 		WHERE idx = #{idx}
+		AND delete_yn = 'n'
 	</select>
 	
 	<!-- Delete ThymeBoard Post -->
-	<delete id="deleteFreeBoard">
-		DELETE
-		FROM tb_board_free
+	<update id="deleteFreeBoard" parameterType="com.myboard.board.domain.FreeBoardPost">
+		UPDATE tb_board_free
+		SET delete_yn = 'y'
 		WHERE idx = #{idx}
 		AND password = #{password}
-	</delete>
+	</update>
 	
 	<!-- Update ThymeBoard Post -->
 	<update id="updateFreeBoard" parameterType="com.myboard.board.domain.FreeBoardPost">
@@ -68,6 +72,7 @@
 		SET title = #{title}, contents = #{contents}
 		WHERE idx = #{idx}	
 		AND password = #{password}
+		AND delete_yn = 'n'
 	</update>
 	
 	<!-- Add Hits of ThymeBoard Post -->
@@ -75,6 +80,7 @@
 		UPDATE tb_board_free
 		SET hits = IFNULL(hits, 0) + 1
 		WHERE idx = #{idx}	
+		AND delete_yn = 'n'
 	</update>
 	
 	<select id="checkPassword" resultType="int">
@@ -82,5 +88,6 @@
 		FROM tb_board_free
 		WHERE idx = #{idx}
 			AND password = #{password}
+			AND delete_yn = 'n'
 	</select>
 </mapper>

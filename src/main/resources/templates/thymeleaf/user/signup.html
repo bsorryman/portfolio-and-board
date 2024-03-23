@@ -31,12 +31,12 @@
             <div class="row gtr-uniform">
               <div class="col-12" style="display: flex;">
                 <input type="text" name="username" id="username"
-                  value="" placeholder="ID (영문 , 숫자 최대 10자)" required/>      
+                value="" placeholder="ID (영문 , 숫자  조합  6-10자)" required/>      
                  <button type="button" class="button" id="idCheck">중복확인</button>        
               </div>            
               <div class="col-12">
                 <input type="password" name="password" id="password"
-                  value="" placeholder="비밀번호 (영문 , 숫자 최대 10자)" required/>              
+                  value="" placeholder="비밀번호 (영문 , 숫자, 특수문자 모두 필수 8-12자)" required/>              
               </div> 
               <div class="col-12">
                 <input type="password" name="passwordCheck" id="passwordCheck"
@@ -189,6 +189,7 @@
 				  alert("사용할 수 있는 ID 입니다.")
 				  idCheck = true;
 				  $('#username').prop('readonly', true);
+				  $('#username').css('background', '#E2E2E2');
 			  } else {
 				  alert("이미 있는 ID 입니다.");
 				  idCheck = false;

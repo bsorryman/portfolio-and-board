@@ -21,32 +21,24 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>자유게시판</h2>
+          <h2>회원게시판</h2>
         </header>
 
         <!-- Content -->
-        <section th:object="${freeBoardPost}" style="padding: 3em 0 3em 0;">
-          <h3>글 수정</h3>
+        <section style="padding: 3em 0 3em 0;">
+          <h3>글 작성</h3>
           <hr>
-          <form method="post" action="/board/free/edit">
-          <input type="hidden" th:value="*{idx}" name="idx" id="idx"/>
-          <input type="hidden" th:value="*{password}" name="password" id="passoword">
+          <form method="post" action="/board/member/write">
+            <input type="hidden" id="username" name="username" th:value="${#authentication.principal.username}" />
+            <input type="hidden" id="nickname" name="nickname" th:value="${#authentication.principal.nickname}" />
             <div class="row gtr-uniform">
               <div class="col-12">
                 <input type="text" name="title" id="title"
-                  th:value="*{title}" placeholder="글 제목" required/>              
+                  value="" placeholder="글 제목" required/>              
               </div>            
-              <div class="col-6 col-12-xsmall">
-                <input type="text" name="writer" id="writer"
-                  th:value="*{writer}" placeholder="글쓴이" required/>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="password" placeholder="비밀번호" disabled
-                  style="background: #BDBDBD; color: #2E2E2E"/>
-              </div>
-              
               <div class="col-12">
-                <textarea name="contents" id="contents" placeholder="글을 작성하세요." style="height:300px; resize:none;" required>[[*{contents}]]</textarea>
+                <textarea name="contents" id="contents" placeholder="글을 작성하세요." style="height:300px; resize:none;" required>
+                </textarea>
               </div>
               
               <div class="col-12">
@@ -65,6 +57,7 @@
     <!-- Sidebar -->
     <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
     <!-- //Sidebar -->
+    </div>
 
   </div>
 

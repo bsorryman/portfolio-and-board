@@ -73,5 +73,17 @@ public class FreeBoardService {
 		
 		return result;
 	}
+	
+	public boolean deleteFreeBoard(FreeBoardPost freeBoardPost) {
+		boolean result = false;
+		
+		int resultInt = freeBoardMapper.deleteFreeBoard(freeBoardPost);
+
+		if (resultInt == 1) {
+            result = true;
+        }
+        
+        return result;		
+	}
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.myboard.board.repository.ThymeBoardListMapper">
+<mapper namespace="com.myboard.notuse.ThymeBoardListMapper">
 	
-	<resultMap id="thymeBoardPost" type="com.myboard.board.domain.ThymeBoardPost">
+	<resultMap id="thymeBoardPost" type="com.myboard.notuse.ThymeBoardPost">
 		<result column="idx" property="idx" />
 		<result column="title" property="title" />
 		<result column="writer" property="writer" />
@@ -27,7 +27,7 @@
 	
 	<!-- Select ThymeBoard Post list  -->
 	<select id="selectThymeBoardPostList" resultMap="thymeBoardPost">
-	    <bind name="offset" value="@com.myboard.board.domain.ThymeBoardPost@seekOffset(page, size)"/>
+	    <bind name="offset" value="@com.myboard.notuse.ThymeBoardPost@seekOffset(page, size)"/>
 	    SELECT *
 		FROM tb_thyme_board
 		WHERE 1 = 1
@@ -42,7 +42,7 @@
 	</select>	
 	
 	<!-- Insert ThymeBoard Post -->
-	<insert id="insertThymeBoardPost" parameterType="com.myboard.board.domain.ThymeBoardPost">
+	<insert id="insertThymeBoardPost" parameterType="com.myboard.notuse.ThymeBoardPost">
 		INSERT INTO tb_thyme_board(title, writer, password, contents)
 		VALUES(#{title}, #{writer}, #{password}, #{contents})
 	</insert>
@@ -63,7 +63,7 @@
 	</delete>
 	
 	<!-- Update ThymeBoard Post -->
-	<update id="updateThymeBoardPost" parameterType="com.myboard.board.domain.ThymeBoardPost">
+	<update id="updateThymeBoardPost" parameterType="com.myboard.notuse.ThymeBoardPost">
 		UPDATE tb_thyme_board
 		SET title = #{title}, contents = #{contents}
 		WHERE idx = #{idx}	

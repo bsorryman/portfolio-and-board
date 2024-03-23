@@ -1,11 +1,9 @@
-package com.myboard.board.repository;
+package com.myboard.notuse;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import com.myboard.board.domain.ThymeBoardPost;
 
 @Mapper
 public interface ThymeBoardListMapper {

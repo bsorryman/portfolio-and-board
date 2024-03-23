@@ -6,8 +6,8 @@
     <resultMap id="memberBoardPost" type="com.myboard.board.domain.MemberBoardPost">
         <result column="idx" property="idx" />
         <result column="title" property="title" />
-        <result column="writer" property="writer" />
-        <result column="password" property="password" />
+        <result column="username" property="username" />
+        <result column="nickname" property="nickname" />
         <result column="contents" property="contents" />
         <result column="created_at" property="createdAt" />
         <result column="hits" property="hits" />
@@ -23,6 +23,7 @@
         <if test="field=='contents'">
         AND contents LIKE CONCAT('%', #{keyword}, '%')
         </if>
+		AND delete_yn = 'n'
     </select>
     
     <!-- Select ThymeBoard Post list  -->
@@ -37,14 +38,15 @@
         <if test="field=='contents'">
         AND contents LIKE CONCAT('%', #{keyword}, '%')
         </if>
+		AND delete_yn = 'n'
         ORDER BY idx DESC
         LIMIT #{offset}, #{size}        
     </select>   
     
     <!-- Insert ThymeBoard Post -->
     <insert id="insertMemberBoard" parameterType="com.myboard.board.domain.MemberBoardPost">
-        INSERT INTO tb_board_member(title, writer, password, contents)
-        VALUES(#{title}, #{writer}, #{password}, #{contents})
+        INSERT INTO tb_board_member(title, username, nickname, contents)
+        VALUES(#{title}, #{username}, #{nickname}, #{contents})
     </insert>
     
     <!-- Select ThymeBoard Post (one) -->
@@ -52,14 +54,15 @@
         SELECT *
         FROM tb_board_member
         WHERE idx = #{idx}
+		AND delete_yn = 'n'
     </select>
     
     <!-- Delete ThymeBoard Post -->
-    <delete id="deleteMemberBoard">
-        DELETE
-        FROM tb_board_member
-        WHERE idx = #{idx}
-        AND password = #{password}
+    <delete id="deleteMemberBoard" parameterType="com.myboard.board.domain.MemberBoardPost">
+		UPDATE tb_board_member
+		SET delete_yn = 'y'
+		WHERE idx = #{idx}
+		AND username = #{username}
     </delete>
     
     <!-- Update ThymeBoard Post -->
@@ -67,7 +70,8 @@
         UPDATE tb_board_member
         SET title = #{title}, contents = #{contents}
         WHERE idx = #{idx}  
-        AND password = #{password}
+        AND username = #{username}
+		AND delete_yn = 'n'
     </update>
     
     <!-- Add Hits of ThymeBoard Post -->
@@ -75,5 +79,6 @@
         UPDATE tb_board_member
         SET hits = IFNULL(hits, 0) + 1
         WHERE idx = #{idx}  
+		AND delete_yn = 'n'
     </update>
 </mapper>

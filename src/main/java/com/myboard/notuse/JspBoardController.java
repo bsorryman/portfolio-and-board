@@ -1,4 +1,4 @@
-package com.myboard.board.controller;
+package com.myboard.notuse;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myboard.board.domain.JspBoardPost;
-import com.myboard.board.service.JspBoardService;
 import com.myboard.board.util.Pager;
 
 @RestController
