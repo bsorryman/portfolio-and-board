@@ -56,7 +56,7 @@
                     <input type="submit" value="회원가입" class="primary" />
                   </li>
                   <li>
-                    <input type="button" class="primary" value="구글 회원가입" id="googleSignup">
+                    <input type="button" class="primary" value="구글 회원가입" id="googleSignUp">
                   </li>
                 </ul>
             
@@ -123,19 +123,20 @@
       if (error=='true') {
           alert('회원가입에 실패했습니다.');
       }
-
-      let url = 'https://accounts.google.com/gsi/select?' +
-      'client_id='+ clientId +
-      '&ux_mode=redirect'+
-      '&login_uri='+ 'http://localhost:8080/signup/google' +
-      '&ui_mode=card' +
-//       '&as=fdTZEXPq87FCWLjHP%2FR%2F2Q+'+
-      '&g_csrf_token=g_csrf_token' +
-      '&origin=http://localhost:8080';
       
-      $('#googleSignup').on("click", function(){
-          window.location.href= url;
-      })      
+      $('#googleSignUp').on("click", function(){
+          $.ajax({
+              url: "/singup/oauth2/google",
+              method: "POST",
+              success: function(url) {
+                  window.location.href = url;
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                  console.error("Error:", textStatus, errorThrown);
+              }
+          });   
+          
+      }) 
   })
   
   $('#signUp').on("click", function(){

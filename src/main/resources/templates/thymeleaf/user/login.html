@@ -82,6 +82,7 @@
   var clientId = $('#clientId').val();
   
   window.onload = function () {
+      /*
       google.accounts.id.initialize({
           client_id: clientId,
           ux_mode: 'redirect',
@@ -89,7 +90,6 @@
           nonce: 'thisisnonce'
       });
       
-      /*
       google.accounts.id.renderButton(
           document.getElementById("googleRendererDiv"),
           { 
@@ -114,7 +114,17 @@
       }
 
       $('#customLogin').on("click", function(){
-          window.location.href= url;
+          $.ajax({
+              url: "/login/oauth2/google",
+              method: "POST",
+              success: function(url) {
+                  window.location.href = url;
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                  console.error("Error:", textStatus, errorThrown);
+              }
+          });   
+          
       })
       
       $('#signUp').on("click", function(){
