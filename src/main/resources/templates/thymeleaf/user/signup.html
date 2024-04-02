@@ -125,17 +125,7 @@
       }
       
       $('#googleSignUp').on("click", function(){
-          $.ajax({
-              url: "/singup/oauth2/google",
-              method: "POST",
-              success: function(url) {
-                  window.location.href = url;
-              },
-              error: function(jqXHR, textStatus, errorThrown) {
-                  console.error("Error:", textStatus, errorThrown);
-              }
-          });   
-          
+          window.location.href = "/signup/google/auth";          
       }) 
   })
   

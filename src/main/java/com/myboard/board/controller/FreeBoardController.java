@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myboard.board.domain.FreeBoardPost;
 import com.myboard.board.service.FreeBoardService;
-import com.myboard.board.util.AesUtil;
 import com.myboard.board.util.Message;
 import com.myboard.board.util.Pager;
+import com.myboard.util.AesUtil;
 
 @Controller
 @RequestMapping("/board/free")

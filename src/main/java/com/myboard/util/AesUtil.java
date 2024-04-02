@@ -1,4 +1,4 @@
-package com.myboard.board.util;
+package com.myboard.util;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

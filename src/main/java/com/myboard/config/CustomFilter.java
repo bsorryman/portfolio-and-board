@@ -18,8 +18,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.myboard.board.util.AesUtil;
 import com.myboard.user.service.UserDetailsServiceImpl;
+import com.myboard.util.AesUtil;
 
 @Component
 public class CustomFilter extends OncePerRequestFilter {

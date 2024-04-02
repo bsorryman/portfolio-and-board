@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.myboard.board.domain.FreeBoardPost;
 import com.myboard.board.repository.FreeBoardMapper;
-import com.myboard.board.util.AesUtil;
+import com.myboard.util.AesUtil;
 
 @Service
 public class FreeBoardService {

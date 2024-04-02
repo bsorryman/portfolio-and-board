@@ -26,9 +26,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.myboard.board.util.AesUtil;
 import com.myboard.user.dto.UserDTO;
 import com.myboard.user.service.UserService;
+import com.myboard.util.AesUtil;
 
 @Controller
 @RequestMapping("/login")
