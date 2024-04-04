@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>토이프로젝트 / 게시판 웹</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <h2>토이프로젝트 / 게시판 웹</h2>
+        </header>
+        <!-- Banner -->
+        <section id="banner">
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개요</h2>
+            </header>             
+              <h3>링크</h3>
+              <ul>
+                <li><b>Git</b>: <a href="https://github.com/bsorryman/myboard" target="_blank">myboard</a></li>
+              </ul>        
+              <hr>          
+              <h3>개발</h3>
+              <ul>
+                <li><b>개발 기간</b>: 24.03-24.04<br></li>
+                <li><b>프로젝트 인원</b>: 1인<br></li>
+                <li><b>사용 기술</b>: Spring Boot, MariaDB, AWS Ec2, AWS RDS</li>
+                <li><b>사용 언어</b>: Java, JavaScript, HTML</li>
+              </ul>        
+              <hr>
+              <h3>기능</h3>
+              <ul>
+                <li>회원 로그인/로그아웃(Spring Security)</li>
+                <li>구글 소셜 로그인(OAuth2)</li>
+                <li>CRUD 게시판</li>
+              </ul>  
+          </div>
+          <a href="/images/portfolio/myboard/freeboard-main.png" target="_blank" class="image" style="width:65%; height:65%">
+            <img class="image" src="/images/portfolio/myboard/freeboard-main.png" alt="" />
+          </a>
+        </section>
+        <section>
+        <div class="content">
+          <header class="major" style="margin-top:-3em;">
+            <h2>상세</h2>
+          </header>        
+          <h3>환경</h3>
+          <ul>
+            <li>Spring Boot v2.7.18</li>
+            <li>Java v1.8</li>
+            <li>MariaDB v10.11.6</li>
+          </ul>               
+          <h3>개발</h3>
+          <ul>
+            <li>무료 HTML, CSS 탬플릿으로 UI 개발</li>
+            <li>Spring Security를 통한 회원 관리 및 접근 제한</li>
+            <li>암호화된 쿠키를 통한 자동로그인</li>
+            <li>구글 OAuth API를 활용한 소셜 로그인 구현</li>
+            <li>게시판 목록 페이징, 게시물 쓰기/읽기/수정/삭제/조회수 기능 개발</li>
+            <li>모든 비밀번호 암호화</li>
+            <li>접근 제한 기능은 비밀번호로 인증 요구</li>
+            <li>AWS 호스팅</li>
+          </ul>  
+        </div>          
+        </section>
+        
+        <section>
+          <header class="major" style="margin-top:-3em;">
+            <h2>스크린샷</h2>
+          </header>    
+          <div class="posts">
+            <article>
+              <div class="image-box">
+                <a href="/images/portfolio/myboard/freeboard-main.png" target="_blank" class="image" style="">
+                  <img src="/images/portfolio/myboard/freeboard-main.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>자유게시판 목록(Read)</h3>
+            </article>             
+            <article>
+              <div class="image-box">
+                <a href="/images/portfolio/myboard/freeboard-view.png" target="_blank" class="image" style="">
+                  <img src="/images/portfolio/myboard/freeboard-view.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>자유게시판 상세보기(Read)</h3>
+            </article>  
+            <article>
+              <div class="image-box">
+                <a href="/images/portfolio/myboard/memberboard-write.png" target="_blank" class="image" style="">
+                  <img src="/images/portfolio/myboard/memberboard-write.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>회원게시판 글 작성(Create)</h3>
+            </article>
+            <article>
+              <div class="image-box">
+                <a href="/images/portfolio/myboard/memberboard-update.png" target="_blank" class="image" style="">
+                  <img src="/images/portfolio/myboard/memberboard-update.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>회원게시판 글 수정(Update)</h3>
+            </article>                                            
+            <article>
+              <div class="image-box">
+                <a href="/images/portfolio/myboard/freeboard-delete.png" target="_blank" class="image" style="">
+                  <img src="/images/portfolio/myboard/freeboard-delete.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>자유게시판 삭제(Delete)</h3>
+            </article>
+            <article>
+              <div class="image-box">
+                <a href="/images/portfolio/myboard/google-login.png" target="_blank" class="image" style="">
+                  <img src="/images/portfolio/myboard/google-login.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>구글 소셜 로그인</h3>
+            </article>   
+          </div>
+        </section>        
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

@@ -27,6 +27,7 @@ public class SecurityConfig {
         .addFilterBefore(customFilter, BasicAuthenticationFilter.class) // 인증 전 필터
         .authorizeRequests() // 접근 관련
             .antMatchers("/assets/**", "/images/**",  // resources
+            		"/portfolio/**", //portfolio page
                     "/login/**", "/signup/**",  // member
                     "/", // main 
                     "/jsp-board/**", "/api/**", // 구버전 게시판  

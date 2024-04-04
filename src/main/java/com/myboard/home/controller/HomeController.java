@@ -10,13 +10,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String getHome() {
 		
-		return "redirect:/board/free/list";
-	}
-	
-	@GetMapping("/index")
-	public String getIndex() {
-	    
-	    return "thymeleaf/index";
+		return "redirect:/portfolio/home";
 	}
 	
 }

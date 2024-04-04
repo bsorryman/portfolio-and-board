@@ -6,7 +6,7 @@
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Elements - Editorial by HTML5 UP</title>
+<title>회원게시판</title>
 <meta charset="utf-8" />
 <meta name="viewport"
   content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -78,29 +78,29 @@
             <div class="row">
               <ul th:object="${pager}" class="pagination" style="margin-left: 1.5em;">
                 <li>
-                  <a href="javascript:void(0)" class="button" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{/board/member/list?page=1#outline}">
+                  <a href="javascript:void(0)" class="button" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{/board/member/list?page=1}">
                     First
                   </a>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" class="button small" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{prevPage}#outline|}">
+                  <a href="javascript:void(0)" class="button small" th:classappend="*{block == 1} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{prevPage}|}">
                    <<
                   </a>
                 </li>
                 <th:block th:each="pageNum : *{#numbers.sequence(bsPage,bePage)}">
                   <li>
-                    <a href="javascript:void(0)" class="page" th:classappend="*{page} == ${pageNum} ? 'active' : ''" th:href="@{|/board/member/list?page=${pageNum}#outline|}">
+                    <a href="javascript:void(0)" class="page" th:classappend="*{page} == ${pageNum} ? 'active' : ''" th:href="@{|/board/member/list?page=${pageNum}|}">
                       [[${pageNum}]]
                     </a>
                   </li>
                 </th:block>
                 <li>
-                  <a href="javascript:void(0)" class="button small" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{nextPage}#outline|}">
+                  <a href="javascript:void(0)" class="button small" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{nextPage}|}">
                     >>
                   </a>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" class="button" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{totalPage}#outline|}">
+                  <a href="javascript:void(0)" class="button" th:classappend="*{block == totalBlock} ? 'disabled' : ''" th:href="@{|/board/member/list?page=*{totalPage}|}">
                     Last
                   </a>
                 </li>
