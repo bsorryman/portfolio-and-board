@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Business Project / Search.Mol-In 웹 서비스</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <h2>Business Project / Roppor 웹 서비스</h2>
+        </header>
+        <!-- Banner -->
+        <section id="banner">
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개요</h2>
+            </header>       
+            <p>
+            드론 군집 소프트웨어인 Roppor 관련 웹 서비스입니다. 주로 Roppor 관련 랜딩 페이지로 이뤄져있으며,
+            소프트웨어 다운로드 링크를 메일로 발송하는 기능이 있습니다. Static 페이지 위주로만 관리하는 서버와
+            공지사항, 블로그 포스팅, 다운로드를 관리하는 API 서버로 나뉘어있습니다.
+            </p>
+            <ul>
+              <li><a href="https://www.roppor.com/" target="_blank">Roppor</a></li>
+              <br>
+              <li><b>유지보수</b><br></li>
+              <li><b>역할</b>: Back-End, Front-End 기능 개발</li>
+              <li><b>사용 기술</b>: Spring Boot, MariaDB, AWS EC2/SES</li>
+              <li><b>사용 언어</b>: Java, JavaScript, HTML </li>
+            </ul>        
+          </div>
+          <a href="/images/project/roppor/roppor-main.png" target="_blank" class="image" 
+            style="margin-left: 0; width:50%; height:50%">
+            <img class="image" src="/images/project/roppor/roppor-main.png" alt="" />
+          </a>
+        </section>
+        <section>
+        <div class="content">
+          <header class="major" style="margin-top:-3em;">
+            <h2>상세</h2>
+          </header>       
+          <h3>환경</h3>
+          <ul>
+            <li><b>Spring Boot</b> v1.5.10</li>
+            <li><b>Java</b> v1.8</li>
+            <li><b>MariaDB</b> v10.6.14</li>
+          </ul>  
+          <h3>담당 개발 기능</h3>
+          <ul>
+            <li>소프트웨어 다운로드 링크 이메일 발송 기능</li>
+            <li>이메일 검증 API 적용 (MailBoxValidator)</li>
+            <li>랜딩 페이지 서버 업로드</li>
+          </ul>  
+        </div>          
+        </section>
+        
+        <section>
+          <header class="major" style="margin-top:-3em;">
+            <h2>스크린샷</h2>
+          </header>    
+          <div class="posts">
+            <article>
+              <div class="image-box">
+                <a href="/images/project/roppor/roppor-download.png" target="_blank" class="image" style="">
+                  <img src="/images/project/roppor/roppor-download.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>다운로드 링크 발송 및 이메일 검증</h3>
+            </article>              
+            <article>
+              <div class="image-box">
+                <a href="/images/project/roppor/roppor-landing.png" target="_blank" class="image" style="">
+                  <img src="/images/project/roppor/roppor-landing.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>랜딩 페이지</h3>
+            </article>
+          </div>
+        </section>        
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

@@ -10,7 +10,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String getHome() {
 		
-		return "redirect:/portfolio/home";
+		return "redirect:/portfolio";
 	}
 	
 }

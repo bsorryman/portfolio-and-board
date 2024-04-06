@@ -6,7 +6,7 @@
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>회원게시판</title>
+<title>Member Board</title>
 <meta charset="utf-8" />
 <meta name="viewport"
   content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -21,7 +21,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>회원게시판</h2>
+          <h2>Member Board</h2>
           <!-- 
           <ul class="icons">
             <li><a href="#" class="icon brands fa-twitter"><span
@@ -40,12 +40,9 @@
 
         <!-- Content -->
         <section style="padding: 3em 0 3em 0;">
-          <!-- Content -->
-          <p id="outline">회원 전용 게시판입니다. 회원이 아닐 시 접근이 제한됩니다.</p>
-
-          <hr />
-
           <!-- Elements -->
+          <hr />
+          
           <div class="table-wrapper">
             <table id="memberBoardTable">
               <colgroup>
@@ -58,10 +55,10 @@
               <thead>
                 <tr>
                   <th>NO.</th>
-                  <th>제목</th>
-                  <th>작성자</th>
-                  <th>작성일</th>
-                  <th>조회수</th>
+                  <th>Title</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Hits</th>
                   
                 </tr>
               </thead>

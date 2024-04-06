@@ -6,18 +6,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/portfolio")
 public class PortfolioController {
 	
-	@GetMapping("/home")
+	@GetMapping("/portfolio")
 	public String getPortfolioHome() {
 		
 		return "thymeleaf/portfolio/index";
 	}
 	
-	@GetMapping("/{project}")
+	@GetMapping("/project/{project}")
 	public String getRecipeBagePage(@PathVariable("project") String project) {
 		
-		return "thymeleaf/portfolio/" + project;
+		return "thymeleaf/project/" + project;
 	}
 }

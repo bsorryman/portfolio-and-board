@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>University Project / 통합 금융상품 검색 웹 서비스</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <h2>University Project / 통합 금융상품 검색 웹 서비스</h2>
+        </header>
+        <!-- Banner -->
+        <section id="banner">
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개요</h2>
+            </header>        
+            <p>직접 만든 금융 상품 DB 내에서 상품을 검색하고 비교하는 대학교 실습 프로젝트입니다. 예금, 적금 등 
+                                상품을 분류하고, 회원가입 시 즐겨찾기 기능을 통해 목록을 저장하도록 했습니다. 또한 회원가입 시 
+                                입력했던 정보를 기반으로 나이, 성별, 직업 별로 어떤 상품들을 가장 많이 즐겨찾기 했는지 통계를 내어
+                                원 그래프로 비교할 수 있습니다.  </p>     
+            <ul>
+              <li><b>개발 기간</b>: 19.09-19.12<br></li>
+              <li><b>프로젝트 인원</b>: 4인<br></li>
+              <li><b>역할</b>: 조장, 기능 개발, 호스팅</li>
+              <li><b>사용 기술</b>: Wordpress, MySQL, cafe24</li>
+              <li><b>사용 언어</b>: PHP, JavaScript, HTML</li>
+            </ul>        
+          </div>
+          <a href="/images/project/money/money-main.png" target="_blank" class="image" 
+            style="margin-left: 0; width:50%; height:50%">
+            <img class="image" src="/images/project/money/money-main.png" alt="" />
+          </a>          
+        </section>
+        <section>
+        <div class="content">
+          <header class="major" style="margin-top:-3em;">
+            <h2>상세</h2>
+          </header>        
+          <h3>환경</h3>
+          <ul>
+            <li>Wordpress</li>
+            <li>MySQL</li>
+          </ul>               
+          <h3>담당 개발 기능</h3>
+          <ul>
+            <li>Wordpress Admin을 통한 </li>
+            <li>PHP로 DB 접속 환경 및 쿼리문 설계</li>
+            <li>Javascript 및 HTML로 검색 화면 기능 개발</li>
+            <li>회원가입/로그인/회원 정보 관리</li>
+            <li>즐겨찾기 및 통계 기능</li>
+          </ul>  
+        </div>          
+        </section>
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

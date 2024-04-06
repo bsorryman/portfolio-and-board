@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Business Project / 중국용 Search.Mol-In 웹 서비스</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <h2>Business Project / 중국용 Search.Mol-In 웹 서비스</h2>
+        </header>
+        <!-- Banner -->
+        <section id="banner">
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개요</h2>
+            </header>         
+            <p>
+                              중국에서 서비스 하기위한 Searh.Mol-In 웹 서비스입니다. 기존 서비스와 동일하게 화학 데이터를 제공하고있습니다.
+                              회원 등록하고 라이센스를 발급받으면 범위 내에서 화학 데이터를 열람하고 다운로드 받을 수 있습니다. 중국 외 IP는
+                              기존 Search.Mol-In 웹 서비스로 Redirect 시킵니다.
+            </p>    
+            <ul>
+              <li><a href="http://search.imolinstincts.com.cn/" target="_blank">China Search.Mol-In</a>(중국 IP로만 접근 가능)</li>
+              <br>
+              <li><b>유지 보수</b></li>
+              <li><b>역할</b>: Back-End, Front-End 기능 개발</li>
+              <li><b>사용 기술</b>: Spring, MariaDB, PostgreSQL</li>
+              <li><b>개발 언어</b>: Java, JavaScript, HTML </li>
+            </ul>        
+          </div>
+          <a href="/images/project/china-search/china-search-main.png" target="_blank" class="image" 
+            style="margin-left: 0; width:50%; height:50%">
+            <img class="image" src="/images/project/china-search/china-search-main.png" alt="" />
+          </a>
+        </section>
+        <section>
+        <div class="content">
+          <header class="major" style="margin-top:-3em;">
+            <h2>상세</h2>
+          </header>       
+          <h3>환경</h3>
+          <ul>
+            <li><b>Spring</b> v3.1.1</li>
+            <li><b>Java</b> v1.6</li>
+            <li><b>MySQL</b> v5.7.44</li>
+          </ul>  
+          <h3>담당 개발 기능</h3>
+          <ul>
+            <li>중국 외 IP 인터셉터 처리 (기존 Search.Mol-In으로 Redirect)</li>
+            <li>디자인 수정 반영, 이슈 수정 등 유지보수</li>
+          </ul>  
+        </div>          
+        </section>
+        
+        <section>
+          <header class="major" style="margin-top:-3em;">
+            <h2>스크린샷</h2>
+          </header>    
+          <div class="posts">
+            <article>
+              <div class="image-box">
+                <a href="/images/project/china-search/china-search-search.png" target="_blank" class="image" style="">
+                  <img src="/images/project/china-search/china-search-search.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>검색 결과 화면</h3>
+            </article>              
+            <article>
+              <div class="image-box">
+                <a href="/images/project/china-search/china-search-chem.png" target="_blank" class="image" style="">
+                  <img src="/images/project/china-search/china-search-chem.png" alt="" class="image-thumbnail"/>
+                </a>              
+              </div>
+              <br>
+              <h3>화합물 상세 페이지</h3>
+            </article>
+          </div>
+        </section>        
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>
