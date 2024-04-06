@@ -2,16 +2,18 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:fragment="sidebar"
       lang="ko">
-      
-    <div id="sidebar">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+  <div id="sidebar">
       <div class="inner">
         <!-- Search -->
+        <!-- 
         <section id="search" class="alt" style="margin: -2.22222em 0 2em -2.22222em;">
           <form method="post" action="#">
             <input type="text" name="query" id="query"
               placeholder="Search" />
           </form>
         </section>
+        -->
         <!-- Member info -->             
         
         <section>
@@ -46,7 +48,7 @@
             </li>            
             <li class="menuLi" id="projectMenu"><span class="opener">회사프로젝트</span>
               <ul>
-                <li><a href="#">Mol-Instincrts</a></li>
+                <li><a href="/portfolio/molin">Mol-Instincrts</a></li>
                 <li><a href="#">Search: Mol-Instincts</a></li>
                 <li><a href="#">Roppor</a></li>
                 <li><a href="#">사내 관리자 사이트</a></li>                
@@ -118,7 +120,6 @@
             -->
           </ul>
         </section>
-<!--         <span id="showMenu">SHOW</span> -->
         <!-- Footer -->
         <footer id="footer">
           <p class="copyright">
@@ -130,23 +131,3 @@
 
       </div>
     </div>
-    <script>
-    let showMenu = document.querySelector('#showMenu');
-    let hideMenu = document.querySelectorAll('#homeMenu, #projectMenu');
-
-    showMenu.addEventListener('click', function() {
-        
-        if (showMenu.textContent == 'SHOW') {
-            hideMenu.forEach(function(element){
-                element.style.visibility = "visible";
-            })            
-            showMenu.textContent = 'HIDE'; 
-        } else {
-            hideMenu.forEach(function(element){
-                element.style.visibility = "hidden";
-            })       
-            showMenu.textContent = 'SHOW'; 
-        }
-        
-    });
-    </script>

@@ -161,16 +161,16 @@ public class GoogleOAuthController {
                 return "redirect:" + uri;
             } else {
                 
-                return "redirect:/login?error=true";
+                return "redirect:/login?type=no";
             }            
         } catch (UsernameNotFoundException e) {
             //회원등록되지 않은 구글 계정
             
-            return "redirect:/login?error=true";
+            return "redirect:/login?type=no";
         } catch (Exception e) {
             e.printStackTrace();
             
-            return "redirect:/login?error=true";
+            return "redirect:/login?type=error";
         }
         
     }  
@@ -205,8 +205,8 @@ public class GoogleOAuthController {
             userDTO.setSns("google");
             userDTO.setPicture(resultEntity.getBody().getPicture());
             
-            if (!userService.registerUser(userDTO)) {
-                return "redirect:/login";
+            if (userService.registerUser(userDTO)) {
+                return "redirect:/login?type=signup";
             } else {
                 return "redirect:/";
             }

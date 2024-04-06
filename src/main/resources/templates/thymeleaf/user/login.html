@@ -106,12 +106,20 @@
   $(function(){
       var queryString = window.location.search;
       var params = new URLSearchParams(queryString);
-      var error = params.get('error');
+      var type = params.get('type');
       var logout = params.get('logout');
       
-      if (error=='true') {
+      if (type=='error') {
           alert('ID 혹은 비밀번호가 맞지 않습니다.');
       }
+      
+      if (type=='signup') {
+          alert('회원가입이 완료되었습니다.');
+      }      
+      
+      if (type=='no') {
+          alert('가입되지 않은 계정입니다.');
+      }           
 
       $('#customLogin').on("click", function(){
           window.location.href = '/login/google/auth';

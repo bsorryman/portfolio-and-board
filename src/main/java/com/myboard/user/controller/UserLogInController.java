@@ -172,16 +172,16 @@ public class UserLogInController {
                 return "redirect:" + uri;
             } else {
             	
-                return "redirect:/login?error=true";
+                return "redirect:/login?type=error";
             }            
         } catch (UsernameNotFoundException e) {
             //회원등록되지 않은 구글 계정
             
-            return "redirect:/login?error=true";
+            return "redirect:/login?type=no";
         } catch (Exception e) {
             e.printStackTrace();
             
-            return "redirect:/login?error=true";
+            return "redirect:/login?type=error";
         }
         
     }    

@@ -26,7 +26,7 @@ public class SecurityConfig {
         http
         .addFilterBefore(customFilter, BasicAuthenticationFilter.class) // 인증 전 필터
         .authorizeRequests() // 접근 관련
-            .antMatchers("/assets/**", "/images/**",  // resources
+            .antMatchers("/assets/**", "/images/**", "/pdf/**", "/favicon.ico",  // resources
             		"/portfolio/**", //portfolio page
                     "/login/**", "/signup/**",  // member
                     "/", // main 
@@ -42,7 +42,7 @@ public class SecurityConfig {
             .passwordParameter("password")
             .successHandler(new CustomLoginSuccessHandler()) // 로그인 성공시 핸들러
             .permitAll() //로그인 페이지에 대한 모든 접근 허용
-            .failureUrl("/login?error=true") 
+            .failureUrl("/login?type=error") 
             .and()
         .logout() // 로그아웃 관련
             .logoutUrl("/logout") // 로그아웃 URL
