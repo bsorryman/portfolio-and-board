@@ -1461,8 +1461,7 @@ table {
       background-color: rgba(230, 235, 237, 0.25); }
     table tbody tr:hover {
     border-bottom-color: #3E8EDE;
-    color: #3E8EDE !important; 
-    background-color: rgba(245, 106, 106, 0.05); }
+    color: #3E8EDE !important;}
   table td {
     padding: 0.75em 0.75em; }
     td.title:hover {
@@ -1529,13 +1528,13 @@ button,
   input[type="button"]:hover,
   button:hover,
   .button:hover {
-    background-color: rgba(245, 106, 106, 0.05); }
+    background-color: #E7EDF7; }
   input[type="submit"]:active,
   input[type="reset"]:active,
   input[type="button"]:active,
   button:active,
   .button:active {
-    background-color: rgba(245, 106, 106, 0.15); }
+    background-color: #3E8EDE; }
   input[type="submit"].icon:before,
   input[type="reset"].icon:before,
   input[type="button"].icon:before,
@@ -1581,7 +1580,7 @@ button,
     input[type="button"].primary:active,
     button.primary:active,
     .button.primary:active {
-      background-color: #f45c5c; }
+      background-color: #3E8EDE; }
   input[type="submit"].disabled, input[type="submit"]:disabled,
   input[type="reset"].disabled,
   input[type="reset"]:disabled,
@@ -2195,10 +2194,19 @@ button,
         margin: 0 0 4em 0;
         height: 25em;
         max-height: 50vh;
-        min-height: 18em;
         width: 100%; } }
   @media screen and (orientation: portrait) and (max-width: 480px) {
     #banner .image {
+      max-height: 35vh; }
+    #banner .portfolio-image {
+      width: 50% !important;
+      max-height: 35vh; 
+      text-align: center;
+      margin: auto;
+      margin-bottom: 2em;}
+    #banner .project-image {
+      height: 100%;
+      margin-left: 0;
       max-height: 35vh; } }
 
 /* Footer */
@@ -2288,17 +2296,3 @@ button,
     margin-top: 0;
     padding-top: 0; }
     
-.image-box {
-    width:485px;
-    height:275px;
-    overflow:hidden;
-    margin:0 auto;
-    border-radius: 0.375em;
-    
-}
-
-.image-thumbnail {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}    

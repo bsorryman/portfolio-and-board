@@ -5,13 +5,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>University Project / 통합 금융상품 검색 웹 서비스</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-  content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/assets/css/main.css" />
-</head>
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='University Project / 통합 금융상품 검색 웹 서비스')}"></th:block>
+<!-- //Header -->
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -41,8 +37,7 @@
               <li><b>사용 언어</b>: PHP, JavaScript, HTML</li>
             </ul>        
           </div>
-          <a href="/images/project/money/money-main.png" target="_blank" class="image" 
-            style="margin-left: 0; width:50%; height:50%">
+          <a href="/images/project/money/money-main.png" target="_blank" class="project-image image"> 
             <img class="image" src="/images/project/money/money-main.png" alt="" />
           </a>          
         </section>

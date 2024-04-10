@@ -5,13 +5,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Toy Project / Portfolio & Board</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-  content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/assets/css/main.css" />
-</head>
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Toy Project / Portfolio & Board')}"></th:block>
+<!-- //Header -->
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -46,8 +42,7 @@
               <li><b>사용 언어</b>: Java, JavaScript, HTML</li>
             </ul>        
           </div>
-          <a href="/images/project/myboard/freeboard-main.png" target="_blank" class="image" 
-            style="margin-left: 0; width:50%; height:50%">
+          <a href="/images/project/myboard/freeboard-main.png" target="_blank" class="project-image image"> 
             <img class="image" src="/images/project/myboard/freeboard-main.png" alt="" />
           </a>
         </section>
@@ -82,56 +77,44 @@
           </header>    
           <div class="posts">
             <article>
-              <div class="image-box">
                 <a href="/images/project/myboard/freeboard-main.png" target="_blank" class="image" style="">
-                  <img src="/images/project/myboard/freeboard-main.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/myboard/freeboard-main.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>자유게시판 목록(Read)</h3>
             </article>             
             <article>
-              <div class="image-box">
                 <a href="/images/project/myboard/freeboard-view.png" target="_blank" class="image" style="">
-                  <img src="/images/project/myboard/freeboard-view.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/myboard/freeboard-view.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>자유게시판 상세보기(Read)</h3>
             </article>  
             <article>
-              <div class="image-box">
                 <a href="/images/project/myboard/memberboard-write.png" target="_blank" class="image" style="">
-                  <img src="/images/project/myboard/memberboard-write.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/myboard/memberboard-write.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>회원게시판 글 작성(Create)</h3>
             </article>
             <article>
-              <div class="image-box">
                 <a href="/images/project/myboard/memberboard-update.png" target="_blank" class="image" style="">
-                  <img src="/images/project/myboard/memberboard-update.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/myboard/memberboard-update.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>회원게시판 글 수정(Update)</h3>
             </article>                                            
             <article>
-              <div class="image-box">
                 <a href="/images/project/myboard/freeboard-delete.png" target="_blank" class="image" style="">
-                  <img src="/images/project/myboard/freeboard-delete.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/myboard/freeboard-delete.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>자유게시판 삭제(Delete)</h3>
             </article>
             <article>
-              <div class="image-box">
                 <a href="/images/project/myboard/google-login.png" target="_blank" class="image" style="">
-                  <img src="/images/project/myboard/google-login.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/myboard/google-login.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>구글 소셜 로그인</h3>
             </article>   

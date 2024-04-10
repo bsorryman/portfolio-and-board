@@ -5,13 +5,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>University Project / 팩멘 게임 강화학습 시뮬레이션</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-  content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/assets/css/main.css" />
-</head>
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='University Project / 팩멘 게임 강화학습 시뮬레이션')}"></th:block>
+<!-- //Header -->
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -42,8 +38,7 @@
               <li><b>개발 언어</b>: Python</li>
             </ul>        
           </div>
-          <a href="/images/project/pacman/pacman-main.png" target="_blank" class="image" 
-            style="margin-left: 0; margin-right: 0; width:40%; height:40%">
+          <a href="/images/project/pacman/pacman-main.png" target="_blank" class="project-image image"> 
             <img class="image" src="/images/project/pacman/pacman-main.png" alt="" />
           </a>          
         </section>

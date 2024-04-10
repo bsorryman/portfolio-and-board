@@ -5,13 +5,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Business Project / Mol-Instincts 웹 서비스</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-  content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/assets/css/main.css" />
-</head>
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Business Project / Mol-Instincts 웹 서비스')}"></th:block>
+<!-- //Header -->
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -43,8 +39,7 @@
               <li><b>사용 언어</b>: Java, JavaScript, HTML </li>
             </ul>        
           </div>
-          <a href="/images/project/molin/molin-main.png" target="_blank" class="image" 
-            style="margin-left: 0; width:50%; height:50%">
+          <a href="/images/project/molin/molin-main.png" target="_blank" class="project-image image"> 
             <img class="image" src="/images/project/molin/molin-main.png" alt="" />
           </a>
         </section>
@@ -80,47 +75,37 @@
           </header>    
           <div class="posts">
             <article>
-              <div class="image-box">
                 <a href="/images/project/molin/molin-search.png" target="_blank" class="image" style="">
-                  <img src="/images/project/molin/molin-search.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/molin/molin-search.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>검색 결과 화면</h3>
             </article>              
             <article>
-              <div class="image-box">
                 <a href="/images/project/molin/molin-chem.png" target="_blank" class="image" style="">
-                  <img src="/images/project/molin/molin-chem.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/molin/molin-chem.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>화합물 상세 페이지</h3>
             </article>
             <article>
-              <div class="image-box">
                 <a href="/images/project/molin/molin-pay.png" target="_blank" class="image" style="">
-                  <img src="/images/project/molin/molin-pay.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/molin/molin-pay.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>화합물 데이터 결제 페이지</h3>
             </article>   
             <article>
-              <div class="image-box">
                 <a href="/images/project/molin/molin-property.png" target="_blank" class="image" style="">
-                  <img src="/images/project/molin/molin-property.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/molin/molin-property.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>화합물 물성 랜딩 페이지(미들 페이지)</h3>
             </article>     
             <article>
-              <div class="image-box">
                 <a href="/images/project/molin/molin-s3.png" target="_blank" class="image" style="">
-                  <img src="/images/project/molin/molin-s3.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/molin/molin-s3.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>Data Request S3 업로드 기능</h3>
             </article>                

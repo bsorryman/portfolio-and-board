@@ -5,13 +5,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Toy Project / Recipe Bag</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-  content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/assets/css/main.css" />
-</head>
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Toy Project / Recipe Bag')}"></th:block>
+<!-- //Header -->
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -44,8 +40,7 @@
               <li><b>사용 언어</b>: JavaScript, HTML </li>
             </ul>        
           </div>
-          <a href="/images/project/recipe/recipe_bag_main.png" target="_blank" class="image" 
-            style="margin-left: 0; width:50%; height:50%">
+          <a href="/images/project/recipe/recipe_bag_main.png" target="_blank" class="project-image image"> 
             <img class="image" src="/images/project/recipe/recipe_bag_main.png" alt="" />
           </a>
         </section>
@@ -90,38 +85,30 @@
           </header>    
           <div class="posts">
             <article>
-              <div class="image-box">
                 <a href="/images/project/recipe/recipe_bag_main2.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_main2.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/recipe/recipe_bag_main2.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>메인 화면 및 최근 검색어</h3>
             </article>              
             <article>
-              <div class="image-box">
                 <a href="/images/project/recipe/recipe_bag_search.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_search.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/recipe/recipe_bag_search.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>검색 결과 및 최근 검색어</h3>
             </article>
             <article>
-              <div class="image-box">
                 <a href="/images/project/recipe/recipe_bag_detail_view.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_detail_view.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/recipe/recipe_bag_detail_view.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>레시피 상세보기</h3>
             </article>   
             <article>
-              <div class="image-box">
                 <a href="/images/project/recipe/recipe_bag_download.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_download.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/recipe/recipe_bag_download.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>레시피 압축 파일 다운로드</h3>
             </article>     

@@ -5,13 +5,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Portfolio</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-  content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/assets/css/main.css" />
-</head>
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Portfolio')}"></th:block>
+<!-- //Header -->
 <style>
 .container {
     width: 200px;
@@ -42,7 +38,7 @@
           <div class="content">
             <header class="major">
               <h2>
-                                  안녕하세요. 백엔드 개발자 박진수입니다. 
+                                  안녕하세요. 웹 Back-end 개발자 박진수입니다. 
               </h2>
             </header>
             <p>기록하고 탐구하며 어제보다 발전하는 풀스택 개발자를 목표로 하고있습니다. 항상 확장성과 재사용성을 고려하며
@@ -73,7 +69,7 @@
               <li><b>Blog</b>: <a href="https://srrymn.tistory.com/" target="_blank">Tistory</a></li>
             </ul>          
           </div>
-          <img class="image"src="/images/portfolio/my_picture_blue.jpg" style="width: 30%; height:30%; margin-right: 5 em;" alt="" />
+          <img class="portfolio-image image"src="/images/portfolio/my_picture_blue.jpg" style="width: 30%; height:30%; margin-right: 5 em;" alt="" />
         </section>
 
         <!-- Section -->
@@ -407,6 +403,16 @@
   <script src="/assets/js/breakpoints.min.js"></script>
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
-
+  <script>
+  $(function(){
+      var queryString = window.location.search;
+      var params = new URLSearchParams(queryString);
+      var type = params.get('type');
+      
+      if (type=='signup') {
+          alert('회원가입이 완료되었습니다.');
+      }      
+  });
+  </script>
 </body>
 </html>

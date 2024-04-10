@@ -6,12 +6,9 @@
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Business Project / 중국용 Mol-Instincts 웹 서비스</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-  content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/assets/css/main.css" />
-</head>
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Business Project / 중국용 Mol-Instincts 웹 서비스')}"></th:block>
+<!-- //Header -->
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -42,9 +39,8 @@
               <li><b>사용 언어</b>: Java, JavaScript, HTML </li>
             </ul>        
           </div>
-          <a href="/images/project/china-mol/china-mol-main.png" target="_blank" class="image" 
-            style="margin-left: 0; width:50%; height:50%">
-            <img class="image" src="/images/project/china-mol/china-mol-main.png" alt="" />
+          <a href="/images/project/china-mol/china-mol-main.png" target="_blank" class="project-image image" >
+            <img src="/images/project/china-mol/china-mol-main.png" alt="" />
           </a>
         </section>
         <section>
@@ -76,20 +72,16 @@
           </header>    
           <div class="posts">
             <article>
-              <div class="image-box">
-                <a href="/images/project/china-mol/china-mol-request.png" target="_blank" class="image" style="">
-                  <img src="/images/project/china-mol/china-mol-request.png" alt="" class="image-thumbnail"/>
-                </a>              
-              </div>
+              <a href="/images/project/china-mol/china-mol-request.png" target="_blank" class="image" style="">
+                <img src="/images/project/china-mol/china-mol-request.png" alt=""/>
+              </a>              
               <br>
               <h3>Data Request 기능</h3>
             </article>              
             <article>
-              <div class="image-box">
                 <a href="/images/project/china-mol/china-mol-landing.png" target="_blank" class="image" style="">
-                  <img src="/images/project/china-mol/china-mol-landing.png" alt="" class="image-thumbnail"/>
+                  <img src="/images/project/china-mol/china-mol-landing.png" alt="" />
                 </a>              
-              </div>
               <br>
               <h3>랜딩 페이지</h3>
             </article>

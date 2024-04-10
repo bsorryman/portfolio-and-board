@@ -150,7 +150,7 @@ public class GoogleOAuthController {
                     uri = savedRequest.getRedirectUrl();
                 } else if (prevPage != null && !prevPage.equals("")) {
                     // 회원가입에서 넘어온 경우 메인페이지로 보낸다.
-                    if (prevPage.contains("/signup")) {
+                    if (prevPage.contains("/signup") || prevPage.contains("type=signup")) {
                         uri = "/";
                     } else {
                         uri = prevPage;
@@ -206,7 +206,7 @@ public class GoogleOAuthController {
             userDTO.setPicture(resultEntity.getBody().getPicture());
             
             if (userService.registerUser(userDTO)) {
-                return "redirect:/login?type=signup";
+                return "redirect:/portfolio?type=signup";
             } else {
                 return "redirect:/";
             }
