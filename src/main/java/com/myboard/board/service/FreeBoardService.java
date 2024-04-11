@@ -8,16 +8,14 @@ import com.myboard.board.domain.FreeBoardPost;
 import com.myboard.board.repository.FreeBoardMapper;
 import com.myboard.util.AesUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class FreeBoardService {
     private final FreeBoardMapper freeBoardMapper;
     private final AesUtil aesUtil = new AesUtil();
 
-    public FreeBoardService(FreeBoardMapper freeBoardMapper ) {
-        this.freeBoardMapper = freeBoardMapper;
-    }
-    
-    
     public List<FreeBoardPost> getFreeBoardList(int page, int size, int bsize, String field, String keyword) {
         List<FreeBoardPost> thymeBoardPostList = freeBoardMapper.selectFreeBoardList(page, size, bsize, field, keyword);     
         

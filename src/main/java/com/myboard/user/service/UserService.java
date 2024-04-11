@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service;
 import com.myboard.user.dto.UserDTO;
 import com.myboard.user.repository.UserMapper;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final UserMapper userMapper;
-    
-    public UserService(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
     
     /**
      * 회원가입 시 받은 User 정보를 DB에 insert하는 함수

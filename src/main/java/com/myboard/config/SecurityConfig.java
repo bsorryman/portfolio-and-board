@@ -10,16 +10,19 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
     private final CustomFilter customFilter; 
-    
-    public SecurityConfig(CustomFilter customFilter) {
-        this.customFilter = customFilter;
-    }
+    private final SimpleUrlAuthenticationSuccessHandler customLoginSuccessHandler;
+    private final LogoutSuccessHandler customLogoutSuccessHandler;
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -41,13 +44,13 @@ public class SecurityConfig {
             .loginPage("/login") // 로그인 URL
             .usernameParameter("username")
             .passwordParameter("password")
-            .successHandler(new CustomLoginSuccessHandler()) // 로그인 성공시 핸들러
+            .successHandler(customLoginSuccessHandler) // 로그인 성공시 핸들러
             .permitAll() //로그인 페이지에 대한 모든 접근 허용
             .failureUrl("/login?type=error") 
             .and()
         .logout() // 로그아웃 관련
             .logoutUrl("/logout") // 로그아웃 URL
-            .logoutSuccessHandler(new CustomLogoutSuccessHandler())
+            .logoutSuccessHandler(customLogoutSuccessHandler)
             .permitAll()        
             .and()
         .csrf().disable(); // CSRF 보호 비활성화

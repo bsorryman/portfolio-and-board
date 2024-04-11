@@ -21,14 +21,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.myboard.user.service.UserDetailsServiceImpl;
 import com.myboard.util.AesUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @Component
+@RequiredArgsConstructor
 public class CustomFilter extends OncePerRequestFilter {
     
     private final UserDetailsServiceImpl userDetailsService;
-    
-    public CustomFilter(UserDetailsServiceImpl userDetailsService) {
-        this.userDetailsService = userDetailsService;
-    }
     
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -44,7 +43,7 @@ public class CustomFilter extends OncePerRequestFilter {
                 String userInfo = "";
                 if (cookies != null) {
                     for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("userInfo")) {
+                        if (cookie.getName().equals("bs_us_c")) {
                              userInfo = cookie.getValue();
                         }
                     }
@@ -54,8 +53,8 @@ public class CustomFilter extends OncePerRequestFilter {
                 if (!(userInfo.isEmpty())) {
                     AesUtil aesUtil = new AesUtil();
                     String decryptedUserinfo = aesUtil.decrypt(userInfo);
-                    // System.out.println("필터-암호화된 쿠키: " + userInfo);
-                    // System.out.println("필터-복호화된 쿠키: " + decryptedUserinfo);
+                    //System.out.println("필터-암호화된 쿠키: " + userInfo);
+                    //System.out.println("필터-복호화된 쿠키: " + decryptedUserinfo);
                     
                     // 인증
                     UserDetails userDetails = userDetailsService.loadUserByUsername(decryptedUserinfo);

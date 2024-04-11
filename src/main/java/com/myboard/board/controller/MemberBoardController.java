@@ -19,15 +19,14 @@ import com.myboard.board.util.Message;
 import com.myboard.board.util.Pager;
 import com.myboard.board.util.SecurityUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequestMapping("/board/member")
+@RequiredArgsConstructor
 public class MemberBoardController {
     
     private final MemberBoardService memberBoardService;
-    
-    public MemberBoardController(MemberBoardService memberBoardService) {
-        this.memberBoardService = memberBoardService;
-    }
     
     @GetMapping("/list")
     public String getMemberBoard(@RequestParam(defaultValue = "1") int page,

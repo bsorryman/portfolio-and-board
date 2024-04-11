@@ -16,17 +16,14 @@ import com.myboard.board.util.Message;
 import com.myboard.user.dto.UserDTO;
 import com.myboard.user.service.UserService;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequestMapping("/signup")
+@RequiredArgsConstructor
 public class UserSignUpController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
-    
-    public UserSignUpController(UserService userService, 
-            PasswordEncoder passwordEncoder) {
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-    }
     
     /*
      * 회원가입 페이지

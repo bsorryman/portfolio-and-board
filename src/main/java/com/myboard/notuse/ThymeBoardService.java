@@ -5,13 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class ThymeBoardService {
 	private final ThymeBoardListMapper thymeBoardListMapper;
-	
-	public ThymeBoardService(ThymeBoardListMapper thymeBoardListMapper) {
-		this.thymeBoardListMapper = thymeBoardListMapper;
-	}
 	
 	public List<ThymeBoardPost> getThymeBoardPostList(int page, int size, int bsize, String field, String keyword) {
 		List<ThymeBoardPost> thymeBoardPostList = thymeBoardListMapper.selectThymeBoardPostList(page, size, bsize, field, keyword);		

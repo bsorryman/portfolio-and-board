@@ -30,8 +30,11 @@ import com.myboard.user.dto.UserDTO;
 import com.myboard.user.service.UserService;
 import com.myboard.util.AesUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequestMapping("/login")
+@RequiredArgsConstructor
 public class UserLogInController {
     private final RequestCache requestCache = new HttpSessionRequestCache();
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -40,18 +43,6 @@ public class UserLogInController {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
-    
-    public UserLogInController(
-            UserService userService,
-            AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder,
-            UserDetailsService userDetailsService ) {
-        
-        this.userService = userService;
-        this.authenticationManager = authenticationManager;
-        this.passwordEncoder = passwordEncoder;
-        this.userDetailsService = userDetailsService;
-    }
     
     /**
      * 로그인 페이지
@@ -128,7 +119,7 @@ public class UserLogInController {
                 String encryptedUsername = aesUtil.encrypt(googleEmail);
                 
 //                Cookie cookie = new Cookie("userInfo", URLEncoder.encode(encryptedUsername, "UTF-8"));
-                Cookie cookie = new Cookie("userInfo", encryptedUsername);
+                Cookie cookie = new Cookie("bs_us_c", encryptedUsername);
                 cookie.setMaxAge(60 * 60 * 24 * 365); 
                 cookie.setDomain("localhost");
                 cookie.setPath("/");

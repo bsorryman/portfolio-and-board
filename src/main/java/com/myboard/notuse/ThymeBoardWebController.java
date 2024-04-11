@@ -13,15 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myboard.board.util.Pager;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequestMapping("/thyme-board")
+@RequiredArgsConstructor
 public class ThymeBoardWebController {
 	
 	private final ThymeBoardService thymeBoardService;
-	
-	public ThymeBoardWebController(ThymeBoardService thymeBoardService) {
-		this.thymeBoardService = thymeBoardService;
-	}
 	
 	@GetMapping("/list")
 	public String getListPage(@RequestParam(defaultValue = "1") int page,

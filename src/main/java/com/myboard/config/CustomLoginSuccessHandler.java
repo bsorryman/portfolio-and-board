@@ -30,8 +30,8 @@ import com.myboard.util.AesUtil;
  */
 @Component
 public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-    @Value("${server}")
-    private String server;
+    @Value("${domain}")
+    private String domain;
     
     private final RequestCache requestCache = new HttpSessionRequestCache();
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -44,7 +44,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         String username = auth.getName(); 
         
         Cookie encryptedCookie = 
-                EncryptedCookieUtil.createEncryptedCookie("userinfo", username, server, 60 * 60 * 24 * 365);
+                EncryptedCookieUtil.createEncryptedCookie("bs_us_c", username, domain , 60 * 60 * 24 * 365);
         
         response.addCookie(encryptedCookie);
         
@@ -70,14 +70,12 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
          */
         if (savedRequest != null) {
             uri = savedRequest.getRedirectUrl();
-            System.out.println("접근권한X: " + uri);
         } else if (prevPage != null && !prevPage.equals("")) {
             // 회원가입에서 넘어온 경우 메인페이지로 보낸다.
             if (prevPage.contains("/signup")) {
                 uri = "/";
             } else {
                 uri = prevPage;
-                System.out.println("prevPage: " + prevPage);
             }
         }
         

@@ -7,14 +7,12 @@ import org.springframework.stereotype.Service;
 import com.myboard.board.domain.MemberBoardPost;
 import com.myboard.board.repository.MemberBoardMapper;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class MemberBoardService {
     private final MemberBoardMapper memberBoardMapper;
-    
-    public MemberBoardService(MemberBoardMapper memberBoardMapper ) {
-        this.memberBoardMapper = memberBoardMapper;
-    }
-    
     
     public List<MemberBoardPost> getMemberBoardList(int page, int size, int bsize, String field, String keyword) {
         List<MemberBoardPost> thymeBoardPostList = memberBoardMapper.selectMemberBoardList(page, size, bsize, field, keyword);     

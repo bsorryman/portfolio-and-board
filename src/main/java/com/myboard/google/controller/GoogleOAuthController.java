@@ -29,7 +29,10 @@ import com.myboard.user.dto.UserDTO;
 import com.myboard.user.service.UserService;
 import com.myboard.util.EncryptedCookieUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class GoogleOAuthController {
     @Value("${google.client.id}")
     private String googleClientId;
@@ -39,6 +42,9 @@ public class GoogleOAuthController {
     
     @Value("${server}")
     private String server;
+
+    @Value("${domain}")
+    private String domain;
     
     private final RequestCache requestCache = new HttpSessionRequestCache();
     
@@ -47,20 +53,6 @@ public class GoogleOAuthController {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
-    
-    public GoogleOAuthController(
-            UserService userService,
-            GoogleOAuthService googleOAuthService,
-            AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder,
-            UserDetailsService userDetailsService ) {
-        
-        this.userService = userService;
-        this.googleOAuthService = googleOAuthService;
-        this.authenticationManager = authenticationManager;
-        this.passwordEncoder = passwordEncoder;
-        this.userDetailsService = userDetailsService;
-    }
     
     /**
      * 사용자가 구글 로그인을 할 수 있는 URL을 리턴하는 함수
@@ -122,7 +114,7 @@ public class GoogleOAuthController {
                 SecurityContextHolder.getContext().setAuthentication(token);
                 
                 Cookie encryptedCookie = 
-                        EncryptedCookieUtil.createEncryptedCookie("userinfo", googleEmail, server, 60 * 60 * 24 * 365);
+                        EncryptedCookieUtil.createEncryptedCookie("bs_us_c", googleEmail, domain, 60 * 60 * 24 * 365);
 
                 
                 response.addCookie(encryptedCookie); 

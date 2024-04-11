@@ -16,17 +16,15 @@ import com.myboard.board.util.Message;
 import com.myboard.board.util.Pager;
 import com.myboard.util.AesUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequestMapping("/board/free")
+@RequiredArgsConstructor
 public class FreeBoardController {
     
     private final FreeBoardService freeBoardService;
     private final AesUtil aesUtil = new AesUtil();
-    
-    public FreeBoardController(FreeBoardService freeBoardService) {
-    	
-        this.freeBoardService = freeBoardService;
-    }
     
     @GetMapping("/list")
     public String getFreeBoard(@RequestParam(defaultValue = "1") int page,
@@ -116,7 +114,6 @@ public class FreeBoardController {
     @PostMapping("/edit")
     public String editFreeBoard(FreeBoardPost freeBoardPost, Model model) {
     	boolean result = freeBoardService.editFreeBaord(freeBoardPost);
-    	System.out.println(freeBoardPost.toString());
         Message message = new Message();
 
         if (result) {
