@@ -70,18 +70,18 @@ public class GoogleOAuthController {
     /**
      * authCode 값을 사용해서 구글 사용자 정보를 가져와 사용자 인증(로그인)하는 함수.
      * 
-     * @param authCode - authorization_code
+     * @param code - authorization_code
      * @param request
      * @param response
      * @return
      */
     @GetMapping("/login/google/access")
-    public String loginGoogle(@RequestParam(value = "code") String authCode,
+    public String loginGoogle(String code,
             HttpServletRequest request,
             HttpServletResponse response){
         try {
             ResponseEntity<GoogleInfResponse> resultEntity = 
-                    googleOAuthService.getGoogleUserInfo(authCode, "login", googleClientId, googleClientSecret, server);
+                    googleOAuthService.getGoogleUserInfo(code, "login", googleClientId, googleClientSecret, server);
             
             // 사용자 정보 매핑
             String googleEmail = resultEntity.getBody().getEmail();  
@@ -170,13 +170,13 @@ public class GoogleOAuthController {
     /**
      * authCode 값을 사용해서 구글 사용자 정보를 가져와 회원가입 하는 함수.
      * 
-     * @param authCode - authorization_code
+     * @param code - authorization_code
      * @param request
      * @param response
      * @return
      */
     @GetMapping("/signup/google/access")
-    public String signUpGoogle(@RequestParam(value = "code") String authCode,
+    public String signUpGoogle(String code,
             HttpServletRequest request,
             HttpServletResponse response){
         
@@ -186,7 +186,7 @@ public class GoogleOAuthController {
              * (Google OAuth API)
              */
             ResponseEntity<GoogleInfResponse> resultEntity = 
-                    googleOAuthService.getGoogleUserInfo(authCode, "signup", googleClientId, googleClientSecret, server);
+                    googleOAuthService.getGoogleUserInfo(code, "signup", googleClientId, googleClientSecret, server);
             
             UserDTO userDTO = new UserDTO();
             userDTO.setUsername(resultEntity.getBody().getEmail());

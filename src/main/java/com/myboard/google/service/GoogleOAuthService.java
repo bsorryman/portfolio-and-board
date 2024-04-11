@@ -14,31 +14,30 @@ import com.myboard.google.dto.GoogleResponse;
 @Service
 public class GoogleOAuthService {
     
-    public ResponseEntity<GoogleInfResponse> getGoogleUserInfo(String authCode, String type, 
+    public ResponseEntity<GoogleInfResponse> getGoogleUserInfo(String code, String type, 
             String id, String secret, String server) {
-
         RestTemplate restTemplate = new RestTemplate();
         GoogleRequest googleOAuthRequestParam = GoogleRequest
                 .builder()
+                .code(code)
                 .clientId(id)
                 .clientSecret(secret)
-                .code(authCode)
                 .redirectUri(server + "/"+type+"/google/access")
                 .grantType("authorization_code").build();
         
         // Request a Google access token
-        ResponseEntity<GoogleResponse> resultEntity = restTemplate.postForEntity("https://oauth2.googleapis.com/token",
-                googleOAuthRequestParam, GoogleResponse.class);
+        ResponseEntity<GoogleResponse> tokenEntity = 
+        		restTemplate.postForEntity("https://oauth2.googleapis.com/token", googleOAuthRequestParam, GoogleResponse.class);
         
-        String jwtToken=resultEntity.getBody().getId_token();
+        String idToken = tokenEntity.getBody().getId_token();
         
-        Map<String, String> map=new HashMap<>();
-        map.put("id_token",jwtToken);
+        Map<String, String> map = new HashMap<>();
+        map.put("id_token",idToken);
         
         // Request a Google User Info with access token
-        ResponseEntity<GoogleInfResponse> resultEntity2 = 
+        ResponseEntity<GoogleInfResponse> infoEntity = 
                 restTemplate.postForEntity("https://oauth2.googleapis.com/tokeninfo", map, GoogleInfResponse.class);
     
-        return resultEntity2;
+        return infoEntity;
     }
 }
