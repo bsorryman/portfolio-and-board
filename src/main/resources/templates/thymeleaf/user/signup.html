@@ -91,27 +91,6 @@
   <script>
   var clientId = $('#clientId').val();
   
-  window.onload = function () {
-      google.accounts.id.initialize({
-          client_id: clientId,
-          ux_mode: 'redirect',
-          login_uri: 'http://localhost:8080/google/signup',
-      });
-      
-      /*
-      google.accounts.id.renderButton(
-          document.getElementById("googleRendererDiv"),
-          { 
-              type: "standard",
-              theme: "outline", 
-              size: "large",
-              width: '199px'
-          }  // customization attributes
-      );
-      */
-      //google.accounts.id.prompt(); // also display the One Tap dialog
-  }
-  
   var idCheck = false;
   
   $(function(){
@@ -123,6 +102,10 @@
       if (error=='true') {
           alert('회원가입에 실패했습니다.');
       }
+      
+      // delete 'get param' for refresh
+      var originURL = location.protocol + '//' + location.host + location.pathname;
+      window.history.replaceState({}, document.title, originURL);              
       
       $('#googleSignUp').on("click", function(){
           window.location.href = "/signup/google/auth";          

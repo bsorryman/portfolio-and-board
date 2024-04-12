@@ -81,28 +81,6 @@
   <script>
   var clientId = $('#clientId').val();
   
-  window.onload = function () {
-      /*
-      google.accounts.id.initialize({
-          client_id: clientId,
-          ux_mode: 'redirect',
-          login_uri: 'http://localhost:8080/google/login',
-          nonce: 'thisisnonce'
-      });
-      
-      google.accounts.id.renderButton(
-          document.getElementById("googleRendererDiv"),
-          { 
-              type: "standard",
-              theme: "outline", 
-              size: "large",
-              width: '199px'
-          }  // customization attributes
-      );
-      */
-      //google.accounts.id.prompt(); // also display the One Tap dialog
-  }
-  
   $(function(){
       var queryString = window.location.search;
       var params = new URLSearchParams(queryString);
@@ -120,6 +98,10 @@
       if (type=='no') {
           alert('가입되지 않은 계정입니다.');
       }           
+      
+      // delete 'get param' for refresh
+      var originURL = location.protocol + '//' + location.host + location.pathname;
+      window.history.replaceState({}, document.title, originURL);              
 
       $('#customLogin').on("click", function(){
           window.location.href = '/login/google/auth';
@@ -128,18 +110,6 @@
       $('#signUp').on("click", function(){
           window.location.href = "/signup";
       })
-
-      let gCsrfToken = $.cookie('g_csrf_token');
-
-      let url = 'https://accounts.google.com/gsi/select?' +
-      'client_id='+ clientId +
-      '&ux_mode=redirect'+
-      '&login_uri='+ 'http://localhost:8080/login/google' +
-      '&ui_mode=card' +
-//       '&as=fdTZEXPq87FCWLjHP%2FR%2F2Q+'+
-      '&g_csrf_token=g_csrf_token' +
-      '&origin=http://localhost:8080';
-      
 
   })
   </script>

@@ -412,6 +412,10 @@
       if (type=='signup') {
           alert('회원가입이 완료되었습니다.');
       }      
+      
+      // delete 'get param' for refresh
+      var originURL = location.protocol + '//' + location.host + location.pathname;
+      window.history.replaceState({}, document.title, originURL);              
   });
   </script>
 </body>
