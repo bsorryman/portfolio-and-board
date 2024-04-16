@@ -61,10 +61,15 @@ public class GoogleOAuthController {
      */
     @GetMapping("/{type}/google/auth")
     public String loginUrlGoogle(@PathVariable("type") String type){
-        String reqUrl = "https://accounts.google.com/o/oauth2/v2/auth?client_id=" + googleClientId
-                + "&redirect_uri="+server+"/"+type+"/google/access&response_type=code&scope=email%20profile%20openid&access_type=offline&prompt=select_account";
+        String loginUrl = "https://accounts.google.com/o/oauth2/v2/auth?"
+        		+"client_id=" + googleClientId 
+        		+ "&redirect_uri="+server+"/"+type+"/google/access"
+        		+ "&response_type=code"
+        		+ "&scope=email%20profile%20openid"
+        		+ "&access_type=offline"
+        		+ "&prompt=select_account";
 
-        return "redirect:" + reqUrl;
+        return "redirect:" + loginUrl;
     }
     
     /**

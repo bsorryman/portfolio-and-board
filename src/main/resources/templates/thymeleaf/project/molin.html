@@ -17,7 +17,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>Business Project / Mol-Instincts 웹 서비스</h2>
+          <h2>Business Project / [프로젝트] Mol-Instincts 웹 서비스</h2>
         </header>
         <!-- Banner -->
         <section id="banner">
@@ -25,48 +25,293 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개요</h2>
             </header>             
-            <p>화학 데이터 및 관련 랜딩 페이지를 제공하는 웹 서비스입니다. 보유한 9천만개 화학 데이터를 기반으로 
-                                 검색 및 데이터를 제공합니다. 그중 심층 데이터를 보유한 500만개 대상으로는 구매를 통해 제공하고 있습니다. 
-                                 제공하는 모든 화학 데이터 상세 페이지는 SEO로 관리되고 있습니다. DB에 없는 데이터는 Data Request 기능을 통해
-                                 직접 계산을 요청할 수 있습니다. 
-            </p>
+            <p>화학 정보 웹 서비스</p>
+            
+            <h3>도메인</h3>
             <ul>
-              <li><a href="https://www.molinstincts.com/" target="_blank">Mol-Instincts</a></li>
-              <br>
-              <li><b>개발 기간</b>: 21.07-21.10<br></li>
-              <li><b>역할</b>: Back-End, Front-End 기능 개발</li>
-              <li><b>사용 기술</b>: Spring Boot, MariaDB, PostgreSQL, AWS EC2/S3/SES, Elasticsearch, Paygate, Paypal</li>
-              <li><b>사용 언어</b>: Java, JavaScript, HTML </li>
-            </ul>        
+            <li><a href="https://www.molinstincts.com" target="_blank">www.molinstincts.com</a>: 기본 화학 DB 데이터 제공, 랜딩 페이지, 데이터 계산 요청 서비스 </li>
+            <li><a href="https://payment.molinstincts.com/terms" target="_blank">payment.molinstincts.com </a>: 결제 서버</li>
+            <li><a href="https://search.molinstincts.com" target="_blank">search.molinstincts.com</a>: 심층 화학 DB 데이터 제공, 회원제 및 라이센스 관리</li>
+            </ul>
+            
+            <h3>기능</h3>
+            <ul>
+            <li>9천만 화학 DB 검색 기능 (Elasticsearch)</li>
+            <li>화학 데이터 결제 기능 (Paypal/Paygate)</li>
+            <li>문의 메세지 기능 (AWS SES)</li>
+            <li>화학 데이터 계산 요청 기능 (AWS SES/S3)</li>
+            </ul>
           </div>
           <a href="/images/project/molin/molin-main.png" target="_blank" class="project-image image"> 
             <img src="/images/project/molin/molin-main.png" alt="" />
           </a>
         </section>
         <section>
-        <div class="content">
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개발</h2>
+            </header>       
+            <h3>개발 기간</h3>
+            <p>2021.07 - 2021.10</p>
+            
+            <h3>개발 환경</h3>
+            <ul>
+              <li><b>Spring Boot</b> v1.4.7</li>
+              <li><b>Java</b> v1.8</li>
+              <li><b>MariaDB</b> v10.6.14</li>
+              <li><b>PostgreSQL</b> v9.5.8 </li>
+            </ul>  
+            <h3>담당 역할</h3>
+            <ul>
+            <li>Back-End 개발</li>
+            <li>Front-End 기능 개발(JavaScript)</li>
+            </ul>
+            <h3>담당 개발 기능</h3>
+            <ul>
+              <li>랜딩 페이지 MVC 설계</li>
+              <li>문의 메세지 기능 개발 (AWS SES)</li>
+              <li>데이터 계산 요청 기능 개발(AWS SES/S3)</li>
+              <li>결제 기능 개발 (Paygate)</li>
+              <li>주문 관련 REST API 개발</li>
+              <li>Lucy 필터 적용 (XSS 방지)</li>
+            </ul>  
+            <h3>사용 기술</h3>
+            <ul>
+              <li>Java</li>
+              <li>JavaScript </li>
+              <li>Spring Boot </li>
+              <li>MySQL</li>
+              <li>MyBatis</li>
+              <li>AWS SES</li>
+              <li>AWS S3</li>
+              <li>PayGate</li>
+              <li>PayPal</li>
+              <li>JSP</li>
+            </ul>
+          </div> 
+        </section>
+        <section>
           <header class="major" style="margin-top:-3em;">
-            <h2>상세</h2>
-          </header>       
-          <h3>환경</h3>
-          <ul>
-            <li><b>Spring Boot</b> v4.3.9</li>
-            <li><b>Java</b> v1.8</li>
-            <li><b>MariaDB</b> v10.6.14</li>
-            <li><b>PostgreSQL v9.5.8</b> </li>
-          </ul>  
-          <h3>담당 개발 기능</h3>
-          <ul>
-            <li>Elasticsearch 검색 기능(쿼리문/ 결과화면 적용)</li>
-            <li>Search.Mol-In 서비스와 API 결제 연동</li>
-            <li>화합물 페이지 내에 Search.Mol-In 서비스와 Iframe 연동</li>
-            <li>AWS SES/S3를 활용한 Data Request 기능 개발 </li>
-            <li>캡챠 기능</li>
-            <li>Lucy 필터 적용 (XSS 방지)</li>
-            <li>이메일 검증 API 적용 (MailBoxValidator)</li>
-            <li>랜딩 페이지 서버 반영</li>
-          </ul>  
-        </div>          
+            <h2>유지보수 내역</h2>
+          </header>          
+          <h3>www.molinstints.com</h3>
+          <table>
+            <tbody>
+              <colgroup>
+                <col width="20%"><!-- NO. -->
+                <col><!-- 날짜 -->
+                <col width="20%"><!-- 조회수 -->
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>개발 기간</th>
+                  <th>개발 내용</th>
+                  <th>사용 기술</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>2021.12 - 2022.01</td>
+                <td>
+                  <ul>
+                    <li>Elasticsearch 검색 기능 개발 </li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Elasticsearch</li>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>Spring Boot</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>2022.05</td>
+                <td>
+                  <ul>
+                    <li>메일 수신 거부 기능 개발</li>
+                    <li>메일 수신 거부 페이지 다국어 처리</li>
+                    <li>메일 유효성 검증 API 적용 (MailboxValidator)</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Java</li>
+                    <li>Spring Boot</li>
+                    <li>MySQL</li>
+                    <li>MyBatis</li>
+                  </ul>
+                </td>
+              </tr>          
+              <tr>
+                <td>2022.06</td>
+                <td>
+                  <ul>
+                    <li>Elasticsearhc 검색 성능 개선</li>
+                    <ul>
+                      <li>비동기 수행 (CompletableFuture)</li>
+                    </ul>                  
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Elasticsearch</li>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>Spring Boot</li>
+                  </ul>
+                </td>
+              </tr>                    
+              <tr>
+                <td>2023.01</td>
+                <td>
+                  <ul>
+                    <li>JSmol 기능 수정 (3D 화학 구조 js 라이브러리)</li>
+                    <ul>
+                      <li>scale 조정</li>
+                      <li>다국어화 (po 파일 관련 설정)</li>
+                    </ul>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>Spring Boot</li>
+                  </ul>
+                </td>
+              </tr>    
+              <tr>
+                <td>2022.07</td>
+                <td>
+                  <ul>
+                    <li>Elasticsearch 검색 성능 개선</li>
+                    <ul>
+                      <li>검색 결과 최적화 (쿼리문에서 이슈 발생 필드의 가중치를 수정)</li>
+                    </ul>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Elasticsearch</li>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>Spring Boot</li>
+                  </ul>
+                </td>
+              </tr>      
+              <tr>
+                <td>2023.09</td>
+                <td>
+                  <ul>
+                    <li>Search.Mol-In 서비스와 Iframe 연동</li>
+                    <ul>
+                      <li>화학 데이터 상세 페이지에 물성 테이블 표시</li>
+                    </ul>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>Spring Boot</li>
+                  </ul>
+                </td>
+              </tr>     
+              <tr>
+                <td>2023.09</td>
+                <td>
+                  <ul>
+                    <li>캡챠 기능 추가</li>
+                    <ul>
+                      <li>문의 메세지</li>
+                      <li>화학 데이터 계산 요청 기능</li>
+                    </ul>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>Spring Boot</li>
+                  </ul>
+                </td>
+              </tr>    
+            </tbody>
+          </table>    
+          
+          <h3>payment.molinstints.com</h3>
+          <table>
+            <tbody>
+              <colgroup>
+                <col width="20%"><!-- NO. -->
+                <col><!-- 날짜 -->
+                <col width="20%"><!-- 조회수 -->
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>개발 기간</th>
+                  <th>개발 내용</th>
+                  <th>사용 기술</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>2022.06</td>
+                <td>
+                  <ul>
+                    <li>쿠키 정책 동의 관련 기능 추가</li>
+                    <li>DB 모니터링 및 스케줄링 기능 추가 (이슈 발생 시 메일 발송)</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>Spring Boot</li>
+                    <li>MySQL</li>
+                    <li>JavaScript</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>2022.07</td>
+                <td>
+                  <ul>
+                    <li>화학 데이터 개별 구매 관련 API 연동(Search.Mol-In 서버)</li>
+                    <li>개별 구매 관련 메일 발송 기능 추가</li>
+                    <li>첨부파일 메일 발송 기능 추가</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Java</li>
+                    <li>Spring Boot</li>
+                    <li>MySQL</li>
+                    <li>MyBatis</li>
+                    <li>JavaScript</li>
+                    <li>AWS SES</li>
+                    <li>Thymeleaf</li>
+                  </ul>
+                </td>
+              </tr>          
+              <tr>
+                <td>2022.11</td>
+                <td>
+                  <ul>
+                    <li>국내 카드로 결제 가능하도록 기능 수정 (Maxmind GeoIP API 활용) </li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Java</li>
+                    <li>Spring Boot</li>
+                    <li>JavaScript</li>
+                    <li>PayGate</li>
+                  </ul>
+                </td>
+              </tr>                  
+            </tbody>
+          </table>              
         </section>
         
         <section>
