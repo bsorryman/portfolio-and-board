@@ -17,7 +17,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>University Project / 팩멘 게임 강화학습 시뮬레이션</h2>
+          <h2>University Project / [프로젝트] 팩맨 강화학습 시뮬레이션</h2>
         </header>
         <!-- Banner -->
         <section id="banner">
@@ -25,44 +25,81 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개요</h2>
             </header>        
-            <p>팩맨이 스스로 게임을 하고 시간이 지날수록 게임 방법을 학습하는 시뮬레이션 데스크톱 실행 프로그램입니다. 
-                                 유전알고리즘(Genetic Algorithm)과 인공신경망(Neural Network)를 활용해 강화 학습을 구현했습니다.
-                                 사용자가 시뮬레이션을 종료하면 게임 결과 데이터가 csv파일로 export됩니다. 최종 결과물은 60세대 이상 진화했을 때,
-                                 테스트 결과 사람보다 게임을 대체로 잘한다는 결론이 나왔습니다. 관련하여 학술지 논문을 제 1저자로 게재했습니다.</p>     
+            <h3>유전 알고리즘/인공신경망을 활용한 팩맨 강화학습 시뮬레이션 </h3>   
+            <ul>
+              <li><h4>유전 알고리즘(Genetic algorithm)</h4></li>
+              <ul>
+                <li>팩맨 집단은 한 세대에 16마리의 인구수(population)을 가진다.</li>
+                <li>한 세대의 게임이 끝나면 적합도(fitness)를 기준으로 교배(crossover)/변이(mutation) 연산을 거친다.</li>
+              </ul>
+              <li><h4>인공신경망(neural network)</h4></li>
+              <ul>
+                <li>팩맨 각 개체의 데이터</li>
+                <li>Input 값으로 자신의 위치에서 이동 가능한 방향의 데이터를 받는다.<br>(고스트 인식)</li>
+                <li>인공신경망의 연산을 거친 후, Output 값으로 이동할 방향 선택한다.</li>
+              </ul>
+            </ul>  
+            
+            <h3>논문</h3>
             <ul>
               <li><a href="/pdf/Pacman Game Reinforcement Learning Using Artificial Neural-network and Genetic Algorithm.pdf" target="_blank">학술지 논문</a></li>
-              <br>
-              <li><b>개발 기간</b>: 20.03-20.6<br></li>
-              <li><b>프로젝트 인원</b>: 3인<br></li>
-              <li><b>역할</b>: 조장 및 기능 개발</li>
-              <li><b>개발 언어</b>: Python</li>
-            </ul>        
+            </ul>
+            
+            <h3>개발 환경</h3>
+            <ul>
+              <li>Python3</li>
+            </ul>
           </div>
           <a href="/images/project/pacman/pacman-main.png" target="_blank" class="project-image image"> 
             <img src="/images/project/pacman/pacman-main.png" alt="" />
           </a>          
         </section>
         <section>
-        <div class="content">
-          <header class="major" style="margin-top:-3em;">
-            <h2>상세</h2>
-          </header>        
-          <h3>유전 알고리즘</h3>
-            <p>팩맨은 한 세대에 16마리의 인구 수를 가지며, 한 세대의 모든 게임이 끝나면 16마리 중 게임 결과가 잘나왔던
-                                 팩맨들을 토대로 교배 연산 및 변이 연산을 거쳐 새로운 다음 세대의 16마리 팩맨을 탄생시킵니다.
-                                 연산의 대상이 되는 데이터는 각 팩맨의 핵심인 인공신경망입니다.</p>
-          <h3>인공신경망</h3>
-            <p>게임을 진행하는 팩맨 자체가 인공신경망입니다. Input 값으로 자신이 위치한 곳에서 움직일 수 있는 
-                                 방향의 데이터를 받습니다. 각 방향에 팩맨이 위치하고 있는지 인식하고, Output 값으로 움직여할 방향을 선택합니다. 
-                                 움직일 때마다 매순간 인식하고, 판단하며, 움직입니다.</p>                                 
-          <h3>담당 개발 기능</h3>                                 
-          <ul>
-            <li>유전 알고리즘 설계</li>
-            <li>인공신경망 설계</li>
-            <li>팩맨의 인식 기능 개발</li>
-            <li>게임 결과 csv 파일 export 기능 개발</li>
-          </ul>  
-        </div>          
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개발</h2>
+            </header>        
+            <h3>담당 역할</h3>
+            <ul>
+              <li>조장/ 논문 제 1저자</li>
+              <li>DB 및 쿼리문 설계</li>
+              <li>기능 개발 (PHP, JavaScript)</li>
+              <li>호스팅 서버 관리(Cafe24)</li>
+            </ul>
+            <h3>개발 내역</h3>
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2020.03 - 2020.06</td>
+                  <td>
+                    <ul>
+                      <li>유전 알고리즘 설계</li>
+                      <li>인공신경망 설계</li>
+                      <li>팩맨의 고스트 인식 기능 개발(인공신경망 Input 값 생성)</li>
+                      <li>게임 결과 csv 파일 export 기능 개발</li>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Python</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>             
+          </div>          
         </section>
       </div>
     </div>

@@ -8,20 +8,6 @@
 <!-- Header -->
 <th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Portfolio')}"></th:block>
 <!-- //Header -->
-<style>
-.container {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container img {
-    width: 100px;
-    height: 100px;
-}
-</style>
 <body class="is-preload">
   <!-- Wrapper -->
   <div id="wrapper">
@@ -69,7 +55,7 @@
               <li><b>Blog</b>: <a href="https://srrymn.tistory.com/" target="_blank">Tistory</a></li>
             </ul>          
           </div>
-          <img class="portfolio-image image"src="/images/portfolio/my_picture_blue.jpg" style="width: 30%; height:30%; margin-right: 5 em;" alt="" />
+          <img class="portfolio-image image" src="/images/portfolio/my_picture_blue.jpg" style="width: 30%; height:30%; margin-right: 5 em;" alt="" />
         </section>
 
         <!-- Section -->
@@ -170,34 +156,37 @@
                 <img src="/images/project/myboard/freeboard-main.png" alt="" />
               </a>              
               <h3>Portfolio & Board</h3>
-              <span><b>개발 기간</b>: 24.03-24.04</span><br>
-              <span><b>사용 기술</b>: Spring Boot, MariaDB, AWS </span><br>
-              <span><b>사용 언어</b>: Java, JavaScript, HTML </span>      
-              <br><br>
+              <h4>개발 기간</h4>
+              <p>2024.03 - 2024.04</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>CRUD 게시판 웹</li>
-                <li>포트폴리오 Static 페이지</li>                                
-                <li>회원 가입/로그인 (Security)</li>
-                <li>구글 소셜 로그인 (OAuth2)</li>                
-              </ul>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Spring Boot</li>  
+                <li>MariaDB</li>       
+                <li>PostgreSQL</li>                       
+                <li>AWS EC2</li>
+                <li>Thymeleaf</li>
+                <li>HTML/CSS</li>
+              </ul>              
               <ul class="actions">
                 <li><a href="/project/myboard" class="button">More</a></li>
               </ul>
             </article>
             <article>
               <a href="/project/recipe-bag" class="image">
-                <img src="/images/project/recipe/recipe_bag_main.png" alt=""/>
+                <img src="/images/project/recipe/recipe_bag_main2.png" alt=""/>
               </a>              
               <h3>Recipe Bag</h3>
-              <span><b>개발 기간</b>: 24.01-24.04<br></span>
-              <span><b>사용 기술</b>: Electron, Node.js, SQLite3</span><br>  
-              <span><b>사용 언어</b>: JavaScript, HTML </span>             
-              <br><br>
+              <h4>개발 기간</h4>
+              <p>2024.01 - 2024.04</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>데스크톱 앱</li>
-                <li>레시피 검색, 상세보기, 다운로드</li>
-                <li>Stand Alone</li>
-              </ul>
+                <li>Electron</li>
+                <li>Node.js</li>  
+                <li>JavaScript</li>
+                <li>SQLite3</li>       
+              </ul>                
               <ul class="actions">
                 <li><a href="/project/recipe-bag" class="button">More</a></li>
               </ul>
@@ -215,18 +204,21 @@
                   <img src="/images/project/molin/molin-main.png" alt="" />
                 </a>
               <br>
-              <h3>Mol-Instincts 웹 서비스</h3>
-              <span><b>개발 기간</b>: 21.07-21.10</span><br>
-              <span><b>사용 기술</b>: Spring Boot, MariaDB, PostgreSQL, AWS EC2/S3/SES, Elasticsearch, Paygate, Paypal </span><br>
-              <span><b>사용 언어</b>: Java, JavaScript, HTML </span>       
-              <br><br>
+              <h3>[프로젝트] Mol-Instincts</h3>
+              <h4>개발 기간</h4>
+              <p>2021.07 - 2021.10</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>화학 DB 서비스 랜딩 페이지</li>
-                <li>화학 DB 검색</li>  
-                <li>SEO 적용</li>       
-                <li>화학 물성 데이터 판매</li>                       
-                <li>화학 물성 계산 서비스</li>
-                <li>문의 메세지 </li>                
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Spring Boot</li>  
+                <li>MariaDB(MySQL)</li>       
+                <li>PostgreSQL</li>                       
+                <li>AWS S3/SES</li>
+                <li>Elasticsearch</li>
+                <li>PayGate/PayPal</li>   
+                <li>JSP</li>
+                <li>Thymeleaf</li>
               </ul>
               <ul class="actions">
                 <li><a href="/project/molin" class="button">More</a></li>
@@ -236,110 +228,122 @@
               <a href="/project/search" class="image">
                 <img class="image" src="/images/project/search/search-main.png" alt="" />
               </a>
-              <h3>Search.mol-in 웹 서비스</h3>
-              <span><b>유지 보수</b></span><br>
-              <span><b>사용 기술</b>: Spring, MariaDB, PostgreSQL, AWS EC2/S3/SES</span><br>
-              <span><b>사용 언어</b>: Java, JavaScript, HTML </span>   
-              <br><br>
+              <h3>[유지보수] Search.Mol-In</h3>
+              <h4>개발 기간</h4>
+              <p>2022.02 -</p>                   
+              <h4>사용기술</h4>
               <ul>
-                <li>Mol-In DB 텍스트 및 구조 검색</li>    
-                <li>회원 관리</li>     
-                <li>라이센스 방식 데이터 열람</li>                       
-                <li>개별 데이터 판매</li>
-                <li>문의 메세지</li>                
-              </ul>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Spring</li>  
+                <li>MariaDB(MySQL)</li>       
+                <li>PostgreSQL</li>                       
+                <li>AWS S3/SES</li>
+                <li>JSP</li>
+              </ul>              
               <ul class="actions">
                 <li><a href="/project/search" class="button">More</a></li>
               </ul>              
             </article>
             <article>
-              <a href="/project/roppor" class="image">
-                <img class="image" src="/images/project/roppor/roppor-main.png" alt="" />
-              </a>
-              <h3>Roppor 웹 서비스</h3>
-              <span><b>유지 보수</b></span><br>
-              <span><b>사용 기술</b>: Spring Boot, MariaDB, AWS EC2/SES</span><br>
-              <span><b>사용 언어</b>: Java, JavaScript, HTML </span>  
-              <br><br>
-              <ul>
-                <li>군집 드론 소프트웨어 랜딩 페이지</li>
-                <li>소프트웨어 다운로드 및 기록 수집</li>    
-                <li>다운로드 안내 메일 발송</li>
-                <li>API 서버</li>
-              </ul>
-              <ul class="actions">
-                <li><a href="/project/roppor" class="button">More</a></li>
-              </ul>
-            </article>
-            <article>
               <a href="/project/china-mol" class="image">
                 <img class="image" src="/images/project/china-mol/china-mol-main.png" alt="" />
               </a>
-              <h3>중국용 Mol-Instincts 웹 서비스</h3>
-              <span><b>개발 기간</b>: 22.04-22.05</span><br>
-              <span><b>사용 기술</b>: Spring Boot, MariaDB, PostgreSQL, AWS SES</span><br>
-              <span><b>사용 언어</b>: Java, JavaScript, HTML </span>       
-              <br><br>
+              <h3>[프로젝트] 중국 Mol-Instincts</h3>
+              <h4>개발 기간</h4>
+              <p>2022.04</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>기존 Mol-Instincts 중국 서비스용</li>
-                <li>이중 서버</li>
-                <li>화학 DB 서비스 랜딩 페이지</li>
-                <li>화학 물성 계산 서비스</li>
-                <li>문의 메세지 </li>                
-              </ul>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Spring Boot</li>  
+                <li>MariaDB(MySQL)</li>       
+                <li>PostgreSQL</li>                       
+                <li>AWS SES</li>
+                <li>JSP</li>
+                <li>Thymeleaf</li>
+              </ul>              
               <ul class="actions">
                 <li><a href="/project/china-mol" class="button">More</a></li>
               </ul>              
-            </article>
+            </article>   
+            <article>
+              <a href="/project/roppor" class="image">
+                <img class="image" src="/images/project/roppor/roppor-main.png" alt="" />
+              </a>
+              <h3>[유지보수] Roppor</h3>
+              <h4>개발 기간</h4>
+              <p>2022.05 - </p>
+              <h4>사용기술</h4>
+              <ul>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Spring Boot</li>  
+                <li>MariaDB(MySQL)</li>       
+                <li>AWS SES</li>
+                <li>JSP</li>
+                <li>Thymeleaf</li>
+              </ul>                 
+              <ul class="actions">
+                <li><a href="/project/roppor" class="button">More</a></li>
+              </ul>
+            </article>            
+            <article>
+              <a href="/project/admin" class="image">
+                <img class="image" src="/images/pic01.jpg" alt="" />
+              </a>            
+              <h3>[프로젝트] 사내 관리자 사이트</h3>
+              <h4>개발 기간</h4>
+              <p>2022.07 - 2022.08</p>
+              <h4>사용기술</h4>
+              <ul>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Spring Boot</li>  
+                <li>MariaDB(MySQL)</li>       
+                <li>AWS SES</li>
+                <li>JSP</li>
+                <li>Thymeleaf</li>
+              </ul>                
+              <ul class="actions">
+                <li><a href="/project/admin" class="button">More</a></li>
+              </ul>
+            </article>                        
             <article>
               <a href="/project/china-search" class="image">
                 <img class="image" src="/images/project/china-search/china-search-main.png" alt="" />
               </a>
-              <h3>중국용 Search.mol-in 웹 서비스</h3>
-              <span><b>유지 보수</b></span><br>
-              <span><b>사용 기술</b>: Spring, MariaDB, PostgreSQL</span><br>
-              <span><b>사용 언어</b>: Java, JavaScript, HTML </span>      
-              <br><br>
+              <h3>[유지보수] 중국  Search.Mol-In</h3>
+              <h4>개발 기간</h4>
+              <p>2022.09 -</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>기존 Search.Mol-In 중국 서비스용</li>
-                <li>회원 관리</li>     
-                <li>라이센스 방식 데이터 열람</li>        
-              </ul>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Spring</li>  
+                <li>MariaDB(MySQL)</li>       
+                <li>PostgreSQL</li>
+                <li>AWS SES</li>
+                <li>JSP</li>
+              </ul>                
               <ul class="actions">
                 <li><a href="/project/china-search" class="button">More</a></li>
               </ul>
             </article>
             <article>
-            </article>
-            <article>
-              <br>
-              <h3>사내 관리자 사이트</h3>
-              <span><b>개발 기간</b>: 22.10-23.2</span><br>
-              <span><b>사용 기술</b>: Spring Boot, MariaDB, PostgreSQL, AWS SES</span><br>
-              <span><b>사용 언어</b>: Java, JavaScript, HTML </span>     
-              <br><br>
+              <a href="/project/ikc" class="image">
+                <img class="image" src="/images/pic01.jpg" alt="" />
+              </a>               
+              <h3>[프로젝트] IKC Supply System</h3>
+              <h4>개발 기간</h4>
+              <p>2023.05 - 2023.07</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>Mol-Instincts, Search.mol-in, Roppor 관리자 사이트</li>
-                <li>Mol-Instincts, Search.mol-in 구매 기록, 문의 메시지 관리 </li>
-                <li>Roppor 다운로드 기록, 메일 발송 기록 관리</li>
-              </ul>
-              <ul class="actions">
-                <li><a href="/project/admin" class="button">More</a></li>
-              </ul>
-            </article>             
-            <article>
-              <br>
-              <h3>IKC Supply System 데스크톱 앱</h3>
-              <span><b>개발 기간</b>: 23.05-23.07</span><br>
-              <span><b>사용 기술</b>: Electron, SQLite</span><br>
-              <span><b>사용 언어</b>: JavaScript, HTML</span>   
-              <br><br>
-              <ul>
-                <li>중국 업체 납품용 데스크톱 앱</li>
-                <li>Stand Alone 환경</li>
-                <li>Mol-In DB 검색</li>
-                <li>데이터 파일 다운로드</li>
-              </ul>
+                <li>Electron</li>
+                <li>Node.js</li>
+                <li>JavaScript</li>  
+                <li>SQLite</li>
+              </ul>                
               <ul class="actions">
                 <li><a href="/project/ikc" class="button">More</a></li>
               </ul>
@@ -348,22 +352,24 @@
         </section>        
         <section>
           <header class="major">
-            <h2>학내 프로젝트</h2>
+            <h2>University Project</h2>
           </header>
           <div class="posts">
             <article>
               <a href="/project/money" class="image">
                 <img src="/images/project/money/money-main.png" alt="" /></a>
-              <h3>통합금융상품검색 웹 서비스</h3>
-              <span><b>개발 기간</b>: 19.09-19.12</span><br>
-              <span><b>사용 기술</b>: Wordpress, MySQL, Cafe24</span><br>
-              <span><b>개발 언어</b>: PHP, JavaScript, HTML</span>
-              <br><br>
+              <h3>[프로젝트] 통합금융상품비교 웹 서비스</h3>
+              <h4>개발 기간</h4>
+              <p>2019.09-2019.12</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>금융 상품 검색 및 비교 웹</li>
-                <li>회원 관리</li>
-                <li>나이, 성별, 직업에 따른 금융 상품 관심도 통계 </li>
-              </ul>              
+                <li>Wordpress</li>
+                <li>MySQL</li>
+                <li>Cafe24</li>  
+                <li>PHP</li>
+                <li>JavaScript</li>
+                <li>HTML</li>
+              </ul>               
               <ul class="actions">
                 <li><a href="/project/money" class="button">More</a></li>
               </ul>
@@ -372,16 +378,13 @@
               <a href="/project/pacman" class="image" style="width:50%;">
                 <img src="/images/project/pacman/pacman-main.png" alt="" />
               </a>
-              <h3>팩맨 게임 강화학습 시뮬레이션</h3>
-              <span><b>개발 기간</b>: 20.03-20.06</span><br>
-              <span><b>개발 언어</b>: Python</span>    
-              <br><br>
+              <h3>[프로젝트] 팩맨 강화학습 시뮬레이션</h3>
+              <h4>개발 기간</h4>
+              <p>2020.03-2020.06</p>
+              <h4>사용기술</h4>
               <ul>
-                <li>자동 게임 시뮬레이션</li>
-                <li>유전 알고리즘, 인공신경망</li>
-                <li>결과 데이터 Export</li>
-                <li>관련 학술지 논문 제 1저자 게재</li>
-              </ul>              
+                <li>Python</li>
+              </ul>               
               <ul class="actions">
                 <li><a href="/project/pacman" class="button">More</a></li>
               </ul>

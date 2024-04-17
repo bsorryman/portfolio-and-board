@@ -17,7 +17,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>Business Project / 중국용 Search.Mol-In 웹 서비스</h2>
+          <h2>Business Project / [유지보수] 중국용 Search.Mol-In</h2>
         </header>
         <!-- Banner -->
         <section id="banner">
@@ -25,41 +25,95 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개요</h2>
             </header>         
-            <p>
-                              중국에서 서비스 하기위한 Searh.Mol-In 웹 서비스입니다. 기존 서비스와 동일하게 화학 데이터를 제공하고있습니다.
-                              회원 등록하고 라이센스를 발급받으면 범위 내에서 화학 데이터를 열람하고 다운로드 받을 수 있습니다. 중국 외 IP는
-                              기존 Search.Mol-In 웹 서비스로 Redirect 시킵니다.
-            </p>    
+            <h3>중국용 회원제 심층 화학 정보 웹 서비스 </h3>
             <ul>
-              <li><a href="http://search.imolinstincts.com.cn/" target="_blank">China Search.Mol-In</a>(중국 IP로만 접근 가능)</li>
-              <br>
-              <li><b>유지 보수</b></li>
-              <li><b>역할</b>: Back-End, Front-End 기능 개발</li>
-              <li><b>사용 기술</b>: Spring, MariaDB, PostgreSQL</li>
-              <li><b>개발 언어</b>: Java, JavaScript, HTML </li>
-            </ul>        
+              <li>500만개 심층 화학 DB 유료 데이터 제공</li>
+              <li>회원제 라이센스 시스템</li>
+              <li>화학 구조 검색 기능</li>
+            </ul>      
+            
+            <h3>도메인</h3>
+            <span>중국 IP만 접근 가능</span>
+            <ul>
+              <li><a href="http://search.imolinstincts.com.cn" target="_blank">search.imolinstincts.com.cn</a>: 심층 화학 DB 데이터 제공</li>
+            </ul>
+            <h3>서브 도메인</h3>
+            <span>중국 IP만 접근 가능</span>
+            <ul>
+              <li><a href="http://www.imolinstincts.com.cn/" target="_blank">www.imolinstincts.com.cn</a>: 화학 데이터 관련 랜딩 페이지 제공</li>
+            </ul>   
+            
+            <h3>개발 환경</h3>
+            <ul>
+              <li><b>Spring</b> v3.1.1</li>
+              <li><b>Java</b> v1.6</li>
+              <li><b>MySQL</b> v5.7.44</li>
+              <li><b>postgreSQL</b> v9.5.8</li>
+            </ul>                          
           </div>
           <a href="/images/project/china-search/china-search-main.png" target="_blank" class="project-image image">
             <img src="/images/project/china-search/china-search-main.png" alt="" />
           </a>
         </section>
         <section>
-        <div class="content">
-          <header class="major" style="margin-top:-3em;">
-            <h2>상세</h2>
-          </header>       
-          <h3>환경</h3>
-          <ul>
-            <li><b>Spring</b> v3.1.1</li>
-            <li><b>Java</b> v1.6</li>
-            <li><b>MySQL</b> v5.7.44</li>
-          </ul>  
-          <h3>담당 개발 기능</h3>
-          <ul>
-            <li>중국 외 IP 인터셉터 처리 (기존 Search.Mol-In으로 Redirect)</li>
-            <li>디자인 수정 반영, 이슈 수정 등 유지보수</li>
-          </ul>  
-        </div>          
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>유지보수 내역</h2>
+            </header>       
+            <h3>담당 역할</h3>
+            <ul>
+              <li>Back-End 개발</li>
+              <li>Front-End 기능 개발(JavaScript)</li>
+            </ul>   
+            
+            <h3>개발 내역</h3>
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2022.09</td>
+                  <td>
+                    <ul>
+                      <li>IKC 파일 생성  및 다운로드 관련 기능 추가 (Python 모듈 활용)</li>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript </li>
+                      <li>Spring </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2023.12 - 2024.03</td>
+                  <td>
+                    <ul>
+                      <li>중국어 다국어 처리</li>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript </li>
+                      <li>Spring </li>
+                    </ul>
+                  </td>
+                </tr>                
+              </tbody>
+            </table>                 
+          </div>          
         </section>
         
         <section>
@@ -79,7 +133,9 @@
                   <img src="/images/project/china-search/china-search-chem.png" alt="" />
                 </a>              
               <br>
-              <h3>화합물 상세 페이지</h3>
+              <h3>
+                <a href="http://search.imolinstincts.com.cn/properties/constantProperty.ce?0001-iwtt" target="_blank">화합물 상세 페이지</a>
+              </h3>
             </article>
           </div>
         </section>        

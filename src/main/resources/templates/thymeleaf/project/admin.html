@@ -17,7 +17,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>Business Project / 사내 관리자 사이트</h2>
+          <h2>Business Project / [프로젝트] 사내 관리자 사이트</h2>
         </header>
         <!-- Banner -->
         <section id="banner">
@@ -25,50 +25,82 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개요</h2>
             </header>       
-            <p>
-            Mol-Instincts, Search.Mol-In 서비스의 관리자 사이트와
-            Roppor 서비스의 관리자 사이트를 기획, 디자인, 개발까지 혼자 맡아 완성했습니다. 
-                          단,기획에 관해서는 실제 사용할 고객 담당 직원과 논의하며 요청 사항을 받아 변경했습니다. 
-                          사내 서버에 독립적으로 구축했으며, 주로 구매 기록과 다운로드 기록을 관리하는 용도로 쓰였습니다.</p>      
+            <h3>Mol-Instincts/Search.Mol-In 관리자 사이트</h3>     
             <ul>
-              <li><b>개발 기간</b>: 22.10-23.02</li>
-              <li><b>역할</b>: 기획, 디자인, Back-End, Front-End 기능 개발</li>
-              <li><b>사용 기술</b>: Spring Boot, MariaDB</li>
-              <li><b>사용 언어</b>: Java, JavaScript, HTML </li>
-            </ul>        
+              <li>고객 요청 화학 데이터 계산 서비스 목록 관리</li>
+              <li>화학 데이터 개별 구매 목록 관리</li>
+              <li>문의 메세지 목록 관리</li>
+              <li>매출 통계</li>
+              <li>결제 및 메일 발송 오류 관리</li>
+            </ul> 
+            <h3>개발 환경</h3>
+            <ul>
+              <li><b>Spring Boot</b> v2.7.2</li>
+              <li><b>Java</b> v1.8</li>
+              <li><b>MariaDB</b> v10.6.14</li>
+            </ul>              
+            
           </div>
         </section>
         <section>
-        <div class="content">
-          <header class="major" style="margin-top:-3em;">
-            <h2>상세</h2>
-          </header>       
-          <h3>Mol-Instincts, Search.Mol-In Admin 환경</h3>
-          <ul>
-            <li><b>Spring Boot</b> v2.7.2</li>
-            <li><b>Java</b> v1.8</li>
-            <li><b>MariaDB</b> v10.6.14</li>
-          </ul>  
-          <h3>Mol-Instincts, Search.Mol-In Admin 개발 기능</h3>
-          <ul>
-            <li>데이터 구매 기록 관리</li>
-            <li>구매 기록 차트 (chart.js)</li>
-            <li>문의 메세지 관리</li>
-            <li>데이터 구매 메일 재발송 기능</li>
-            <li>구매 오류 기록 관리 및 담당자 메일 발송</li>
-          </ul>  
-          <h3>Roppor Admin 환경</h3>
-          <ul>
-            <li><b>Spring Boot</b> v1.4.7</li>
-            <li><b>Java</b> v1.8</li>
-            <li><b>MariaDB</b> v10.6.14</li>
-          </ul>            
-          <h3>Roppor Admin 개발 기능</h3>
-          <ul>
-            <li>다운로드 메일 발송 기록, 실제 다운로드 기록 수집</li>
-            <li>공지사항 작성 기능 (CRUD)</li>
-          </ul>            
-        </div>          
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개발</h2>
+            </header>       
+            
+            <h3>담당 역할</h3>
+            <ul>
+              <li>기획/UI 디자인 (HTML Markup)</li>
+              <li>Back-End 개발</li>
+              <li>Front-End 기능 개발(JavaScript)</li>
+            </ul>    
+    
+            <h3>개발 내역</h3>
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2022.07 - 2022.08</td>
+                  <td>
+                    <ul>
+                      <li>HTML, CSS Markup 페이지 개발 (Bootstrap)</li>
+                      <li>고객 요청 화학 데이터 계산 서비스 목록 관리 개발</li>
+                      <li>화학 데이터 개별 구매 목록 관리 개발 (결제 서버 API 활용)</li>
+                      <li>문의 메세지 목록 관리 개발</li>
+                      <li>매출 통계 관련 차트 개발 (chart.js)</li>
+                      <li>결제 및 메일 발송 오류 관리 기능 개발 (AWS SES)</li>
+                        <ul>
+                         <li>데이터 구매 메일 재발송 기능</li>
+                         <li>구매 오류 기록 관리 및 오류 발생시 담당자 메일 발송</li>
+                        </ul>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript </li>
+                      <li>Spring Boot </li>
+                      <li>MySQL</li>
+                      <li>MyBatis</li>
+                      <li>AWS SES</li>
+                      <li>JSP</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>                           
+          </div>          
         </section>
       </div>
     </div>

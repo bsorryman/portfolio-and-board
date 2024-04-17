@@ -18,7 +18,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>Business Project / 중국용 Mol-Instincts 웹 서비스</h2>
+          <h2>Business Project / [프로젝트] 중국 Mol-Instincts</h2>
         </header>
         <!-- Banner -->
         <section id="banner">
@@ -26,46 +26,143 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개요</h2>
             </header>     
-            <p>중국에 서비스하기 위한 Mol-Instincts 웹 서비스입니다.
-                          중국 사정에 맞게 기존 Mol-Instincts에서 기능을 수정, 삭제하며 개발했습니다.
-                          중국에서는 S3를 쓸 수 없어, 첨부 파일은 로컬 서버로 업로드하게 하고 이중화로 관리했습니다.
-                          검색 및 화합물 상세 페이지는 없으며 Data Request(화학 데이터 계산 요청 서비스) 기능은 유지하고 있습니다.</p>        
+            <h3>중국 서비스용 화학 정보 웹 서비스</h3>
             <ul>
-              <li><a href="http://www.imolinstincts.com.cn/" target="_blank">China Mol-Instincts</a> (중국 IP로만 접근 가능)</li>
-              <br>
-              <li><b>개발 기간</b>: 22.04-22.05</li>
-              <li><b>역할</b>: Back-End, Front-End 기능 개발</li>
-              <li><b>사용 기술</b>: Spring Boot, MariaDB, PostgreSQL, AWS SES</li>
-              <li><b>사용 언어</b>: Java, JavaScript, HTML </li>
-            </ul>        
+              <li>자사 화학 데이터 관련 랜딩 페이지</li>
+              <li>고객 요청 화학 데이터 계산/생성 서비스</li>
+              <li>중국 사정에 맞게 최적화 (기능 제거 및 수정, 텍스트 수정)</li>
+            </ul>            
+            <h3>도메인</h3>
+            <span>중국 IP만 접근 가능</span>
+            <ul>
+              <li><a href="http://www.imolinstincts.com.cn/" target="_blank">www.imolinstincts.com.cn</a>: 화학 데이터 관련 랜딩 페이지 제공</li>
+            </ul>
+            <h3>서브 도메인</h3>
+            <span>중국 IP만 접근 가능</span>
+            <ul>
+              <li><a href="http://search.imolinstincts.com.cn" target="_blank">search.imolinstincts.com.cn</a>: 심층 화학 DB 데이터 제공</li>
+            </ul>            
+            <h3>환경</h3>
+            <ul>
+              <li><b>Spring Boot</b> v4.3.9</li>
+              <li><b>Java</b> v1.8</li>
+              <li><b>MariaDB</b> v10.6.14</li>
+            </ul>     
           </div>
           <a href="/images/project/china-mol/china-mol-main.png" target="_blank" class="project-image image" >
             <img src="/images/project/china-mol/china-mol-main.png" alt="" />
           </a>
         </section>
         <section>
-        <div class="content">
-          <header class="major" style="margin-top:-3em;">
-            <h2>상세</h2>
-          </header>       
-          <h3>환경</h3>
-          <ul>
-            <li><b>Spring Boot</b> v4.3.9</li>
-            <li><b>Java</b> v1.8</li>
-            <li><b>MariaDB</b> v10.6.14</li>
-          </ul>  
-          <h3>담당 개발 기능</h3>
-          <ul>
-            <li>기존 Mol-Instincts 서비스 복제</li>
-            <li>AWS SES를 활용한 Data Request 메일 발송 기능 </li>
-            <li>첨부파일 로컬 서버 업로드 기능(S3 대체)</li>
-            <li>첨부파일 서버 이중화 적용 (Rsync Script)</li>
-            <li>중국 외 IP 인터셉터 처리 (기존 Mol-Instincts로 Redirect)</li>
-            <li>랜딩 페이지 서버 반영</li>
-          </ul>  
-        </div>          
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개발</h2>
+            </header>     
+            <h3>담당 역할</h3>
+            <ul>
+              <li>Back-End 개발</li>
+              <li>Front-End 기능 개발(JavaScript)</li>
+            </ul>    
+    
+            <h3>개발 내역</h3>
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2022.04</td>
+                  <td>
+                    <ul>
+                      <li>랜딩 페이지 MVC 설계</li>
+                      <li>문의 메세지 기능 개발 (AWS SES)</li>
+                      <li>Lucy 필터 적용 (XSS 방지)</li>
+                      <li>데이터 계산 요청 기능 개발</li>
+                        <ul>
+                          <li>첨부 파일 이중화 (Rsync Script)</li>
+                        </ul>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript </li>
+                      <li>Spring Boot </li>
+                      <li>MySQL</li>
+                      <li>MyBatis</li>
+                      <li>AWS SES</li>
+                      <li>JSP</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>                        
+          </div>          
         </section>
-        
+        <section>
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>유지보수 내역</h2>
+            </header>            
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2023.11</td>
+                  <td>
+                    <ul>
+                      <li>메일 수신 거부 기능 추가</li>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript </li>
+                      <li>Spring Boot </li>
+                      <li>MySQL</li>
+                      <li>MyBatis</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2023.12 - 2024.03</td>
+                  <td>
+                    <ul>
+                      <li>중국어 다국어 처리</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript </li>
+                      <li>Spring Boot </li>
+                    </ul>
+                  </td>                  
+                </tr>
+              </tbody>
+            </table>                
+          </div>
+        </section>
         <section>
           <header class="major" style="margin-top:-3em;">
             <h2>스크린샷</h2>
@@ -76,7 +173,11 @@
                 <img src="/images/project/china-mol/china-mol-request.png" alt=""/>
               </a>              
               <br>
-              <h3>Data Request 기능</h3>
+              <h3>
+                <a href="http://www.imolinstincts.com.cn/deep-data-request-form" target="_blank">
+                                        고객 요청 화학 데이터 계산/생성 서비스
+                </a>
+              </h3>
             </article>              
             <article>
                 <a href="/images/project/china-mol/china-mol-landing.png" target="_blank" class="image" style="">

@@ -6,7 +6,7 @@
 -->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <!-- Header -->
-<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Business Project / Mol-Instincts 웹 서비스')}"></th:block>
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Business Project / Mol-Instincts')}"></th:block>
 <!-- //Header -->
 <body class="is-preload">
 
@@ -17,7 +17,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>Business Project / [프로젝트] Mol-Instincts 웹 서비스</h2>
+          <h2>Business Project / [프로젝트] Mol-Instincts</h2>
         </header>
         <!-- Banner -->
         <section id="banner">
@@ -25,22 +25,30 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개요</h2>
             </header>             
-            <p>화학 정보 웹 서비스</p>
-            
+            <h3>화학 정보 웹 서비스 </h3>
+            <ul>
+              <li>자사 화학 데이터 관련 랜딩 페이지</li>
+              <li>9천만 화학 DB 데이터 제공</li>
+              <li>유료 화학 데이터 결제 기능</li>
+              <li>고객 요청 화학 데이터 계산/생성 서비스</li>
+            </ul>            
             <h3>도메인</h3>
             <ul>
-            <li><a href="https://www.molinstincts.com" target="_blank">www.molinstincts.com</a>: 기본 화학 DB 데이터 제공, 랜딩 페이지, 데이터 계산 요청 서비스 </li>
-            <li><a href="https://payment.molinstincts.com/terms" target="_blank">payment.molinstincts.com </a>: 결제 서버</li>
-            <li><a href="https://search.molinstincts.com" target="_blank">search.molinstincts.com</a>: 심층 화학 DB 데이터 제공, 회원제 및 라이센스 관리</li>
+              <li><a href="https://www.molinstincts.com" target="_blank">www.molinstincts.com</a>: 기본 화학 DB 데이터 제공</li>
+              <li><a href="https://payment.molinstincts.com/terms" target="_blank">payment.molinstincts.com </a>: 결제 서버</li>
             </ul>
-            
-            <h3>기능</h3>
+            <h3>서브 도메인</h3>
             <ul>
-            <li>9천만 화학 DB 검색 기능 (Elasticsearch)</li>
-            <li>화학 데이터 결제 기능 (Paypal/Paygate)</li>
-            <li>문의 메세지 기능 (AWS SES)</li>
-            <li>화학 데이터 계산 요청 기능 (AWS SES/S3)</li>
-            </ul>
+              <li><a href="https://search.molinstincts.com" target="_blank">search.molinstincts.com</a>: 심층 화학 DB 데이터 제공</li>
+            </ul>            
+            
+            <h3>개발 환경</h3>
+            <ul>
+              <li><b>Spring Boot</b> v1.4.7</li>
+              <li><b>Java</b> v1.8</li>
+              <li><b>MariaDB</b> v10.6.14</li>
+              <li><b>PostgreSQL</b> v9.5.8 </li>
+            </ul>  
           </div>
           <a href="/images/project/molin/molin-main.png" target="_blank" class="project-image image"> 
             <img src="/images/project/molin/molin-main.png" alt="" />
@@ -51,43 +59,57 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개발</h2>
             </header>       
-            <h3>개발 기간</h3>
-            <p>2021.07 - 2021.10</p>
             
-            <h3>개발 환경</h3>
-            <ul>
-              <li><b>Spring Boot</b> v1.4.7</li>
-              <li><b>Java</b> v1.8</li>
-              <li><b>MariaDB</b> v10.6.14</li>
-              <li><b>PostgreSQL</b> v9.5.8 </li>
-            </ul>  
             <h3>담당 역할</h3>
             <ul>
-            <li>Back-End 개발</li>
-            <li>Front-End 기능 개발(JavaScript)</li>
+              <li>Back-End 개발</li>
+              <li>Front-End 기능 개발(JavaScript)</li>
             </ul>
-            <h3>담당 개발 기능</h3>
-            <ul>
-              <li>랜딩 페이지 MVC 설계</li>
-              <li>문의 메세지 기능 개발 (AWS SES)</li>
-              <li>데이터 계산 요청 기능 개발(AWS SES/S3)</li>
-              <li>결제 기능 개발 (Paygate)</li>
-              <li>주문 관련 REST API 개발</li>
-              <li>Lucy 필터 적용 (XSS 방지)</li>
-            </ul>  
-            <h3>사용 기술</h3>
-            <ul>
-              <li>Java</li>
-              <li>JavaScript </li>
-              <li>Spring Boot </li>
-              <li>MySQL</li>
-              <li>MyBatis</li>
-              <li>AWS SES</li>
-              <li>AWS S3</li>
-              <li>PayGate</li>
-              <li>PayPal</li>
-              <li>JSP</li>
-            </ul>
+            
+            <h3>개발 내역</h3>
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2021.07 - 2021.10</td>
+                  <td>
+                    <ul>
+                      <li>랜딩 페이지 MVC 설계</li>
+                      <li>문의 메세지 기능 개발 (AWS SES)</li>
+                      <li>데이터 계산 요청 기능 개발(AWS SES/S3)</li>
+                      <li>결제 기능 개발 (Paygate)</li>
+                      <li>주문 관련 REST API 개발</li>
+                      <li>Lucy 필터 적용 (XSS 방지)</li>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript </li>
+                      <li>Spring Boot </li>
+                      <li>MySQL</li>
+                      <li>MyBatis</li>
+                      <li>AWS SES</li>
+                      <li>AWS S3</li>
+                      <li>PayGate</li>
+                      <li>PayPal</li>
+                      <li>JSP</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>                         
           </div> 
         </section>
         <section>
@@ -95,7 +117,7 @@
             <h2>유지보수 내역</h2>
           </header>          
           <h3>www.molinstints.com</h3>
-          <table>
+          <table class="project">
             <tbody>
               <colgroup>
                 <col width="20%"><!-- NO. -->
@@ -241,7 +263,7 @@
           </table>    
           
           <h3>payment.molinstints.com</h3>
-          <table>
+          <table class="project">
             <tbody>
               <colgroup>
                 <col width="20%"><!-- NO. -->
@@ -325,35 +347,77 @@
                 </a>              
               <br>
               <h3>검색 결과 화면</h3>
+              <ul>
+                <li>Elasticsearch</li>
+              </ul>
             </article>              
             <article>
                 <a href="/images/project/molin/molin-chem.png" target="_blank" class="image" style="">
                   <img src="/images/project/molin/molin-chem.png" alt="" />
                 </a>              
               <br>
-              <h3>화합물 상세 페이지</h3>
+              <h3>
+                <a href="https://www.molinstincts.com/structure/benzene-cstr-CT1001419667" target="_blank">
+                                      화합물 상세 페이지
+                </a>
+              </h3>
+              <ul>
+                <li>SEO 적용</li>
+              </ul>
             </article>
             <article>
                 <a href="/images/project/molin/molin-pay.png" target="_blank" class="image" style="">
                   <img src="/images/project/molin/molin-pay.png" alt="" />
                 </a>              
               <br>
-              <h3>화합물 데이터 결제 페이지</h3>
+              <h3>
+              <a href="https://payment.molinstincts.com/checkout?serviceCode=search.iframe&productCode=pc&commonNameUc=benzene&productCurrency=USD&productName=Absolute%20Entropy%20of%20Ideal%20Gas%20at%20298.15%20K%20and%201%20bar&productDescription=Absolute%20Entropy%20of%20Ideal%20Gas%20at%20298.15%20K%20and%201%20bar%20for%20benzene&productProductType=Numeric%20Dataset&price=0&priceText=$$$%20USD%20per%20user%20per%20publication&chemInfoId=&imageUrl=http://search.molinstincts.com/mol_images/general/0001-5nm9.png&commonFname=benzene&formulaSub=C6H6&forProductDetail=Absolute%20Entropy%20of%20Ideal%20Gas%20at%20298.15%20K%20and%201%20bar%20for%20benzene&fileExt=data&molCid=0001-5nm9&propertyId=AEG" target="_blank">
+                                  화합물 데이터 결제 페이지
+              </a>
+              </h3>
+              <ul>
+                <li>결제 서버</li>
+              </ul>
             </article>   
             <article>
                 <a href="/images/project/molin/molin-property.png" target="_blank" class="image" style="">
                   <img src="/images/project/molin/molin-property.png" alt="" />
                 </a>              
               <br>
-              <h3>화합물 물성 랜딩 페이지(미들 페이지)</h3>
+              <h3>
+              <a href="https://www.molinstincts.com/flash-point" target="_blank">
+                                  화합물 물성 페이지
+              </a>
+              </h3>
+              <ul>
+                <li>랜딩 페이지</li>
+              </ul>
             </article>     
             <article>
                 <a href="/images/project/molin/molin-s3.png" target="_blank" class="image" style="">
                   <img src="/images/project/molin/molin-s3.png" alt="" />
                 </a>              
               <br>
-              <h3>Data Request S3 업로드 기능</h3>
-            </article>                
+              <h3>
+                <a href="https://www.molinstincts.com/deep-data-request-form" target="_blank">
+                                      화학 데이터 계산 요청 기능
+                </a>
+              </h3>
+              <ul>
+                <li>S3 Upload</li>
+              </ul>
+            </article>         
+            <article>
+                <a href="/images/project/molin/iframe.png" target="_blank" class="image" style="">
+                  <img src="/images/project/molin/iframe.png" alt="" />
+                </a>              
+              <br>
+              <h3>
+                <a href="https://www.molinstincts.com/molecular-entropy/T5656354-etpy-CT1001650211.html" target="_blank">
+                  Iframe 연동 <br> (Search.Mol-In 데이터 테이블)
+                </a>
+              </h3>
+            </article>                        
           </div>
         </section>        
       </div>

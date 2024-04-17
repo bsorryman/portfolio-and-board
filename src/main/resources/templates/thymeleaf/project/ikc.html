@@ -17,7 +17,7 @@
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <h2>Business Project / IKC File Supply System</h2>
+          <h2>Business Project / [프로젝트] IKC File Supply System</h2>
         </header>
         <!-- Banner -->
         <section id="banner">
@@ -25,50 +25,80 @@
             <header class="major" style="margin-top:-3em;">
               <h2>개요</h2>
             </header>       
-            <p>중국 업체 요청으로 개발하게 된 데스크톱 앱입니다. 네트워크 필요 없이 프로그램 실행 만으로 
-                                사용할 수 있도록 Stand Alone하게 만들어졌습니다. 중국 쪽에서 요청한 특정 범위의 200만개 
-                                화학 데이터를 포함한 DB를 내장하고 있습니다. 화합물 검색 및 기본 물성 정보를 참고할 수 있으며,
-               IKC File 이라는 핵심 화학 데이터를 다운로드할 수 있습니다.</p>
+            
+            <h3>중국 업체 납품용 화학 데이터 데스크톱 앱</h3>
             <ul>
-              <li><b>개발 기간:</b>23.05-23.07</li>
-              <li><b>역할</b>: Back-End 및 Front-End 기능 개발</li>
-              <li><b>사용 기술</b>: Electron, SQLite</li>
-              <li><b>사용 언어</b>: JavaScript, HTML </li>
-            </ul>        
+              <li>심층 화학 DB 데이터 검색/열람</li>
+              <li>IKC 파일 검색/열람/다운로드</li>
+              <li>Stand Alone 방식</li>
+            </ul>
+            
+            <h3>개발 환경</h3>
+            <ul>
+              <li><b>Electron</b> v23.2.0</li>
+              <li><b>Electron Forge</b> v7.2.0</li>
+              <li><b>Node.js</b> v18.16.0</li>
+              <li><b>SQLite</b> v3.34.0</li>
+            </ul>             
           </div>
         </section>
         <section>
-        <div class="content">
-          <header class="major" style="margin-top:-3em;">
-            <h2>상세</h2>
-          </header>       
-          <h3>환경</h3>
-          <ul>
-            <li><b>Electron</b> v23.2.0</li>
-            <li><b>Electron Forge</b> v7.2.0</li>
-            <li><b>Node.js</b> v18.16.0</li>
-            <li><b>SQLite</b> v3.34.0</li>
-          </ul>  
-          <h3>담당 개발 기능</h3>
-          <ul>
-            <li>SQLite DB 설계 및 쿼리문 작성</li>
-              <ul>
-                <li>FTS 테이블 및 쿼리문 구성 (Full Text Search)</li>
-                <li>IKC 파일 및 이미지 데이터 바이너리  컬럼 구성</li>
-              </ul>
-            <li>Web Worker 기능 (멀티스레드)</li>
-              <ul>
-                <li>단일 스레드인 Electron을 멀티스레드로 활용</li>
-                <li>검색 시간 소요 시 교착 상태가 발생하던 이슈 해결(응답없음 해결)</li>
-              </ul>
-            <li>검색 화면 구성 기능</li>
-              <ul>
-                <li>Refresh없는 비동기 검색 결과 화면 구현</li>
-              </ul>
-              
-            <li>Window Installer 패키징 (.msi)</li>
-          </ul>  
-        </div>          
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개발</h2>
+            </header>       
+            <h3>담당 역할</h3>
+            <ul>
+              <li>Back-End 개발</li>
+              <li>Front-End 기능 개발</li>
+              <li>DB 및 쿼리문 설계 (Full Text Search)</li>
+            </ul>
+            
+            <h3>개발 내역</h3>
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2023.05 - 2023.07</td>
+                  <td>
+                    <ul>
+                      <li>Sqlite DB 설계 및 쿼리문 작성</li>
+                      <ul>
+                        <li>FTS 테이블 및 쿼리문 구성 (Full Text Search)</li>
+                      </ul>
+                      <li>Web Worker 기능 (멀티스레딩)</li>
+                      <ul>
+                        <li>단일 스레드인 Electron을 멀티스레드로 활용</li>
+                        <li>검색 시간 소요 시 교착 상태가 발생하던 이슈 해결(응답없음 해결)</li>
+                      </ul>
+                      <li>검색 화면 비동기 구성</li>
+                      <li>Window Installer 패키징 (.msi)</li>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Electron</li>
+                      <li>Electron forge/webpack</li>
+                      <li>Node.js</li>
+                      <li>JavaScript</li>
+                      <li>SQLite3</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>    
+          </div>          
         </section>
       </div>
     </div>
