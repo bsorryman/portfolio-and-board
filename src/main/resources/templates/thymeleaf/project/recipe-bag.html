@@ -43,8 +43,8 @@
               <li>Jquery v3.7.1</li>
             </ul>                 
           </div>
-          <a href="/images/project/recipe/recipe_bag_main2.png" target="_blank" class="project-image image"> 
-            <img src="/images/project/recipe/recipe_bag_main2.png" alt="" />
+          <a href="/images/project/recipe/recipe_bag_main2.png?v240418" target="_blank" class="project-image image"> 
+            <img src="/images/project/recipe/recipe_bag_main2.png?v240418" alt="" />
           </a>
         </section>
         <section>
@@ -79,20 +79,25 @@
                     <ul>
                       <li>DB 구성</li>
                       <ul>
-                        <li><a href="https://www.kaggle.com/datasets/pes12017000148/food-ingredients-and-recipe-dataset-with-images/data" target="_blank">kaggle</a> - CSV 파일을 변환하여  DB에 삽입</li>
+                        <li><a href="https://www.kaggle.com/datasets/pes12017000148/food-ingredients-and-recipe-dataset-with-images/data" target="_blank">kaggle</a> - CSV 파일을 활용한  DB 테이블 생성</li>
                         <li>파일 다운로드, 이미지 표시를 위한 파일 압축 및 바이너리 컬럼 삽입 자동화</li>
-                        <li>빠른 검색 및 성능을 위한 FTS 테이블 활용(Full Text Search)</li>
+                        <li>빠른 검색 및 성능을 위한 FTS 테이블 설계(Full Text Search)</li>
                       </ul>
-                      <li>기능 개발</li>
+                      <li>IPC 통신 방식 설계</li>
                       <ul>
-                        <li><b>IPC 통신</b>: Back단의 Main Process(Node.js)와 Front단의 Renderer Process(Chromium)간 데이터 통신</li>
-                        <li>Web Worker를 활용해 단일 스레드인 Main Process를 멀티 스레드로 활용('응답 없음' 방지)</li>
-                        <li>All Recipe 기능(모든 레시피 데이터)</li>
-                        <li>레시피 이미지와 텍스트 데이터가 압축된 파일 다운로드</li>
-                        <li>검색어 Highlight 기능(레시피 상세 모달창)</li>
-                        <li>최근 검색어 저장 기능(Appdata 내 JSON 파일 관리)</li>
-                        <li>타이틀 메뉴 기능 개발</li>
-                      </ul>                        
+                        <li>Back단의 Main Process(Node.js)와 Front단의 Renderer Process(Chromium)간 데이터 통신</li>
+                      </ul>
+                      <li>검색 기능 개발 및 검색 결과 최적화</li>
+                      <li>Web Worker를 활용한 검색 성능 개선(멀티스레딩)</li>
+                      <ul>
+                        <li>단일 스레드인 Electron을 멀티스레드로 활용</li>
+                        <li>검색 시간 소요 시 교착 상태가 발생하던 이슈 해결(응답없음 해결)</li>
+                      </ul>
+                      <li>All Recipe 기능(모든 레시피 데이터)</li>
+                      <li>압축 파일 다운로드 기능 개발(레시피 이미지, 텍스트)</li> 
+                      <li>검색어 Highlight 기능(레시피 상세 모달창)</li>
+                      <li>최근 검색어 저장 기능(Appdata 내 JSON 파일 관리)</li>
+                      <li>타이틀 메뉴 기능 개발</li>
                     </ul>  
                   </td>
                   <td>
@@ -111,29 +116,29 @@
           </header>    
           <div class="posts">
             <article>
-                <a href="/images/project/recipe/recipe_bag_main2.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_main2.png" alt="" />
+                <a href="/images/project/recipe/recipe_bag_main2.png?v240418" target="_blank" class="image" style="">
+                  <img src="/images/project/recipe/recipe_bag_main2.png?v240418" alt="" />
                 </a>              
               <br>
               <h3>메인 화면 및 최근 검색어</h3>
             </article>              
             <article>
-                <a href="/images/project/recipe/recipe_bag_search.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_search.png" alt="" />
+                <a href="/images/project/recipe/recipe_bag_search.png?v240418" target="_blank" class="image" style="">
+                  <img src="/images/project/recipe/recipe_bag_search.png?v240418" alt="" />
                 </a>              
               <br>
               <h3>검색 결과 및 최근 검색어</h3>
             </article>
             <article>
-                <a href="/images/project/recipe/recipe_bag_detail_view.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_detail_view.png" alt="" />
+                <a href="/images/project/recipe/recipe_bag_detail_view.png?v240418" target="_blank" class="image" style="">
+                  <img src="/images/project/recipe/recipe_bag_detail_view.png?v240418" alt="" />
                 </a>              
               <br>
               <h3>레시피 상세보기</h3>
             </article>   
             <article>
-                <a href="/images/project/recipe/recipe_bag_download.png" target="_blank" class="image" style="">
-                  <img src="/images/project/recipe/recipe_bag_download.png" alt="" />
+                <a href="/images/project/recipe/recipe_bag_download.png?v240418" target="_blank" class="image" style="">
+                  <img src="/images/project/recipe/recipe_bag_download.png?v240418" alt="" />
                 </a>              
               <br>
               <h3>레시피 압축 파일 다운로드</h3>
