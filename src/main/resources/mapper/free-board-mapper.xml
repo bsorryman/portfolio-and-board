@@ -29,7 +29,6 @@
 	
 	<!-- Select ThymeBoard Post list  -->
 	<select id="selectFreeBoardList" resultMap="freeBoardPost">
-	    <bind name="offset" value="@com.myboard.board.domain.FreeBoardPost@seekOffset(page, size)"/>
 	    SELECT *
 		FROM tb_board_free
 		WHERE 1 = 1

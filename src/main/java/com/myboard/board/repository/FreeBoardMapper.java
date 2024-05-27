@@ -12,10 +12,7 @@ public interface FreeBoardMapper {
     int selectTotalFreeBoard(@Param("page") int page, @Param("field") String field,
             @Param("keyword") String keyword);
     
-    List<FreeBoardPost> selectFreeBoardList(@Param("page") int page, @Param("size") int size,
-            @Param("bsize") int bsize,
-            @Param("field") String field,
-            @Param("keyword") String keyword);
+    List<FreeBoardPost> selectFreeBoardList(int page, int size, int bsize, int offset, String field, String keyword);
 
     int insertFreeBoard(FreeBoardPost freeBoardPost);
 

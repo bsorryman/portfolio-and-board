@@ -12,11 +12,4 @@ public class FreeBoardPost {
     private char deleteYn;
     private String createdAt;
     private int hits;
-    
-    public static int seekOffset(int page, int size) {
-        if (page > 0) {
-            return (page - 1) * size;
-        }
-        return 0;
-    }
 }

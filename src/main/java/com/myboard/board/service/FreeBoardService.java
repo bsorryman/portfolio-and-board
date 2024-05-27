@@ -16,8 +16,8 @@ public class FreeBoardService {
     private final FreeBoardMapper freeBoardMapper;
     private final AesUtil aesUtil = new AesUtil();
 
-    public List<FreeBoardPost> getFreeBoardList(int page, int size, int bsize, String field, String keyword) {
-        List<FreeBoardPost> thymeBoardPostList = freeBoardMapper.selectFreeBoardList(page, size, bsize, field, keyword);     
+    public List<FreeBoardPost> getFreeBoardList(int page, int size, int bsize, int offset, String field, String keyword) {
+        List<FreeBoardPost> thymeBoardPostList = freeBoardMapper.selectFreeBoardList(page, size, bsize, offset, field, keyword);     
         
         return thymeBoardPostList;
     }

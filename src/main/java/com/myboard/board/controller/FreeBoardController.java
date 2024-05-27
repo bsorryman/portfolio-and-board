@@ -33,8 +33,9 @@ public class FreeBoardController {
             @RequestParam(defaultValue = "") String field,
             @RequestParam(defaultValue = "") String keyword,
             Model model) {
-        
-        List<FreeBoardPost> freeBoardList = freeBoardService.getFreeBoardList(page, size, bsize, field, keyword);
+        int offset = (page-1) * size;
+
+        List<FreeBoardPost> freeBoardList = freeBoardService.getFreeBoardList(page, size, bsize, offset, field, keyword);
         int totalPost = freeBoardService.getTotalFreeBoardList(page, field, keyword);
         
         model.addAttribute("freeBoardList", freeBoardList);
