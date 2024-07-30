@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- Header -->
+<th:block th:insert="~{/thymeleaf/include/header.html :: header(title='Business Project / IKC File Supply System')}"></th:block>
+<!-- //Header -->
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <h2>Business Project / [프로젝트] CC-DPS</h2>
+        </header>
+        <!-- Banner -->
+        <section id="banner">
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개요</h2>
+            </header>       
+            
+            <h3>맞춤형 화학 정보 계산 서비스</h3>
+            <ul>
+              <li>화학 정보 계산 요청 처리 시스템</li>
+              <li>9천만 화학 DB 데이터 제공</li>
+              <li>4개의 웹 서버 API 연동</li>
+            </ul>
+            <h3>도메인</h3>
+            <ul>
+              <li><a href="https://www.cc-dps.com" target="_blank">www.cc-dps.com</a></li>
+            </ul>            
+            <h3>개발 환경</h3>
+            <ul>
+              <li><b>Spring Boot</b> v2.7.18</li>
+              <li><b>Java</b> v1.8</li>
+              <li><b>MariaDB</b> v10.6.14</li>
+              <li><b>PostgreSQL</b> v9.5.8</li>
+            </ul>             
+          </div>
+          <a href="/images/project/ccdps/ccdps-search.png" target="_blank" class="project-image image"> 
+            <img src="/images/project/ccdps/ccdps-search.png" alt="" />
+          </a>          
+        </section>
+        <section>
+          <div class="content">
+            <header class="major" style="margin-top:-3em;">
+              <h2>개발</h2>
+            </header>       
+            <h3>담당 역할</h3>
+            <ul>
+              <li>Back-End 개발</li>
+              <li>Front-End 기능 개발</li>
+              <li>REST API 개발</li>
+              <li>DB 및 쿼리문 설계 (Full Text Search)</li>
+            </ul>
+            
+            <h3>개발 내역</h3>
+            <table class="project">
+              <tbody>
+                <colgroup>
+                  <col width="20%"><!-- NO. -->
+                  <col><!-- 날짜 -->
+                  <col width="20%"><!-- 조회수 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>개발 기간</th>
+                    <th>개발 내용</th>
+                    <th>사용 기술</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>2024.03 - 2023.06</td>
+                  <td>
+                    <ul>
+                      <li>Spring Security 구성</li>
+                      <ul>
+                        <li>CSRF/CORS 보안 설정</li>
+                        <li>로그인 인증 처리 (UserDetails)</li>
+                      </ul>
+                      <li>회원 관리 및 로그인/로그아웃 기능</li>
+                      <ul>
+                        <li>구글 소셜 로그인</li>
+                        <li>쿠키 자동 로그인</li>
+                      </ul>                      
+                      <li>문의 메세지 기능</li>
+                      <li>결제 기능 (Paypal, Paygate)</li>
+                      <li>결제 상품(화학 DB) 접근 인증 기능 구현</li>
+                      <li>관리자 사이트 개발</li>
+                      <ul>
+                        <li>관리자 사이트 용 REST API 구현 및 연동</li>
+                        <li>관리자 사이트 Front 기능 구현</li>
+                      </ul>                      
+                      <li>Elasticsearch 검색 기능 API 구현 및 연동</li>
+                    </ul>  
+                  </td>
+                  <td>
+                    <ul>
+                      <li>Java</li>
+                      <li>JavaScript</li>
+                      <li>Spring Boot</li>
+                      <li>MariaDB</li>
+                      <li>AWS SES</li>
+                      <li>Paygate</li>
+                      <li>Paypal</li>
+                      <li>Thymeleaf</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>    
+          </div>          
+        </section>
+        
+        <section>
+          <header class="major" style="margin-top:-3em;">
+            <h2>스크린샷</h2>
+          </header>    
+          <div class="posts">
+            <article>
+                <a href="/images/project/ccdps/ccdps-landing.png" target="_blank" class="image" style="">
+                  <img src="/images/project/ccdps/ccdps-landing.png" alt="" />
+                </a>              
+              <br>
+              <h3>랜딩 화면</h3>
+            </article>              
+            <article>
+                <a href="/images/project/ccdps/ccdps-search.png" target="_blank" class="image" style="">
+                  <img src="/images/project/ccdps/ccdps-search.png" alt="" />
+                </a>              
+              <br>
+              <h3>
+                                   작업 메인 화면
+              </h3>
+              <ul>
+                <li>화학 분자 검색</li>
+                <li>화학 분자 계산 요청</li>
+                <li>화학 분자 목록 열람</li>
+              </ul>
+            </article>
+            <article>
+                <a href="/images/project/ccdps/ccdps-login.png" target="_blank" class="image" style="">
+                  <img src="/images/project/ccdps/ccdps-login.png" alt="" />
+                </a>              
+              <br>
+              <h3>로그인 화면</h3>
+              <ul>
+                <li>자동 로그인</li>
+                <li>구글 소셜 로그인</li>
+              </ul>
+            </article>   
+            <article>
+                <a href="/images/project/ccdps/ccdps-mol.png" target="_blank" class="image" style="">
+                  <img src="/images/project/ccdps/ccdps-mol.png" alt="" />
+                </a>              
+              <br>
+              <h3>화학 분자 페이지</h3>
+              <ul>
+                <li>계산 완료된 화학 분자 열람</li>
+              </ul>
+            </article>     
+            <article>
+                <a href="/images/project/ccdps/ccdps-result.png" target="_blank" class="image" style="">
+                  <img src="/images/project/ccdps/ccdps-result.png" alt="" />
+                </a>              
+              <br>
+              <h3>화학 분자 검색 결과</h3>
+            </article>         
+            <article>
+                <a href="/images/project/ccdps/ccdps-another-result.png" target="_blank" class="image" style="">
+                  <img src="/images/project/ccdps/ccdps-another-result.png" alt="" />
+                </a>              
+              <br>
+              <h3>화학 분자 검색 결과2</h3>
+              <ul>
+                <li>첫번째 검색에서 불일치 시 유사 화학 분자 검색</li>
+              </ul>
+            </article>                        
+          </div>
+        </section>           
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <th:block th:include="/thymeleaf/include/sidebar.html"></th:block>
+    <!-- //Sidebar -->
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>
