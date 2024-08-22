@@ -438,9 +438,9 @@
   $(function(){
       var queryString = window.location.search;
       var params = new URLSearchParams(queryString);
-      var type = params.get('type');
+      var notify = params.get('notify');
       
-      if (type=='signup') {
+      if (notify=='signup') {
           alert('회원가입이 완료되었습니다.');
       }      
       

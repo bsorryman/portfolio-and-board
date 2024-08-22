@@ -72,7 +72,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
             uri = savedRequest.getRedirectUrl();
         } else if (prevPage != null && !prevPage.equals("")) {
             // 회원가입에서 넘어온 경우 메인페이지로 보낸다.
-            if (prevPage.contains("/signup")) {
+            if (prevPage.contains("/signup") || prevPage.contains("/google")) {
                 uri = "/";
             } else {
                 uri = prevPage;

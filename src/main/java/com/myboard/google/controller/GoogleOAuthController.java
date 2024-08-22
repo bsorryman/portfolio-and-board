@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -147,7 +148,7 @@ public class GoogleOAuthController {
                     uri = savedRequest.getRedirectUrl();
                 } else if (prevPage != null && !prevPage.equals("")) {
                     // 회원가입에서 넘어온 경우 메인페이지로 보낸다.
-                    if (prevPage.contains("/signup") || prevPage.contains("type=signup")) {
+                    if (prevPage.contains("/signup") || prevPage.contains("notify=signup") || prevPage.contains("google")) {
                         uri = "/";
                     } else {
                         uri = prevPage;
@@ -203,10 +204,15 @@ public class GoogleOAuthController {
             userDTO.setPicture(resultEntity.getBody().getPicture());
             
             if (userService.registerUser(userDTO)) {
-                return "redirect:/portfolio?type=signup";
+                return "redirect:/portfolio?notify=signup";
             } else {
                 return "redirect:/";
             }
+            
+        } catch (DuplicateKeyException dke) {
+            dke.printStackTrace();
+            
+            return "redirect:/signup?notify=googledke";
             
         } catch (Exception e) {
             e.printStackTrace();

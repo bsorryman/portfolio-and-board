@@ -53,8 +53,6 @@ public class CustomFilter extends OncePerRequestFilter {
                 if (!(userInfo.isEmpty())) {
                     AesUtil aesUtil = new AesUtil();
                     String decryptedUserinfo = aesUtil.decrypt(userInfo);
-                    //System.out.println("필터-암호화된 쿠키: " + userInfo);
-                    //System.out.println("필터-복호화된 쿠키: " + decryptedUserinfo);
                     
                     // 인증
                     UserDetails userDetails = userDetailsService.loadUserByUsername(decryptedUserinfo);
