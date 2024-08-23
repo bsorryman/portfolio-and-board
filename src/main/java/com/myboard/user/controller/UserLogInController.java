@@ -70,6 +70,7 @@ public class UserLogInController {
     }    
     
     /**
+     * (Unused)
      * 구글 소셜 로그인은 Security에 설정된 formLogin이 아닌 수동으로 로그인을 처리한다.
      * (id, password가 form 파라미터로 전달되지 않기 때문)
      * 구글 로그인 성공 시 전달되는 credential(jwt)를 디코딩하여 수동으로 User에 매핑하고

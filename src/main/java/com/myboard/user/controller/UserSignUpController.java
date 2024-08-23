@@ -76,6 +76,7 @@ public class UserSignUpController {
     }
     
     /**
+     * (Unused)
      * 구글 소셜 회원가입 처리 컨트롤러.
      * Credential 토큰을 복호화하여 payload에서 사용자 정보를 가져와 가입시킨다. 
      * 비밀번호에 쓰일 필드는 암호화한다.

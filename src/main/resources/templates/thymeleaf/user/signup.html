@@ -10,6 +10,8 @@
 <meta charset="utf-8" />
 <meta name="viewport"
   content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta id="_csrf" name="_csrf" th:attr="content=${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" th:attr="content=${_csrf.headerName}"/>
 <link rel="stylesheet" href="/assets/css/main.css?240408" />
 </head>
 <body class="is-preload">
@@ -27,6 +29,8 @@
         <!-- Content -->
         <section style="padding: 3em 0 3em 0;">
           <form method="post" style="width:40%" id="signUpForm">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+            <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}"/>               
             <input type="hidden" name="role" id="role" value="user">
             <div class="row gtr-uniform">
               <div class="col-12" style="display: flex;">
@@ -156,9 +160,15 @@
           return;
       }
       
+      var token = $("meta[name='_csrf']").attr("content");
+      var header = $("meta[name='_csrf_header']").attr("content");
+      
 	  $.ajax({
 		  url: "/signup/id-check",
 		  method: "POST",
+          beforeSend : function(xhr) {
+              xhr.setRequestHeader(header, token);
+          },		  
 		  dataType: 'json',
 		  data: {
 			  username: username

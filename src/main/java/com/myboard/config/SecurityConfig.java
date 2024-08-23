@@ -13,6 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import lombok.RequiredArgsConstructor;
 
@@ -49,14 +52,22 @@ public class SecurityConfig {
             .failureUrl("/login?type=error") 
             .and()
         .logout() // 로그아웃 관련
-            .logoutUrl("/logout") // 로그아웃 URL
+            //.logoutUrl("/logout") // 로그아웃 URL -> CSRF 설정 추가하면서 사용 불가 
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
             .logoutSuccessHandler(customLogoutSuccessHandler)
             .permitAll()        
             .and()
-        .csrf().disable(); // CSRF 보호 비활성화
+        .csrf().csrfTokenRepository(csrfTokenRepository()); 
         
         return http.build();
     }
+    
+    @Bean
+    public CsrfTokenRepository csrfTokenRepository() {
+        HttpSessionCsrfTokenRepository csrfTokenRepository = new HttpSessionCsrfTokenRepository();
+        csrfTokenRepository.setHeaderName("X-CSRF-TOKEN");
+        return csrfTokenRepository;
+    }    
     
     /**
      * 비밀번호 암호화 Bean

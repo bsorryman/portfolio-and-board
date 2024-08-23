@@ -25,6 +25,8 @@
           <h3>글 작성</h3>
           <hr>
           <form method="post" action="/board/member/write">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+            <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}"/>              
             <input type="hidden" id="username" name="username" th:value="${#authentication.principal.username}" />
             <input type="hidden" id="nickname" name="nickname" th:value="${#authentication.principal.nickname}" />
             <div class="row gtr-uniform">
